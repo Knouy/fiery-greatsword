@@ -8,10 +8,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
     <title>Home - Guild Wars 2 - Knouy</title>
+    <script src="controller/three.min.js"></script>
+    <script src="controller/vanta.fog.min.js"></script>
 </head>
 <body>
 <div id="background">
     <img alt="Texture Crystal S" data-depth="0.2" id="textureCrystalS" src="texture_crystal_s.jpg">
+    <div id="fog_background"></div>
     <div data-depth="0.1" id="bottomGraphics">
         <img alt="Bottom Graphics" src="Bottom_Graphics.png">
     </div>
@@ -38,4 +41,19 @@
 <div id="countdown"></div>
 <script src="controller/javascript.js" type="module"></script>
 </body>
+
+<script>
+    VANTA.FOG({
+        el: "#fog_background",
+        mouseControls: true,
+        touchControls: true,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        highlightColor: 0xb341e3,
+        midtoneColor: 0xa400ff,
+        lowlightColor: 0x6325bb,
+        baseColor: 0xfcfcfc,
+        zoom: 1.80
+    })
+</script>
 </html>

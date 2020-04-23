@@ -5,6 +5,8 @@ import {resetProfessionMenu} from "../model/reset-profession-menu.js";
 
 new Parallax(document.getElementById('background'));
 
+
+
 setInterval(() => {
   const RESET = new Date();
   RESET.setUTCDate(new Date().getUTCDate() + 1);
