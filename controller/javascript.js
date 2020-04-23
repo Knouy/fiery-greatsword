@@ -1,5 +1,5 @@
 import {home} from "../model/home.js";
-import {uceCounter} from "../model/uceCounter.js";
+import {uceCounter} from "../model/uce-counter.js";
 import {onClick} from "../model/on-click.js";
 import {resetProfessionMenu} from "../model/reset-profession-menu.js";
 
@@ -14,6 +14,22 @@ VANTA.FOG({
   lowlightColor: 0x6325bb,
   baseColor: 0xfcfcfc,
   zoom: 1.80
+});
+
+$(($) => {
+  $('#menuHome').on('click', () => {
+    $('#guildWars2').load('view/home.html', () => home());
+  });
+  $('#menuPrecisionCalculator').on('click', () => {
+    $('#guildWars2').load('view/precisionCalculator.html', () =>
+      precisionCalulator());
+  });
+  $('#menuUceCounter').on('click', () => {
+    $('#guildWars2').load('view/uceCounter.html', () => {
+      uceCounter();
+      $('#fetch').on('click', () => uceCounter());
+    });
+  });
 });
 
 setInterval(() => {
@@ -34,145 +50,71 @@ setInterval(() => {
     SECONDS : SECONDS);
 }, 1000);
 
-$(($) => {
-  $('#menuHome').on('click', () => {
-    $('#guildWars2').load('view/home.html', () => home());
-  });
-  $('#menuPrecisionCalculator').on('click', () => {
-    $('#guildWars2').load('view/precisionCalculator.html', () =>
-      precisionCalulator());
-  });
-  $('#menuUceCounter').on('click', () => {
-    $('#guildWars2').load('view/uceCounter.html', () => {
-      uceCounter();
-      $('#fetch').on('click', () => uceCounter());
-    });
-  });
-});
-
 /* Precision Calculator */
 
 /* Agony Impedance */
-let agonyImpedance;
+let agonyImpedance = 20;
 /* Buff */
-let fury;
-let quickness;
-let retaliation;
+let fury = 1;
+let quickness = 0;
+let retaliation = 0;
 /* Condition */
-let bleeding;
-let burning;
-let slow;
-let vulnerability;
-let weakness;
+let bleeding = 0;
+let burning = 0;
+let slow = 0;
+let vulnerability = 0;
+let weakness = 0;
 /* Fractal Attunement */
-let fractalAttunement;
+let fractalAttunement = 30;
 /* Gizmo */
-let infiniteMistOmnipotion;
+let infiniteMistOmnipotion = 5;
 /* Mist Attunement */
-let mistAttunement;
+let mistAttunement = 25;
 /* Sigil of Accuracy */
-let sigilOfAccuracy;
+let sigilOfAccuracy = 0;
 /* Trait */
 /* Engineer */
-let hematicFocus;
-let highCaliber;
+let hematicFocus = 0;
+let highCaliber = 0;
 /* Ranger */
-let spotter;
-let viciousQuarry;
+let spotter = 0;
+let viciousQuarry = 0;
 /* Thief */
-let beQuickOrBeKilled;
-let keenObserver;
-let silentScope;
-let twinFangs;
+let beQuickOrBeKilled = 0;
+let keenObserver = 0;
+let silentScope = 0;
+let twinFangs = 0;
 /* Elementalist */
-let elementsOfRage;
-let superiorElements;
+let elementsOfRage = 0;
+let superiorElements = 0;
 /* Mesmer */
-let dangerTime;
+let dangerTime = 0;
 /* Necromancer */
-let deathPerception;
-let decimateDefenses;
-let furiousDemise;
-let targetTheWeak;
+let deathPerception = 0;
+let decimateDefenses = 0;
+let furiousDemise = 0;
+let targetTheWeak = 0;
 /* Guardian */
-let radiantPower;
-let rightHandStrength;
-let righteousInstinct;
+let radiantPower = 0;
+let rightHandStrength = 0;
+let righteousInstinct = 0;
 /* Revenant */
-let brutalMomentum;
+let brutalMomentum = 0;
 /* Warrior */
-let doubledStandards;
-let unsuspectingFoe;
+let doubledStandards = 1;
+let unsuspectingFoe = 0;
 /* Utility skill */
-let bannerOfDiscipline;
-let conjureLightningHammer;
-let signetOfAgility;
-let signetOfFire;
-let signetOfFury;
+let bannerOfDiscipline = 100;
+let conjureLightningHammer = 0;
+let signetOfAgility = 0;
+let signetOfFire = 0;
+let signetOfFury = 0;
 /* Vitality */
-let vitality;
+let vitality = 1000;
 
 function precisionCalulator () {
+  loadPrecisionCalculator();
   document.title = 'Precision Calculator - Guild Wars 2 - Knouy';
-  /* Agony Impedance */
-  agonyImpedance = 20;
-  /* Buff */
-  fury = 1;
-  quickness = 0;
-  retaliation = 0;
-  /* Condition */
-  bleeding = 0;
-  burning = 0;
-  slow = 0;
-  vulnerability = 0;
-  weakness = 0;
-  /* Fractal Attunement */
-  fractalAttunement = 30;
-  /* Gizmo */
-  infiniteMistOmnipotion = 5;
-  /* Mist Attunement */
-  mistAttunement = 25;
-  /* Sigil of Accuracy */
-  sigilOfAccuracy = 0;
-  /* Trait */
-  /* Engineer */
-  hematicFocus = 0;
-  highCaliber = 0;
-  /* Ranger */
-  spotter = 0;
-  viciousQuarry = 0;
-  /* Thief */
-  beQuickOrBeKilled = 0;
-  keenObserver = 0;
-  silentScope = 0;
-  twinFangs = 0;
-  /* Elementalist */
-  elementsOfRage = 0;
-  superiorElements = 0;
-  /* Mesmer */
-  dangerTime = 0;
-  /* Necromancer */
-  deathPerception = 0;
-  decimateDefenses = 0;
-  furiousDemise = 0;
-  targetTheWeak = 0;
-  /* Guardian */
-  radiantPower = 0;
-  rightHandStrength = 0;
-  righteousInstinct = 0;
-  /* Revenant */
-  brutalMomentum = 0;
-  /* Warrior */
-  doubledStandards = 1;
-  unsuspectingFoe = 0;
-  /* Utility skill */
-  bannerOfDiscipline = 100;
-  conjureLightningHammer = 0;
-  signetOfAgility = 0;
-  signetOfFire = 0;
-  signetOfFury = 0;
-  /* Vitality */
-  vitality = 1000;
   calculate();
   $(($) => {
     /* Profession */
