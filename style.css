@@ -2,20 +2,20 @@
 
 body {
     margin: 0;
-    overflow: hidden;
     padding: 15px 0 0 0;
 }
 
 #background {
-    height: 150%;
-    left: -3%;
+    height: calc(100% + 15px);
     position: absolute;
-    top: -50%;
-    width: 106%;
+    top: -15px;
+    width: 100%;
 }
 
 #textureCrystalS {
-    position: absolute;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 100%;
     width: 100%;
 }
 
@@ -23,11 +23,13 @@ body {
     height: 100%;
     opacity: 0.5;
     position: absolute;
+    top: 0;
     width: 100%;
 }
 
-#bottomGraphics, #bottomGraphics img {
-    bottom: -1%;
+#bottomGraphics {
+    bottom: 0;
+    left: 0;
     position: absolute;
     width: 100%;
 }

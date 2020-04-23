@@ -40,3 +40,5 @@ N
 model/reset-profession-menu.js,c\a\cac9db47a294c0fb9a70158f2bbc6a2cb60cb643
 A
 model/on-click.js,6\4\6452daa020fc1e619bb167de9d0fa35c800643dc
+9
+	style.css,4\6\46e3381e9569c09e85a30b9e5a2af7525ee9fd78
