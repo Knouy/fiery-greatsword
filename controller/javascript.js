@@ -3,6 +3,19 @@ import {uceCounter} from "../model/uceCounter.js";
 import {onClick} from "../model/on-click.js";
 import {resetProfessionMenu} from "../model/reset-profession-menu.js";
 
+VANTA.FOG({
+  el: "#fog",
+  mouseControls: true,
+  touchControls: true,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  highlightColor: 0xb341e3,
+  midtoneColor: 0xa400ff,
+  lowlightColor: 0x6325bb,
+  baseColor: 0xfcfcfc,
+  zoom: 1.80
+});
+
 new Parallax(document.getElementById('background'));
 
 setInterval(() => {

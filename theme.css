@@ -19,8 +19,15 @@ body {
     width: 100%;
 }
 
+#fog {
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+}
+
 #bottomGraphics, #bottomGraphics img {
-    bottom: -3%;
+    bottom: -1%;
     position: absolute;
     width: 100%;
 }
