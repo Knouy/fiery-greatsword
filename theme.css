@@ -1,5 +1,30 @@
 /* index.html */
 
+body {
+    margin: 0;
+    overflow: hidden;
+    padding: 15px 0 0 0;
+}
+
+#background {
+    height: 150%;
+    left: -3%;
+    position: absolute;
+    top: -50%;
+    width: 106%;
+}
+
+#textureCrystalS {
+    position: absolute;
+    width: 100%;
+}
+
+#bottomGraphics, #bottomGraphics img {
+    bottom: -3%;
+    position: absolute;
+    width: 100%;
+}
+
 .horizontalMenu {
     display: flex;
     font-family: "JetBrains Mono", serif;
@@ -38,11 +63,12 @@
     height: 64px;
 }
 
-#Bottom_Graphics, #Bottom_Graphics > img {
-    bottom: 0;
+#github {
+    border-radius: 99px;
+    bottom: 32px;
+    height: 32px;
+    left: calc(50% - 16px);
     position: absolute;
-    width: 100%;
-    z-index: 0;
 }
 
 #countdown {
@@ -55,27 +81,9 @@
     right: 32px;
 }
 
-#github {
-    border-radius: 99px;
-    bottom: 32px;
-    height: 32px;
-    left: calc(50% - 16px);
-    position: absolute;
-}
-
 @font-face {
     font-family: "JetBrains Mono";
     src: url("JetBrainsMono-Regular.woff2");
-}
-
-body {
-    background-attachment: fixed;
-    background-image: url("texture_crystal_s.jpg");
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0;
-    padding: 15px 0 0 0;
 }
 
 /* precisionCalculator.html */

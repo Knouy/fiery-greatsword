@@ -3,21 +3,7 @@ import {uceCounter} from "../model/uceCounter.js";
 import {onClick} from "../model/on-click.js";
 import {resetProfessionMenu} from "../model/reset-profession-menu.js";
 
-$(($) => {
-  $('#menuHome').on('click', () => {
-    $('#guildWars2').load('view/home.html', () => home());
-  });
-  $('#menuPrecisionCalculator').on('click', () => {
-    $('#guildWars2').load('view/precisionCalculator.html', () =>
-      precisionCalulator());
-  });
-  $('#menuUceCounter').on('click', () => {
-    $('#guildWars2').load('view/uceCounter.html', () => {
-      uceCounter();
-      $('#fetch').on('click', () => uceCounter());
-    });
-  });
-});
+new Parallax(document.getElementById('background'));
 
 setInterval(() => {
   const RESET = new Date();
@@ -36,6 +22,22 @@ setInterval(() => {
     MINUTES : MINUTES) + ':' + (SECONDS.toString().length === 1 ? '0' +
     SECONDS : SECONDS);
 }, 1000);
+
+$(($) => {
+  $('#menuHome').on('click', () => {
+    $('#guildWars2').load('view/home.html', () => home());
+  });
+  $('#menuPrecisionCalculator').on('click', () => {
+    $('#guildWars2').load('view/precisionCalculator.html', () =>
+      precisionCalulator());
+  });
+  $('#menuUceCounter').on('click', () => {
+    $('#guildWars2').load('view/uceCounter.html', () => {
+      uceCounter();
+      $('#fetch').on('click', () => uceCounter());
+    });
+  });
+});
 
 /* Precision Calculator */
 
