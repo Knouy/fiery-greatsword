@@ -1,0 +1,203 @@
+/* index.html */
+
+body {
+    margin: 0;
+    padding: 15px 0 0 0;
+}
+
+#background {
+    height: calc(100% + 15px);
+    position: absolute;
+    top: -15px;
+    width: 100%;
+}
+
+#textureCrystalS {
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 100%;
+    width: 100%;
+}
+
+#fog {
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#bottomGraphics {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.horizontalMenu {
+    display: flex;
+    font-family: "JetBrains Mono", serif;
+    justify-content: center;
+    z-index: 1;
+}
+
+.zIndex1 {
+    z-index: 1;
+}
+
+.horizontalMenu ul {
+    display: flex;
+    margin: 0 0 15px 0;
+    padding: 0;
+}
+
+.horizontalMenu li {
+    display: flex;
+}
+
+.horizontalMenu a:link, .horizontalMenu a:visited, .verticalMenu a:link, .verticalMenu a:visited {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+    display: flex;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.horizontalMenu a:hover, .verticalMenu a:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.horizontalMenu img {
+    height: 64px;
+}
+
+#github {
+    border-radius: 99px;
+    bottom: 32px;
+    height: 32px;
+    left: calc(50% - 16px);
+    position: absolute;
+}
+
+#countdown {
+    bottom: 32px;
+    color: #FFFFFF;
+    font-family: "JetBrains Mono", serif;
+    font-size: 32px;
+    height: 32px;
+    position: absolute;
+    right: 32px;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("JetBrainsMono-Regular.woff2");
+}
+
+/* precisionCalculator.html */
+
+#precisionCalculator {
+    align-items: center;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    font-family: "JetBrains Mono", serif;
+}
+
+#buffs {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+#buffs > li {
+    margin: 0 15px;
+    text-align: center;
+}
+
+.verticalMenu ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0 0 15px 0;
+    padding: 0;
+}
+
+.verticalMenu img {
+    margin: 0 15px 0 0;
+}
+
+.imgHeight32 img {
+    height: 18px;
+}
+
+/* uceCounter.html */
+
+#uceCounter {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: "JetBrains Mono", serif;
+}
+
+#head {
+    z-index: 1;
+}
+
+#item {
+    background-image: url("https://discretize.eu/static/gw2a--2xxYo-bcb9f385f6b4d1fde8546c4730c687a1.png");
+    border: #000000 solid 2px;
+    box-shadow: #000000 15px 15px 15px;
+    color: #FFFFFF;
+    display: inline-flex;
+    flex-direction: column;
+    font-family: 'PT Serif', serif;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    text-shadow: #000000 1px 1px;
+    z-index: 1;
+}
+
+#heading {
+    align-items: center;
+    display: inline-flex;
+    font-size: 28px;
+    padding: 0 15px;
+}
+
+#heading > img {
+    border: #FFFFFF solid 1px;
+}
+
+#inGameDescription {
+    display: inline-flex;
+    font-size: 24px;
+    padding: 0 15px;
+}
+
+#value {
+    align-items: center;
+    display: inline-flex;
+    font-size: 24px;
+    padding: 0 15px;
+}
+
+#value > img {
+    height: 24px;
+
+}
+
+#gold {
+    color: #C39A40;
+}
+
+#silver {
+    color: #848B8D;
+}
+
+#copper {
+    color: #4F3319;
+}
