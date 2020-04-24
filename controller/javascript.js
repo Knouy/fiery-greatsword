@@ -3,6 +3,8 @@ import {uceCounter} from "../model/uce-counter.js";
 import {onClick} from "../model/on-click.js";
 import {resetProfessionMenu} from "../model/reset-profession-menu.js";
 
+/* index.html */
+
 VANTA.FOG({
   el: "#fog",
   mouseControls: true,
@@ -50,8 +52,18 @@ setInterval(() => {
     SECONDS : SECONDS);
 }, 1000);
 
-/* Precision Calculator */
+/* precisionCalculator.html */
 
+/* Profession */
+let engineer = 0;
+let ranger = 0;
+let thief = 0;
+let elementalist = 0;
+let mesmer = 0;
+let necromancer = 0;
+let guardian = 0;
+let revenant = 0;
+let warrior = 0;
 /* Agony Impedance */
 let agonyImpedance = 20;
 /* Buff */
@@ -65,13 +77,20 @@ let slow = 0;
 let vulnerability = 0;
 let weakness = 0;
 /* Fractal Attunement */
-let fractalAttunement = 30;
+let agonyChanneler = 0;
+let recursiveResourcing = 0;
+let mistlockSingularities = 30;
 /* Gizmo */
 let infiniteMistOmnipotion = 5;
 /* Mist Attunement */
-let mistAttunement = 25;
+let mistAttunement1 = 0;
+let mistAttunement2 = 0;
+let mistAttunement3 = 0;
+let mistAttunement4 = 25;
 /* Sigil of Accuracy */
-let sigilOfAccuracy = 0;
+let minorSigilOfAccuracy = 0;
+let majorSigilOfAccuracy = 0;
+let superiorSigilOfAccuracy = 0;
 /* Trait */
 /* Engineer */
 let hematicFocus = 0;
@@ -101,7 +120,7 @@ let righteousInstinct = 0;
 /* Revenant */
 let brutalMomentum = 0;
 /* Warrior */
-let doubledStandards = 1;
+let doubledStandards = 0;
 let unsuspectingFoe = 0;
 /* Utility skill */
 let bannerOfDiscipline = 100;
@@ -113,43 +132,64 @@ let signetOfFury = 0;
 let vitality = 1000;
 
 function precisionCalulator () {
-  loadPrecisionCalculator();
   document.title = 'Precision Calculator - Guild Wars 2 - Knouy';
   calculate();
+  loadPrecisionCalculator();
   $(($) => {
     /* Profession */
     $('#engineer').on('click', () => {
-      $('#trait').load('view/precisionCalculator/engineer.html', () =>
-        engineer());
+      $('#trait').load('view/precisionCalculator/engineer.html', () => {
+        resetTrait();
+        engineerMenu()
+      });
     });
     $('#ranger').on('click', () => {
-      $('#trait').load('view/precisionCalculator/ranger.html', () => ranger());
+      $('#trait').load('view/precisionCalculator/ranger.html', () => {
+        resetTrait();
+        rangerMenu();
+      });
     });
     $('#thief').on('click', () => {
-      $('#trait').load('view/precisionCalculator/thief.html', () => thief());
+      $('#trait').load('view/precisionCalculator/thief.html', () => {
+        resetTrait();
+        thiefMenu()
+      });
     });
     $('#elementalist').on('click', () => {
-      $('#trait').load('view/precisionCalculator/elementalist.html', () =>
-        elementalist());
+      $('#trait').load('view/precisionCalculator/elementalist.html', () => {
+        resetTrait();
+        elementalistMenu()
+      });
     });
     $('#mesmer').on('click', () => {
-      $('#trait').load('view/precisionCalculator/mesmer.html', () => mesmer());
+      $('#trait').load('view/precisionCalculator/mesmer.html', () => {
+        resetTrait();
+        mesmerMenu()
+      });
     });
     $('#necromancer').on('click', () => {
-      $('#trait').load('view/precisionCalculator/necromancer.html', () =>
-        necromancer());
+      $('#trait').load('view/precisionCalculator/necromancer.html', () => {
+        resetTrait();
+        necromancerMenu()
+      });
     });
     $('#guardian').on('click', () => {
-      $('#trait').load('view/precisionCalculator/guardian.html', () =>
-        guardian());
+      $('#trait').load('view/precisionCalculator/guardian.html', () => {
+        resetTrait();
+        guardianMenu()
+      });
     });
     $('#revenant').on('click', () => {
-      $('#trait').load('view/precisionCalculator/revenant.html', () =>
-        revenant());
+      $('#trait').load('view/precisionCalculator/revenant.html', () => {
+        resetTrait();
+        revenantMenu()
+      });
     });
     $('#warrior').on('click', () => {
-      $('#trait').load('view/precisionCalculator/warrior.html', () =>
-        warrior());
+      $('#trait').load('view/precisionCalculator/warrior.html', () => {
+        resetTrait();
+        warriorMenu()
+      });
     });
     /* Agony Impedance */
     const $AGONY_IMPEDANCE = $('#agonyImpedance');
@@ -179,7 +219,7 @@ function precisionCalulator () {
       calculate();
     });
     $('#burning').on('click', () => {
-      burning = onClick('burning');
+      burning = onClick(1 ,'burning');
       calculate();
     });
     $('#slow').on('click', () => {
@@ -196,18 +236,21 @@ function precisionCalulator () {
     });
     /* Fractal Attunement */
     $('#agonyChanneler').on('click', () => {
-      fractalAttunement = onClick(10, 'agonyChanneler', 'recursiveResourcing',
+      resetFractalAttunement();
+      agonyChanneler = onClick(10, 'agonyChanneler', 'recursiveResourcing',
         'mistlockSingularities');
       calculate();
     });
     $('#recursiveResourcing').on('click', () => {
-      fractalAttunement = onClick(25, 'recursiveResourcing', 'agonyChanneler',
+      resetFractalAttunement();
+      recursiveResourcing = onClick(25, 'recursiveResourcing', 'agonyChanneler',
         'mistlockSingularities');
       calculate();
     });
     $('#mistlockSingularities').on('click', () => {
-      fractalAttunement = onClick(30, 'mistlockSingularities', 'agonyChanneler',
-        'recursiveResourcing');
+      resetFractalAttunement();
+      mistlockSingularities = onClick(30, 'mistlockSingularities',
+        'agonyChanneler', 'recursiveResourcing');
       calculate();
     });
     /* Gizmo */
@@ -217,38 +260,45 @@ function precisionCalulator () {
     });
     /* Mist Attunement */
     $('#mistAttunement1').on('click', () => {
-      mistAttunement = onClick(5, 'mistAttunement1', 'mistAttunement2',
+      resetMistAttunement();
+      mistAttunement1 = onClick(5, 'mistAttunement1', 'mistAttunement2',
         'mistAttunement3', 'mistAttunement4');
       calculate();
     });
     $('#mistAttunement2').on('click', () => {
-      mistAttunement = onClick(10, 'mistAttunement2', 'mistAttunement1',
+      resetMistAttunement();
+      mistAttunement2 = onClick(10, 'mistAttunement2', 'mistAttunement1',
         'mistAttunement3', 'mistAttunement4');
       calculate();
     });
     $('#mistAttunement3').on('click', () => {
-      mistAttunement = onClick(15, 'mistAttunement3', 'mistAttunement1',
+      resetMistAttunement();
+      mistAttunement3 = onClick(15, 'mistAttunement3', 'mistAttunement1',
         'mistAttunement2', 'mistAttunement4');
       calculate();
     });
     $('#mistAttunement4').on('click', () => {
-      mistAttunement = onClick(25, 'mistAttunement4', 'mistAttunement1',
+      resetMistAttunement();
+      mistAttunement4 = onClick(25, 'mistAttunement4', 'mistAttunement1',
         'mistAttunement2', 'mistAttunement3');
       calculate();
     });
     /* Sigil of Accuracy */
     $('#minorSigilOfAccuracy').on('click', () => {
-      sigilOfAccuracy = onClick(3, 'minorSigilOfAccuracy',
+      resetSigilOfAccuracy();
+      minorSigilOfAccuracy = onClick(3, 'minorSigilOfAccuracy',
         'majorSigilOfAccuracy', 'superiorSigilOfAccuracy');
       calculate();
     });
     $('#majorSigilOfAccuracy').on('click', () => {
-      sigilOfAccuracy = onClick(5, 'majorSigilOfAccuracy',
+      resetSigilOfAccuracy();
+      majorSigilOfAccuracy = onClick(5, 'majorSigilOfAccuracy',
         'minorSigilOfAccuracy', 'superiorSigilOfAccuracy');
       calculate();
     });
     $('#superiorSigilOfAccuracy').on('click', () => {
-      sigilOfAccuracy = onClick(7, 'superiorSigilOfAccuracy',
+      resetSigilOfAccuracy();
+      superiorSigilOfAccuracy = onClick(7, 'superiorSigilOfAccuracy',
         'minorSigilOfAccuracy', 'majorSigilOfAccuracy');
       calculate();
     });
@@ -283,24 +333,73 @@ function precisionCalulator () {
 
 function calculate () {
   document.getElementById('precision').innerText = (1000 + ((agonyImpedance +
-    162 + mistAttunement) * fractalAttunement / 100) * infiniteMistOmnipotion +
-    spotter + (beQuickOrBeKilled * quickness) + silentScope + (elementsOfRage *
+    162 + mistAttunement1 + mistAttunement2 + mistAttunement3 +
+    mistAttunement4) * (agonyChanneler + recursiveResourcing +
+    mistlockSingularities) / 100) * infiniteMistOmnipotion + spotter +
+    (beQuickOrBeKilled * quickness) + silentScope + (elementsOfRage *
       vitality) + furiousDemise + rightHandStrength + ((doubledStandards + 1) *
       bannerOfDiscipline) + conjureLightningHammer + signetOfAgility +
     signetOfFire + signetOfFury).toString();
   document.getElementById('criticalChance').innerText = (5 +
     ((document.getElementById('precision').innerText - 1000) / 21) + (fury *
-      20) + sigilOfAccuracy + (hematicFocus * bleeding) + highCaliber +
+      20) + minorSigilOfAccuracy + majorSigilOfAccuracy +
+    superiorSigilOfAccuracy + (hematicFocus * bleeding) + highCaliber +
     (viciousQuarry * fury) + keenObserver + twinFangs + (superiorElements *
       weakness) + (dangerTime * slow) + deathPerception + (decimateDefenses *
       vulnerability) + targetTheWeak + (radiantPower * burning) + (retaliation *
       righteousInstinct) + brutalMomentum + unsuspectingFoe).toString();
 }
 
-function engineer () {
+function loadPrecisionCalculator () {
+  const PROFESSION = [['engineer', ['hematicFocus', 10], ['highCaliber', 15]],
+    ['ranger', ['spotter', 100], ['viciousQuarry', 10]], ['thief',
+      ['beQuickOrBeKilled', 200], ['keenObserver', 5], ['silentScope', 240],
+      ['twinFangs', 7]], ['elementalist', ['elementsOfRage', 0.13],
+      ['superiorElements', 10]], ['mesmer', ['dangerTime', 15]], ['necromancer',
+      ['deathPerception', 33], ['decimateDefenses', 2], ['furiousDemise', 180],
+      ['targetTheWeak', 28]], ['guardian', ['radiantPower', 10],
+      ['rightHandStrength', 80], ['righteousInstinct', 25]], ['revenant',
+      ['brutalMomentum', 33]], ['warrior', ['doubledStandards', 1],
+      ['unsuspectingFoe', 50]]];
+  let precisionCalculator = [['fury', 1], ['quickness', 1], ['retaliation', 1],
+    ['bleeding', 1], ['burning', 1], ['slow', 1], ['vulnerability', 25],
+    ['weakness', 1], ['agonyChanneler', 10], ['recursiveResourcing', 25],
+    ['mistlockSingularities', 30], ['infiniteMistOmnipotion', 5],
+    ['mistAttunement1', 5], ['mistAttunement2', 10], ['mistAttunement3', 15],
+    ['mistAttunement4', 25], ['minorSigilOfAccuracy', 3],
+    ['majorSigilOfAccuracy', 5], ['superiorSigilOfAccuracy', 7],
+    ['bannerOfDiscipline', 100], ['conjureLightningHammer', 180],
+    ['signetOfAgility', 180], ['signetOfFire', 180], ['signetOfFury', 180]];
+  let temp = null;
+  PROFESSION.forEach(element => {
+    if (eval(element[0]) === 1) {
+      for (let i = 1; i < element.length; i++) {
+        precisionCalculator.push(element[i]);
+      }
+      temp = element[0];
+    }
+  });
+  if (temp != null) {
+    $('#trait').load('view/precisionCalculator/' + temp + '.html', () => {
+      precisionCalculator.forEach(element => {
+        if (eval(element[0]) === 0) {
+          document.getElementById(element[0]).style.borderColor = 'transparent';
+        } else if (eval(element[0]) === element[1]) {
+          document.getElementById(element[0]).style.borderColor = '#00FF00';
+        } else {
+          document.getElementById(element[0]).style.borderColor = '#ED7F10';
+        }
+      });
+      eval(temp + 'Menu()');
+    });
+  }
+}
+
+function engineerMenu () {
   document.title = 'Engineer - Precision Calculator - Guild Wars 2 - Knouy';
-  resetProfessionMenu();
+  resetProfession();
   document.getElementById('engineer').style.borderColor = '#00FF00';
+  engineer = 1;
   $(($) => {
     $('#hematicFocus').on('click', () => {
       hematicFocus = onClick(10, 'hematicFocus');
@@ -313,10 +412,11 @@ function engineer () {
   });
 }
 
-function ranger () {
+function rangerMenu () {
   document.title = 'Ranger - Precision Calculator - Guild Wars 2 - Knouy';
-  resetProfessionMenu();
+  resetProfession();
   document.getElementById('ranger').style.borderColor = '#00FF00';
+  ranger = 1;
   $(($) => {
     $('#spotter').on('click', () => {
       spotter = onClick(100, 'spotter');
@@ -329,10 +429,11 @@ function ranger () {
   });
 }
 
-function thief () {
+function thiefMenu () {
   document.title = 'Thief - Precision Calculator - Guild Wars 2 - Knouy';
-  resetProfessionMenu();
+  resetProfession();
   document.getElementById('thief').style.borderColor = '#00FF00';
+  thief = 1;
   $(($) => {
     $('#beQuickOrBeKilled').on('click', () => {
       beQuickOrBeKilled = onClick(200, 'beQuickOrBeKilled');
@@ -343,7 +444,7 @@ function thief () {
       calculate();
     });
     $('#silentScope').on('click', () => {
-      silentScope = onClick(0, 'silentScope');
+      silentScope = onClick(240, 'silentScope');
       calculate();
     });
     $('#twinFangs').on('click', () => {
@@ -353,10 +454,11 @@ function thief () {
   });
 }
 
-function elementalist () {
+function elementalistMenu () {
   document.title = 'Elementalist - Precision Calculator - Guild Wars 2 - Knouy';
-  resetProfessionMenu();
+  resetProfession();
   document.getElementById('elementalist').style.borderColor = '#00FF00';
+  elementalist = 1;
   $(($) => {
     $('#elementsOfRage').on('click', () => {
       elementsOfRage = onClick(0.13, 'elementsOfRage');
@@ -369,10 +471,11 @@ function elementalist () {
   });
 }
 
-function mesmer () {
+function mesmerMenu () {
   document.title = 'Mesmer - Precision Calculator - Guild Wars 2 - Knouy';
-  resetProfessionMenu();
+  resetProfession();
   document.getElementById('mesmer').style.borderColor = '#00FF00';
+  mesmer = 1;
   $(($) => {
     $('#dangerTime').on('click', () => {
       dangerTime = onClick(15, 'dangerTime');
@@ -381,10 +484,11 @@ function mesmer () {
   });
 }
 
-function necromancer () {
+function necromancerMenu () {
   document.title = 'Necromancer - Precision Calculator - Guild Wars 2 - Knouy';
-  resetProfessionMenu();
+  resetProfession();
   document.getElementById('necromancer').style.borderColor = '#00FF00';
+  necromancer = 1;
   $(($) => {
     $('#deathPerception').on('click', () => {
       deathPerception = onClick(33, 'deathPerception');
@@ -405,10 +509,11 @@ function necromancer () {
   });
 }
 
-function guardian () {
+function guardianMenu () {
   document.title = 'Guardian - Precision Calculator - Guild Wars 2 - Knouy';
-  resetProfessionMenu();
+  resetProfession();
   document.getElementById('guardian').style.borderColor = '#00FF00';
+  guardian = 1;
   $(($) => {
     $('#radiantPower').on('click', () => {
       radiantPower = onClick(10, 'radiantPower');
@@ -425,10 +530,11 @@ function guardian () {
   });
 }
 
-function revenant () {
+function revenantMenu () {
   document.title = 'Revenant - Precision Calculator - Guild Wars 2 - Knouy';
-  resetProfessionMenu();
+  resetProfession();
   document.getElementById('revenant').style.borderColor = '#00FF00';
+  revenant = 1;
   $(($) => {
     $('#brutalMomentum').on('click', () => {
       brutalMomentum = onClick(33, 'brutalMomentum');
@@ -437,10 +543,11 @@ function revenant () {
   });
 }
 
-function warrior () {
+function warriorMenu () {
   document.title = 'Warrior - Precision Calculator - Guild Wars 2 - Knouy';
-  resetProfessionMenu();
+  resetProfession();
   document.getElementById('warrior').style.borderColor = '#00FF00';
+  warrior = 1;
   $(($) => {
     $('#doubledStandards').on('click', () => {
       doubledStandards = onClick(1, 'doubledStandards');
@@ -451,4 +558,61 @@ function warrior () {
       calculate();
     });
   });
+}
+
+function resetTrait () {
+  hematicFocus = 0;
+  highCaliber = 0;
+  spotter = 0;
+  viciousQuarry = 0;
+  beQuickOrBeKilled = 0;
+  keenObserver = 0;
+  silentScope = 0;
+  twinFangs = 0;
+  elementsOfRage = 0;
+  superiorElements = 0;
+  dangerTime = 0;
+  deathPerception = 0;
+  decimateDefenses = 0;
+  furiousDemise = 0;
+  targetTheWeak = 0;
+  radiantPower = 0;
+  rightHandStrength = 0;
+  righteousInstinct = 0;
+  brutalMomentum = 0;
+  doubledStandards = 0;
+  unsuspectingFoe = 0;
+  calculate();
+}
+
+function resetProfession () {
+  resetProfessionMenu();
+  engineer = 0;
+  ranger = 0;
+  thief = 0;
+  elementalist = 0;
+  mesmer = 0;
+  necromancer = 0;
+  guardian = 0;
+  revenant = 0;
+  warrior = 0;
+}
+
+function resetFractalAttunement () {
+  agonyChanneler = 0;
+  recursiveResourcing = 0;
+  mistlockSingularities = 0;
+}
+
+function resetMistAttunement () {
+  mistAttunement1 = 0;
+  mistAttunement2 = 0;
+  mistAttunement3 = 0;
+  mistAttunement4 = 0;
+}
+
+function resetSigilOfAccuracy () {
+  minorSigilOfAccuracy = 0;
+  majorSigilOfAccuracy = 0;
+  superiorSigilOfAccuracy = 0;
 }
