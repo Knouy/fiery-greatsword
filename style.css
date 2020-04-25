@@ -1,14 +1,81 @@
-/* index.html */
+.horizontalMenu, .verticalMenu {
+    display: flex;
+    font-family: "JetBrains Mono", serif;
+    justify-content: center;
+}
+
+.horizontalMenu a:link, .horizontalMenu a:visited, .verticalMenu a:link, .verticalMenu a:visited {
+    align-items: center;
+    background-color: rgba(0, 0, 0, .5);
+    color: #FFFFFF;
+    display: flex;
+    padding: 15px;
+    text-decoration: none;
+    transition: .15s;
+}
+
+.horizontalMenu a:hover, .verticalMenu a:hover {
+    background-color: rgba(0, 0, 0, .75);
+}
+
+.horizontalMenu ul {
+    display: flex;
+    margin: 0 0 15px 0;
+    padding: 0;
+}
+
+.horizontalMenu li {
+    display: flex;
+    z-index: 1;
+}
+
+.horizontalMenu img {
+    height: 64px;
+}
+
+.imgHeight18 img {
+    height: 18px;
+}
+
+.page {
+    align-items: center;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    font-family: "JetBrains Mono", serif;
+}
+
+.verticalMenu ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0 0 15px 0;
+    padding: 0;
+}
+
+.verticalMenu li {
+    z-index: 1;
+}
+
+.verticalMenu img {
+    margin: 0 15px 0 0;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("JetBrainsMono-Regular.woff2");
+}
 
 body {
     margin: 0;
-    padding: 15px 0 0 0;
 }
 
+/* index.html */
+
 #background {
-    height: calc(100% + 15px);
+    height: 100%;
     position: absolute;
-    top: -15px;
+    top: 0;
     width: 100%;
 }
 
@@ -34,42 +101,8 @@ body {
     width: 100%;
 }
 
-.horizontalMenu {
-    display: flex;
-    font-family: "JetBrains Mono", serif;
-    justify-content: center;
-    z-index: 1;
-}
-
-.zIndex1 {
-    z-index: 1;
-}
-
-.horizontalMenu ul {
-    display: flex;
-    margin: 0 0 15px 0;
-    padding: 0;
-}
-
-.horizontalMenu li {
-    display: flex;
-}
-
-.horizontalMenu a:link, .horizontalMenu a:visited, .verticalMenu a:link, .verticalMenu a:visited {
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #FFFFFF;
-    display: flex;
-    padding: 15px;
-    text-decoration: none;
-}
-
-.horizontalMenu a:hover, .verticalMenu a:hover {
-    background-color: rgba(0, 0, 0, 0.75);
-}
-
-.horizontalMenu img {
-    height: 64px;
+#mainMenu {
+    margin: 15px 0 0 0;
 }
 
 #github {
@@ -90,20 +123,7 @@ body {
     right: 32px;
 }
 
-@font-face {
-    font-family: "JetBrains Mono";
-    src: url("JetBrainsMono-Regular.woff2");
-}
-
 /* precisionCalculator.html */
-
-#precisionCalculator {
-    align-items: center;
-    color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    font-family: "JetBrains Mono", serif;
-}
 
 #buffs {
     display: flex;
@@ -118,33 +138,35 @@ body {
     text-align: center;
 }
 
-.verticalMenu ul {
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    margin: 0 0 15px 0;
-    padding: 0;
-}
-
-.verticalMenu img {
-    margin: 0 15px 0 0;
-}
-
-.imgHeight32 img {
-    height: 18px;
-}
-
 /* uceCounter.html */
 
-#uceCounter {
-    align-items: center;
+#head {
     display: flex;
-    flex-direction: column;
-    font-family: "JetBrains Mono", serif;
+    z-index: 1;
 }
 
-#head {
-    z-index: 1;
+#head label {
+    background-image: url("https://discretize.eu/static/gw2a--2xxYo-bcb9f385f6b4d1fde8546c4730c687a1.png");
+    border: #000000 solid 2px;
+    color: #62A4DA;
+    font-family: 'PT Serif', serif;
+    margin: 0 15px 0 0;
+    padding: 0 0 0 15px;
+    text-shadow: #000000 1px 1px;
+}
+
+#apiKey {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    color: #FFFFFF;
+    font-family: 'PT Serif', serif;
+    margin: 0 0 0 15px;
+    padding: 15px;
+    transition: .15s;
+}
+
+#apiKey:focus, #apiKey:hover {
+    background: rgba(98, 164, 218, .5);
 }
 
 #item {
@@ -152,20 +174,20 @@ body {
     border: #000000 solid 2px;
     box-shadow: #000000 15px 15px 15px;
     color: #FFFFFF;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     font-family: 'PT Serif', serif;
     margin-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px;
     text-shadow: #000000 1px 1px;
     z-index: 1;
 }
 
 #heading {
     align-items: center;
-    display: inline-flex;
+    display: flex;
     font-size: 28px;
-    padding: 0 15px;
+    height: 66px;
 }
 
 #heading > img {
@@ -173,21 +195,17 @@ body {
 }
 
 #inGameDescription {
-    display: inline-flex;
     font-size: 24px;
-    padding: 0 15px;
 }
 
 #value {
     align-items: center;
-    display: inline-flex;
+    display: flex;
     font-size: 24px;
-    padding: 0 15px;
 }
 
 #value > img {
     height: 24px;
-
 }
 
 #gold {

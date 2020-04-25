@@ -1,12 +1,12 @@
-import {home} from "../model/home.js";
-import {uceCounter} from "../model/uce-counter.js";
-import {onClick} from "../model/on-click.js";
-import {resetProfessionMenu} from "../model/reset-profession-menu.js";
+import { home } from '../model/home.js';
+import { onClick } from '../model/on-click.js';
+import { resetProfessionMenu } from '../model/reset-profession-menu.js';
+import { count } from '../model/count.js';
 
 /* index.html */
 
 VANTA.FOG({
-  el: "#fog",
+  el: '#fog',
   mouseControls: true,
   touchControls: true,
   minHeight: 200.00,
@@ -20,14 +20,14 @@ VANTA.FOG({
 
 $(($) => {
   $('#menuHome').on('click', () => {
-    $('#guildWars2').load('view/home.html', () => home());
+    $('#page').load('view/home.html', () => home());
   });
   $('#menuPrecisionCalculator').on('click', () => {
-    $('#guildWars2').load('view/precisionCalculator.html', () =>
+    $('#page').load('view/precisionCalculator.html', () =>
       precisionCalulator());
   });
   $('#menuUceCounter').on('click', () => {
-    $('#guildWars2').load('view/uceCounter.html', () => {
+    $('#page').load('view/uceCounter.html', () => {
       uceCounter();
       $('#fetch').on('click', () => uceCounter());
     });
@@ -140,7 +140,7 @@ function precisionCalulator () {
     $('#engineer').on('click', () => {
       $('#trait').load('view/precisionCalculator/engineer.html', () => {
         resetTrait();
-        engineerMenu()
+        engineerMenu();
       });
     });
     $('#ranger').on('click', () => {
@@ -152,43 +152,43 @@ function precisionCalulator () {
     $('#thief').on('click', () => {
       $('#trait').load('view/precisionCalculator/thief.html', () => {
         resetTrait();
-        thiefMenu()
+        thiefMenu();
       });
     });
     $('#elementalist').on('click', () => {
       $('#trait').load('view/precisionCalculator/elementalist.html', () => {
         resetTrait();
-        elementalistMenu()
+        elementalistMenu();
       });
     });
     $('#mesmer').on('click', () => {
       $('#trait').load('view/precisionCalculator/mesmer.html', () => {
         resetTrait();
-        mesmerMenu()
+        mesmerMenu();
       });
     });
     $('#necromancer').on('click', () => {
       $('#trait').load('view/precisionCalculator/necromancer.html', () => {
         resetTrait();
-        necromancerMenu()
+        necromancerMenu();
       });
     });
     $('#guardian').on('click', () => {
       $('#trait').load('view/precisionCalculator/guardian.html', () => {
         resetTrait();
-        guardianMenu()
+        guardianMenu();
       });
     });
     $('#revenant').on('click', () => {
       $('#trait').load('view/precisionCalculator/revenant.html', () => {
         resetTrait();
-        revenantMenu()
+        revenantMenu();
       });
     });
     $('#warrior').on('click', () => {
       $('#trait').load('view/precisionCalculator/warrior.html', () => {
         resetTrait();
-        warriorMenu()
+        warriorMenu();
       });
     });
     /* Agony Impedance */
@@ -219,7 +219,7 @@ function precisionCalulator () {
       calculate();
     });
     $('#burning').on('click', () => {
-      burning = onClick(1 ,'burning');
+      burning = onClick(1, 'burning');
       calculate();
     });
     $('#slow').on('click', () => {
@@ -361,27 +361,27 @@ function loadPrecisionCalculator () {
       ['rightHandStrength', 80], ['righteousInstinct', 25]], ['revenant',
       ['brutalMomentum', 33]], ['warrior', ['doubledStandards', 1],
       ['unsuspectingFoe', 50]]];
-  let precisionCalculator = [['fury', 1], ['quickness', 1], ['retaliation', 1],
-    ['bleeding', 1], ['burning', 1], ['slow', 1], ['vulnerability', 25],
-    ['weakness', 1], ['agonyChanneler', 10], ['recursiveResourcing', 25],
-    ['mistlockSingularities', 30], ['infiniteMistOmnipotion', 5],
-    ['mistAttunement1', 5], ['mistAttunement2', 10], ['mistAttunement3', 15],
-    ['mistAttunement4', 25], ['minorSigilOfAccuracy', 3],
-    ['majorSigilOfAccuracy', 5], ['superiorSigilOfAccuracy', 7],
-    ['bannerOfDiscipline', 100], ['conjureLightningHammer', 180],
-    ['signetOfAgility', 180], ['signetOfFire', 180], ['signetOfFury', 180]];
+  const PRECISION_CALCULATOR = [['fury', 1], ['quickness', 1], ['retaliation',
+    1], ['bleeding', 1], ['burning', 1], ['slow', 1], ['vulnerability', 25],
+  ['weakness', 1], ['agonyChanneler', 10], ['recursiveResourcing', 25],
+  ['mistlockSingularities', 30], ['infiniteMistOmnipotion', 5],
+  ['mistAttunement1', 5], ['mistAttunement2', 10], ['mistAttunement3', 15],
+  ['mistAttunement4', 25], ['minorSigilOfAccuracy', 3], ['majorSigilOfAccuracy',
+    5], ['superiorSigilOfAccuracy', 7], ['bannerOfDiscipline', 100],
+  ['conjureLightningHammer', 180], ['signetOfAgility', 180], ['signetOfFire',
+    180], ['signetOfFury', 180]];
   let temp = null;
   PROFESSION.forEach(element => {
     if (eval(element[0]) === 1) {
       for (let i = 1; i < element.length; i++) {
-        precisionCalculator.push(element[i]);
+        PRECISION_CALCULATOR.push(element[i]);
       }
       temp = element[0];
     }
   });
   if (temp != null) {
     $('#trait').load('view/precisionCalculator/' + temp + '.html', () => {
-      precisionCalculator.forEach(element => {
+      PRECISION_CALCULATOR.forEach(element => {
         if (eval(element[0]) === 0) {
           document.getElementById(element[0]).style.borderColor = 'transparent';
         } else if (eval(element[0]) === element[1]) {
@@ -615,4 +615,53 @@ function resetSigilOfAccuracy () {
   minorSigilOfAccuracy = 0;
   majorSigilOfAccuracy = 0;
   superiorSigilOfAccuracy = 0;
+}
+
+/* uceCounter.html */
+
+let apiKey = '?access_token=74C4807F-4E95-5B4F-A649-2C47D7F54965C4414169-033B' +
+  '-405A-BE36-5A638C14C1D2';
+
+function uceCounter () {
+  document.title = 'UCE Counter - Guild Wars 2 - Knouy';
+  const UCE = document.getElementById('uce');
+  const REQUEST = 'https://api.guildwars2.com/v2/';
+  const S = document.getElementById('s');
+  const GOLD = document.getElementById('gold');
+  const SILVER = document.getElementById('silver');
+  apiKey = (document.getElementById('apiKey').value.length !== 0
+    ? '?access_token=' + document.getElementById('apiKey').value : apiKey);
+  document.getElementById('apiKey').value = '';
+  UCE.innerText = '0';
+  GOLD.innerHTML = '0&nbsp';
+  SILVER.innerHTML = '&nbsp&nbsp0&nbsp';
+  fetch(REQUEST + 'account/bank' + apiKey)
+    .then(response => response.json())
+    .then(responseJson => responseJson.forEach(element => {
+      count(element, UCE, S, GOLD, SILVER);
+    }));
+  fetch(REQUEST + 'account/inventory' + apiKey)
+    .then(response => response.json())
+    .then(responseJson => responseJson.forEach(element => {
+      count(element, UCE, S, GOLD, SILVER);
+    }));
+  fetch(REQUEST + 'characters' + apiKey)
+    .then(response => response.json())
+    .then(responseJson => responseJson.toString().split(',').forEach(
+      element => {
+        fetch(REQUEST + 'characters/' + element + '/inventory' + apiKey)
+          .then(response0 => response0.json())
+          /**
+           * @namespace response0Json.bags */
+          .then(response0Json => response0Json.bags.forEach(bag => {
+            /**
+             * @namespace bag.inventory */
+            if (bag !== null) {
+              bag.inventory.forEach(bagInventory => {
+                count(bagInventory, UCE, S, GOLD, SILVER);
+              });
+            }
+          }));
+      }
+    ));
 }
