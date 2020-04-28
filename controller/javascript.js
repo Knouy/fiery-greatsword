@@ -19,22 +19,24 @@ VANTA.FOG({
 });
 
 $(($) => {
+  const PAGE = $('#page');
   $('#menuHome').on('click', () => {
-    $('#page').load('view/home.html', () => home());
+    PAGE.fadeOut(400, () => PAGE.load('view/home.html', () => home()).hide()
+      .fadeIn());
   });
   $('#menuPrecisionCalculator').on('click', () => {
-    $('#page').load('view/precisionCalculator.html', () =>
-      precisionCalulator());
+   PAGE.fadeOut(400, () => PAGE.load('view/precisionCalculator.html', () =>
+     precisionCalulator()).hide().fadeIn());
   });
   $('#menuUceCounter').on('click', () => {
-    $('#page').load('view/uceCounter.html', () => {
+    PAGE.fadeOut(400, () => PAGE.load('view/uceCounter.html', () => {
       uceCounter();
       $('#fetch').on('click', () => uceCounter());
-    });
+    }).hide().fadeIn());
   });
 });
 
-$('#page').load('view/home.html');
+$('#page').load('view/home.html').hide().fadeIn();
 
 setInterval(() => {
   const RESET = new Date();
@@ -143,55 +145,55 @@ function precisionCalulator () {
       $('#trait').load('view/precisionCalculator/engineer.html', () => {
         resetTrait();
         engineerMenu();
-      });
+      }).hide().fadeIn();
     });
     $('#ranger').on('click', () => {
       $('#trait').load('view/precisionCalculator/ranger.html', () => {
         resetTrait();
         rangerMenu();
-      });
+      }).hide().fadeIn();
     });
     $('#thief').on('click', () => {
       $('#trait').load('view/precisionCalculator/thief.html', () => {
         resetTrait();
         thiefMenu();
-      });
+      }).hide().fadeIn();
     });
     $('#elementalist').on('click', () => {
       $('#trait').load('view/precisionCalculator/elementalist.html', () => {
         resetTrait();
         elementalistMenu();
-      });
+      }).hide().fadeIn();
     });
     $('#mesmer').on('click', () => {
       $('#trait').load('view/precisionCalculator/mesmer.html', () => {
         resetTrait();
         mesmerMenu();
-      });
+      }).hide().fadeIn();
     });
     $('#necromancer').on('click', () => {
       $('#trait').load('view/precisionCalculator/necromancer.html', () => {
         resetTrait();
         necromancerMenu();
-      });
+      }).hide().fadeIn();
     });
     $('#guardian').on('click', () => {
       $('#trait').load('view/precisionCalculator/guardian.html', () => {
         resetTrait();
         guardianMenu();
-      });
+      }).hide().fadeIn();
     });
     $('#revenant').on('click', () => {
       $('#trait').load('view/precisionCalculator/revenant.html', () => {
         resetTrait();
         revenantMenu();
-      });
+      }).hide().fadeIn();
     });
     $('#warrior').on('click', () => {
       $('#trait').load('view/precisionCalculator/warrior.html', () => {
         resetTrait();
         warriorMenu();
-      });
+      }).hide().fadeIn();
     });
     /* Agony Impedance */
     const $AGONY_IMPEDANCE = $('#agonyImpedance');

@@ -187,6 +187,10 @@ body {
     text-align: center;
 }
 
+#temp {
+    z-index: 1;
+}
+
 /* uceCounter.html */
 
 #head {
