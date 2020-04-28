@@ -1,3 +1,7 @@
+.aPadding15 a:link, a:visited {
+    padding: 15px;
+}
+
 .horizontalMenu, .verticalMenu {
     display: flex;
     font-family: "JetBrains Mono", serif;
@@ -9,7 +13,6 @@
     background-color: rgba(0, 0, 0, .5);
     color: #FFFFFF;
     display: flex;
-    padding: 15px;
     text-decoration: none;
     transition: .15s;
 }
@@ -20,7 +23,7 @@
 
 .horizontalMenu ul {
     display: flex;
-    margin: 0 0 15px 0;
+    margin: 0;
     padding: 0;
 }
 
@@ -29,12 +32,16 @@
     z-index: 1;
 }
 
-.horizontalMenu img {
-    height: 64px;
-}
-
 .imgHeight18 img {
     height: 18px;
+}
+
+.imgHeight32 img {
+    height: 32px;
+}
+
+.imgHeight64 img {
+    height: 64px;
 }
 
 .page {
@@ -43,13 +50,29 @@
     display: flex;
     flex-direction: column;
     font-family: "JetBrains Mono", serif;
+    z-index: 1;
+}
+
+.tooltip span {
+    color: #FFFFFF;
+    display: none;
+    font-family: "JetBrains Mono", serif;
+    justify-content: center;
+}
+
+.tooltip:hover span {
+    display: flex;
+}
+
+.marginBottom15 {
+    margin-bottom: 15px;
 }
 
 .verticalMenu ul {
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    margin: 0 0 15px 0;
+    margin-top: 0;
     padding: 0;
 }
 
@@ -102,25 +125,47 @@ body {
 }
 
 #mainMenu {
-    margin: 15px 0 0 0;
+    margin-top: 15px;
 }
 
-#github {
-    border-radius: 99px;
+#social {
     bottom: 32px;
     height: 32px;
-    left: calc(50% - 16px);
     position: absolute;
+    width: 100%;
+}
+
+#social li {
+    flex-direction: column;
+    margin: 0 15px;
+    width: 32px;
+}
+
+#github a, #github img {
+    border-radius: 99px;
 }
 
 #countdown {
+    align-items: center;
     bottom: 32px;
     color: #FFFFFF;
+    display: flex;
     font-family: "JetBrains Mono", serif;
     font-size: 32px;
     height: 32px;
     position: absolute;
     right: 32px;
+}
+
+/* home.html */
+
+#description {
+    width: 50%;
+    z-index: 1;
+}
+
+#description > ul > li > ul {
+    columns: 2;
 }
 
 /* precisionCalculator.html */

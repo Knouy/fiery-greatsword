@@ -38,3 +38,7 @@ A
 model/on-click.js,6\4\6452daa020fc1e619bb167de9d0fa35c800643dc
 9
 	style.css,4\6\46e3381e9569c09e85a30b9e5a2af7525ee9fd78
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

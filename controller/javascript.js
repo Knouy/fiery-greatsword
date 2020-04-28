@@ -34,6 +34,8 @@ $(($) => {
   });
 });
 
+$('#page').load('view/home.html');
+
 setInterval(() => {
   const RESET = new Date();
   RESET.setUTCDate(new Date().getUTCDate() + 1);
