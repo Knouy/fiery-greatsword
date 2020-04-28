@@ -44,6 +44,10 @@
     height: 64px;
 }
 
+.marginBottom15 {
+    margin-bottom: 15px;
+}
+
 .page {
     align-items: center;
     color: #FFFFFF;
@@ -54,18 +58,17 @@
 }
 
 .tooltip span {
-    color: #FFFFFF;
-    display: none;
+    color: #000000;
+    display: flex;
     font-family: "JetBrains Mono", serif;
     justify-content: center;
+    transition: .15s;
+    visibility: hidden;
 }
 
 .tooltip:hover span {
-    display: flex;
-}
-
-.marginBottom15 {
-    margin-bottom: 15px;
+    color: #FFFFFF;
+    visibility: visible;
 }
 
 .verticalMenu ul {
@@ -86,7 +89,7 @@
 
 @font-face {
     font-family: "JetBrains Mono";
-    src: url("JetBrainsMono-Regular.woff2");
+    src: url("font/JetBrainsMono-Regular.woff2");
 }
 
 body {
@@ -137,6 +140,7 @@ body {
 
 #social li {
     flex-direction: column;
+    height: 32px;
     margin: 0 15px;
     width: 32px;
 }
