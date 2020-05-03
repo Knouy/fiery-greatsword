@@ -1,15 +1,13 @@
 module.exports = {
   env: {
-    es6: true,
-    node: true
+    browser: true,
+    es6: true
   },
   extends: [
     'standard'
   ],
   globals: {
     Atomics: 'readonly',
-    fetch: 'false',
-    jQuery: 'false',
     SharedArrayBuffer: 'readonly'
   },
   parserOptions: {
@@ -17,7 +15,9 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    "max-len": ["error", { "code": 80 }],
-    semi: ["error", "always"]
+    'max-len': ['error', { 'code': 80 }],
+    'no-eval': 'off',
+    'no-unused-vars': 'off',
+    semi: ['error', 'always']
   }
 }

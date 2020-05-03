@@ -1,10 +1,12 @@
 import { home } from '../model/home.js';
+import { countdown } from '../model/countdown.js';
 import { onClick } from '../model/on-click.js';
 import { resetProfessionMenu } from '../model/reset-profession-menu.js';
 import { count } from '../model/count.js';
 
 /* index.html */
 
+/* global VANTA */
 VANTA.FOG({
   el: '#fog',
   mouseControls: true,
@@ -18,6 +20,7 @@ VANTA.FOG({
   zoom: 1.80
 });
 
+/* global $ */
 $(($) => {
   const PAGE = $('#page');
   $('#menuHome').on('click', () => {
@@ -25,8 +28,8 @@ $(($) => {
       .fadeIn());
   });
   $('#menuPrecisionCalculator').on('click', () => {
-   PAGE.fadeOut(400, () => PAGE.load('view/precisionCalculator.html', () =>
-     precisionCalulator()).hide().fadeIn());
+    PAGE.fadeOut(400, () => PAGE.load('view/precisionCalculator.html', () =>
+      precisionCalulator()).hide().fadeIn());
   });
   $('#menuUceCounter').on('click', () => {
     PAGE.fadeOut(400, () => PAGE.load('view/uceCounter.html', () => {
@@ -38,23 +41,7 @@ $(($) => {
 
 $('#page').load('view/home.html').hide().fadeIn();
 
-setInterval(() => {
-  const RESET = new Date();
-  RESET.setUTCDate(new Date().getUTCDate() + 1);
-  RESET.setUTCHours(0);
-  RESET.setUTCMinutes(0);
-  RESET.setUTCSeconds(0);
-  RESET.setUTCMilliseconds(0);
-  const COUNTDOWN = RESET.getTime() - new Date().getTime();
-  const HOURS = Math.floor((COUNTDOWN % (1000 * 60 * 60 * 24)) / (1000 * 60 *
-    60));
-  const MINUTES = Math.floor((COUNTDOWN % (1000 * 60 * 60)) / (1000 * 60));
-  const SECONDS = Math.floor((COUNTDOWN % (1000 * 60)) / 1000);
-  document.getElementById('countdown').innerHTML = (HOURS.toString().length ===
-  1 ? '0' + HOURS : HOURS) + ':' + (MINUTES.toString().length === 1 ? '0' +
-    MINUTES : MINUTES) + ':' + (SECONDS.toString().length === 1 ? '0' +
-    SECONDS : SECONDS);
-}, 1000);
+setInterval(() => countdown(), 1000);
 
 /* precisionCalculator.html */
 
@@ -137,8 +124,8 @@ let vitality = 1000;
 
 function precisionCalulator () {
   document.title = 'Precision Calculator - Guild Wars 2 - Knouy';
-  calculate();
   loadPrecisionCalculator();
+  calculate();
   $(($) => {
     /* Profession */
     $('#engineer').on('click', () => {
@@ -335,25 +322,6 @@ function precisionCalulator () {
   });
 }
 
-function calculate () {
-  document.getElementById('precision').innerText = (1000 + ((agonyImpedance +
-    162 + mistAttunement1 + mistAttunement2 + mistAttunement3 +
-    mistAttunement4) * (agonyChanneler + recursiveResourcing +
-    mistlockSingularities) / 100) * infiniteMistOmnipotion + spotter +
-    (beQuickOrBeKilled * quickness) + silentScope + (elementsOfRage *
-      vitality) + furiousDemise + rightHandStrength + ((doubledStandards + 1) *
-      bannerOfDiscipline) + conjureLightningHammer + signetOfAgility +
-    signetOfFire + signetOfFury).toString();
-  document.getElementById('criticalChance').innerText = (5 +
-    ((document.getElementById('precision').innerText - 1000) / 21) + (fury *
-      20) + minorSigilOfAccuracy + majorSigilOfAccuracy +
-    superiorSigilOfAccuracy + (hematicFocus * bleeding) + highCaliber +
-    (viciousQuarry * fury) + keenObserver + twinFangs + (superiorElements *
-      weakness) + (dangerTime * slow) + deathPerception + (decimateDefenses *
-      vulnerability) + targetTheWeak + (radiantPower * burning) + (retaliation *
-      righteousInstinct) + brutalMomentum + unsuspectingFoe).toString();
-}
-
 function loadPrecisionCalculator () {
   const PROFESSION = [['engineer', ['hematicFocus', 10], ['highCaliber', 15]],
     ['ranger', ['spotter', 100], ['viciousQuarry', 10]], ['thief',
@@ -370,10 +338,10 @@ function loadPrecisionCalculator () {
   ['weakness', 1], ['agonyChanneler', 10], ['recursiveResourcing', 25],
   ['mistlockSingularities', 30], ['infiniteMistOmnipotion', 5],
   ['mistAttunement1', 5], ['mistAttunement2', 10], ['mistAttunement3', 15],
-  ['mistAttunement4', 25], ['minorSigilOfAccuracy', 3], ['majorSigilOfAccuracy',
-    5], ['superiorSigilOfAccuracy', 7], ['bannerOfDiscipline', 100],
-  ['conjureLightningHammer', 180], ['signetOfAgility', 180], ['signetOfFire',
-    180], ['signetOfFury', 180]];
+  ['mistAttunement4', 25], ['minorSigilOfAccuracy', 3],
+  ['majorSigilOfAccuracy', 5], ['superiorSigilOfAccuracy', 7],
+  ['bannerOfDiscipline', 100], ['conjureLightningHammer', 180],
+  ['signetOfAgility', 180], ['signetOfFire', 180], ['signetOfFury', 180]];
   let temp = null;
   PROFESSION.forEach(element => {
     if (eval(element[0]) === 1) {
@@ -397,6 +365,34 @@ function loadPrecisionCalculator () {
       eval(temp + 'Menu()');
     });
   }
+}
+
+function calculate () {
+  document.getElementById('precision').innerText = (1000 + ((agonyImpedance +
+    162 + mistAttunement1 + mistAttunement2 + mistAttunement3 +
+    mistAttunement4) * (agonyChanneler + recursiveResourcing +
+    mistlockSingularities) / 100) * infiniteMistOmnipotion + spotter +
+    (beQuickOrBeKilled * quickness) + silentScope + (elementsOfRage *
+      vitality) + furiousDemise + rightHandStrength + ((doubledStandards + 1) *
+      bannerOfDiscipline) + conjureLightningHammer + signetOfAgility +
+    signetOfFire + signetOfFury).toString();
+  document.getElementById('criticalChance').innerText = (5 +
+    ((document.getElementById('precision').innerText - 1000) / 21) + (fury *
+      20) + minorSigilOfAccuracy + majorSigilOfAccuracy +
+    superiorSigilOfAccuracy + (hematicFocus * bleeding) + highCaliber +
+    (viciousQuarry * fury) + keenObserver + twinFangs + (superiorElements *
+      weakness) + (dangerTime * slow) + deathPerception + (decimateDefenses *
+      vulnerability) + targetTheWeak + (radiantPower * burning) + (retaliation *
+      righteousInstinct) + brutalMomentum + unsuspectingFoe).toString();
+}
+
+function resetTrait () {
+  hematicFocus = highCaliber = spotter = viciousQuarry = beQuickOrBeKilled =
+    keenObserver = silentScope = twinFangs = elementsOfRage = superiorElements =
+      dangerTime = deathPerception = decimateDefenses = furiousDemise =
+        targetTheWeak = radiantPower = rightHandStrength = righteousInstinct =
+          brutalMomentum = doubledStandards = unsuspectingFoe = 0;
+  calculate();
 }
 
 function engineerMenu () {
@@ -564,61 +560,22 @@ function warriorMenu () {
   });
 }
 
-function resetTrait () {
-  hematicFocus = 0;
-  highCaliber = 0;
-  spotter = 0;
-  viciousQuarry = 0;
-  beQuickOrBeKilled = 0;
-  keenObserver = 0;
-  silentScope = 0;
-  twinFangs = 0;
-  elementsOfRage = 0;
-  superiorElements = 0;
-  dangerTime = 0;
-  deathPerception = 0;
-  decimateDefenses = 0;
-  furiousDemise = 0;
-  targetTheWeak = 0;
-  radiantPower = 0;
-  rightHandStrength = 0;
-  righteousInstinct = 0;
-  brutalMomentum = 0;
-  doubledStandards = 0;
-  unsuspectingFoe = 0;
-  calculate();
+function resetFractalAttunement () {
+  agonyChanneler = recursiveResourcing = mistlockSingularities = 0;
+}
+
+function resetMistAttunement () {
+  mistAttunement1 = mistAttunement2 = mistAttunement3 = mistAttunement4 = 0;
+}
+
+function resetSigilOfAccuracy () {
+  minorSigilOfAccuracy = majorSigilOfAccuracy = superiorSigilOfAccuracy = 0;
 }
 
 function resetProfession () {
   resetProfessionMenu();
-  engineer = 0;
-  ranger = 0;
-  thief = 0;
-  elementalist = 0;
-  mesmer = 0;
-  necromancer = 0;
-  guardian = 0;
-  revenant = 0;
-  warrior = 0;
-}
-
-function resetFractalAttunement () {
-  agonyChanneler = 0;
-  recursiveResourcing = 0;
-  mistlockSingularities = 0;
-}
-
-function resetMistAttunement () {
-  mistAttunement1 = 0;
-  mistAttunement2 = 0;
-  mistAttunement3 = 0;
-  mistAttunement4 = 0;
-}
-
-function resetSigilOfAccuracy () {
-  minorSigilOfAccuracy = 0;
-  majorSigilOfAccuracy = 0;
-  superiorSigilOfAccuracy = 0;
+  engineer = ranger = thief = elementalist = mesmer = necromancer = guardian =
+    revenant = warrior = 0;
 }
 
 /* uceCounter.html */
