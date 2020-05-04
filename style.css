@@ -2,6 +2,14 @@
     padding: 15px;
 }
 
+.height18 {
+    height: 18px;
+}
+
+.height52 {
+    height: 52px;
+}
+
 .horizontalMenu, .verticalMenu {
     display: flex;
     font-family: "JetBrains Mono", serif;
@@ -23,12 +31,16 @@
 
 .horizontalMenu ul {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: 0;
     padding: 0;
 }
 
 .horizontalMenu li {
     display: flex;
+    flex-direction: column;
+    margin: 0 0 15px 0;
     z-index: 1;
 }
 
@@ -44,10 +56,6 @@
     height: 64px;
 }
 
-.marginBottom15 {
-    margin-bottom: 15px;
-}
-
 .page {
     align-items: center;
     color: #FFFFFF;
@@ -57,8 +65,14 @@
     z-index: 1;
 }
 
+.tooltip {
+    align-items: center;
+    display: flex;
+    white-space: nowrap;
+}
+
 .tooltip span {
-    color: #000000;
+    color: transparent;
     display: flex;
     font-family: "JetBrains Mono", serif;
     justify-content: center;
@@ -87,6 +101,22 @@
     margin: 0 15px 0 0;
 }
 
+.width52 {
+    width: 52px;
+}
+
+.width82 {
+    width: 82px;
+}
+
+.width98 {
+    width: 98px;
+}
+
+.width123 {
+    width: 123px;
+}
+
 @font-face {
     font-display: swap;
     font-family: "JetBrains Mono";
@@ -100,6 +130,7 @@
 
 body {
     margin: 0;
+    overflow: hidden;
 }
 
 /* index.html */
@@ -179,19 +210,6 @@ body {
 }
 
 /* precisionCalculator.html */
-
-#buffs {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    z-index: 1;
-}
-
-#buffs > li {
-    margin: 0 15px;
-    text-align: center;
-}
 
 #temp {
     z-index: 1;

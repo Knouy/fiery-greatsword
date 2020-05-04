@@ -57,6 +57,8 @@ let revenant = 0;
 let warrior = 0;
 /* Agony Impedance */
 let agonyImpedance = 20;
+/* Attribute */
+let vitality = 1000;
 /* Buff */
 let fury = 1;
 let quickness = 0;
@@ -67,6 +69,8 @@ let burning = 0;
 let slow = 0;
 let vulnerability = 0;
 let weakness = 0;
+/* Consumable */
+let anguishedTearOfAlba = 10;
 /* Fractal Attunement */
 let agonyChanneler = 0;
 let recursiveResourcing = 0;
@@ -119,8 +123,6 @@ let conjureLightningHammer = 0;
 let signetOfAgility = 0;
 let signetOfFire = 0;
 let signetOfFury = 0;
-/* Vitality */
-let vitality = 1000;
 
 function precisionCalulator () {
   document.title = 'Precision Calculator - Guild Wars 2 - Knouy';
@@ -225,6 +227,11 @@ function precisionCalulator () {
       weakness = onClick(1, 'weakness');
       calculate();
     });
+    /* Consumable */
+    $('#anguishedTearOfAlba').on('click', () => {
+      anguishedTearOfAlba = onClick(10, 'anguishedTearOfAlba');
+      calculate();
+    });
     /* Fractal Attunement */
     $('#agonyChanneler').on('click', () => {
       resetFractalAttunement();
@@ -314,7 +321,7 @@ function precisionCalulator () {
       signetOfFury = onClick(180, 'signetOfFury');
       calculate();
     });
-    /* Vitality */
+    /* Attribute */
     $('#vitality').on('change', () => {
       vitality = document.getElementById('vitality').value;
       calculate();
@@ -368,8 +375,10 @@ function loadPrecisionCalculator () {
 }
 
 function calculate () {
-  document.getElementById('precision').innerText = (1000 + ((agonyImpedance +
-    162 + mistAttunement1 + mistAttunement2 + mistAttunement3 +
+  document.getElementById('precision').innerText = (1000 + ((162 +
+    agonyImpedance + (anguishedTearOfAlba / 10 * (anguishedTearOfAlba + (5 *
+      (agonyChanneler + recursiveResourcing + mistlockSingularities > 0 ? 1
+        : 0)))) + mistAttunement1 + mistAttunement2 + mistAttunement3 +
     mistAttunement4) * (agonyChanneler + recursiveResourcing +
     mistlockSingularities) / 100) * infiniteMistOmnipotion + spotter +
     (beQuickOrBeKilled * quickness) + silentScope + (elementsOfRage *
