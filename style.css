@@ -56,6 +56,10 @@
     height: 32px;
 }
 
+.imgHeight48 img {
+    height: 48px;
+}
+
 .imgHeight64 img {
     height: 64px;
 }
