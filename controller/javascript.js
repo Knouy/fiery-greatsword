@@ -61,7 +61,6 @@ let agonyImpedance = 20;
 let vitality = 1000;
 /* Buff */
 let fury = 1;
-let quickness = 0;
 let retaliation = 0;
 /* Condition */
 let bleeding = 0;
@@ -91,10 +90,13 @@ let superiorSigilOfAccuracy = 0;
 let hematicFocus = 0;
 let highCaliber = 0;
 /* Ranger */
+let huntersTactics = 0;
+let preciseStrike = 0;
 let spotter = 0;
 let viciousQuarry = 0;
 /* Thief */
 let beQuickOrBeKilled = 0;
+let hiddenKiller = 0;
 let keenObserver = 0;
 let silentScope = 0;
 let twinFangs = 0;
@@ -115,6 +117,7 @@ let righteousInstinct = 0;
 /* Revenant */
 let brutalMomentum = 0;
 /* Warrior */
+let burstPrecision = 0;
 let doubledStandards = 0;
 let unsuspectingFoe = 0;
 /* Utility skill */
@@ -125,7 +128,7 @@ let signetOfFire = 0;
 let signetOfFury = 0;
 
 function precisionCalulator () {
-  document.title = 'Precision Calculator - Guild Wars 2 - Knouy';
+  document.title = 'Precision Calculator - Fiery Greatsword';
   loadPrecisionCalculator();
   calculate();
   $(($) => {
@@ -196,10 +199,6 @@ function precisionCalulator () {
     /* Buff */
     $('#fury').on('click', () => {
       fury = onClick(1, 'fury');
-      calculate();
-    });
-    $('#quickness').on('click', () => {
-      quickness = onClick(1, 'quickness');
       calculate();
     });
     $('#retaliation').on('click', () => {
@@ -331,18 +330,19 @@ function precisionCalulator () {
 
 function loadPrecisionCalculator () {
   const PROFESSION = [['engineer', ['hematicFocus', 10], ['highCaliber', 15]],
-    ['ranger', ['spotter', 100], ['viciousQuarry', 10]], ['thief',
-      ['beQuickOrBeKilled', 200], ['keenObserver', 5], ['silentScope', 240],
+    ['ranger', ['huntersTactics', 10], ['preciseStrike', 100], ['spotter', 100],
+      ['viciousQuarry', 10]], ['thief', ['beQuickOrBeKilled', 200],
+      ['hiddenKiller', 100], ['keenObserver', 5], ['silentScope', 240],
       ['twinFangs', 7]], ['elementalist', ['elementsOfRage', 0.13],
       ['superiorElements', 10]], ['mesmer', ['dangerTime', 15]], ['necromancer',
       ['deathPerception', 33], ['decimateDefenses', 2], ['furiousDemise', 180],
       ['targetTheWeak', 28]], ['guardian', ['radiantPower', 10],
       ['rightHandStrength', 80], ['righteousInstinct', 25]], ['revenant',
-      ['brutalMomentum', 33]], ['warrior', ['doubledStandards', 1],
-      ['unsuspectingFoe', 50]]];
-  const PRECISION_CALCULATOR = [['fury', 1], ['quickness', 1], ['retaliation',
-    1], ['bleeding', 1], ['burning', 1], ['slow', 1], ['vulnerability', 25],
-  ['weakness', 1], ['agonyChanneler', 10], ['recursiveResourcing', 25],
+      ['brutalMomentum', 33]], ['warrior', ['burstPrecision', 100],
+      ['doubledStandards', 1], ['unsuspectingFoe', 50]]];
+  const PRECISION_CALCULATOR = [['fury', 1], ['retaliation', 1], ['bleeding',
+    1], ['burning', 1], ['slow', 1], ['vulnerability', 25], ['weakness', 1],
+  ['agonyChanneler', 10], ['recursiveResourcing', 25],
   ['mistlockSingularities', 30], ['infiniteMistOmnipotion', 5],
   ['mistAttunement1', 5], ['mistAttunement2', 10], ['mistAttunement3', 15],
   ['mistAttunement4', 25], ['minorSigilOfAccuracy', 3],
@@ -381,31 +381,35 @@ function calculate () {
         : 0)))) + mistAttunement1 + mistAttunement2 + mistAttunement3 +
     mistAttunement4) * (agonyChanneler + recursiveResourcing +
     mistlockSingularities) / 100) * infiniteMistOmnipotion + spotter +
-    (beQuickOrBeKilled * quickness) + silentScope + (elementsOfRage *
-      vitality) + furiousDemise + rightHandStrength + ((doubledStandards + 1) *
+    beQuickOrBeKilled + silentScope + (elementsOfRage * vitality) +
+    furiousDemise + rightHandStrength + ((doubledStandards + 1) *
       bannerOfDiscipline) + conjureLightningHammer + signetOfAgility +
     signetOfFire + signetOfFury).toString();
   document.getElementById('criticalChance').innerText = (5 +
     ((document.getElementById('precision').innerText - 1000) / 21) + (fury *
       20) + minorSigilOfAccuracy + majorSigilOfAccuracy +
     superiorSigilOfAccuracy + (hematicFocus * bleeding) + highCaliber +
-    (viciousQuarry * fury) + keenObserver + twinFangs + (superiorElements *
-      weakness) + (dangerTime * slow) + deathPerception + (decimateDefenses *
-      vulnerability) + targetTheWeak + (radiantPower * burning) + (retaliation *
-      righteousInstinct) + brutalMomentum + unsuspectingFoe).toString();
+    huntersTactics + preciseStrike + (viciousQuarry * fury) + hiddenKiller +
+    keenObserver + twinFangs + (superiorElements * weakness) + (dangerTime *
+      slow) + deathPerception + (decimateDefenses * vulnerability) +
+    targetTheWeak + (radiantPower * burning) + (retaliation *
+      righteousInstinct) + brutalMomentum + burstPrecision + unsuspectingFoe)
+    .toString();
 }
 
 function resetTrait () {
-  hematicFocus = highCaliber = spotter = viciousQuarry = beQuickOrBeKilled =
-    keenObserver = silentScope = twinFangs = elementsOfRage = superiorElements =
-      dangerTime = deathPerception = decimateDefenses = furiousDemise =
-        targetTheWeak = radiantPower = rightHandStrength = righteousInstinct =
-          brutalMomentum = doubledStandards = unsuspectingFoe = 0;
+  hematicFocus = highCaliber = preciseStrike = huntersTactics = spotter =
+    viciousQuarry = beQuickOrBeKilled = hiddenKiller = keenObserver =
+      silentScope = twinFangs = elementsOfRage = superiorElements = dangerTime =
+        deathPerception = decimateDefenses = furiousDemise = targetTheWeak =
+          radiantPower = rightHandStrength = righteousInstinct =
+            brutalMomentum = burstPrecision = doubledStandards =
+              unsuspectingFoe = 0;
   calculate();
 }
 
 function engineerMenu () {
-  document.title = 'Engineer - Precision Calculator - Guild Wars 2 - Knouy';
+  document.title = 'Engineer - Precision Calculator - Fiery Greatsword';
   resetProfession();
   document.getElementById('engineer').style.borderColor = '#00FF00';
   engineer = 1;
@@ -422,11 +426,19 @@ function engineerMenu () {
 }
 
 function rangerMenu () {
-  document.title = 'Ranger - Precision Calculator - Guild Wars 2 - Knouy';
+  document.title = 'Ranger - Precision Calculator - Fiery Greatsword';
   resetProfession();
   document.getElementById('ranger').style.borderColor = '#00FF00';
   ranger = 1;
   $(($) => {
+    $('#huntersTactics').on('click', () => {
+      huntersTactics = onClick(10, 'huntersTactics');
+      calculate();
+    });
+    $('#preciseStrike').on('click', () => {
+      preciseStrike = onClick(100, 'preciseStrike');
+      calculate();
+    });
     $('#spotter').on('click', () => {
       spotter = onClick(100, 'spotter');
       calculate();
@@ -439,13 +451,17 @@ function rangerMenu () {
 }
 
 function thiefMenu () {
-  document.title = 'Thief - Precision Calculator - Guild Wars 2 - Knouy';
+  document.title = 'Thief - Precision Calculator - Fiery Greatsword';
   resetProfession();
   document.getElementById('thief').style.borderColor = '#00FF00';
   thief = 1;
   $(($) => {
     $('#beQuickOrBeKilled').on('click', () => {
       beQuickOrBeKilled = onClick(200, 'beQuickOrBeKilled');
+      calculate();
+    });
+    $('#hiddenKiller').on('click', () => {
+      hiddenKiller = onClick(100, 'hiddenKiller');
       calculate();
     });
     $('#keenObserver').on('click', () => {
@@ -464,7 +480,7 @@ function thiefMenu () {
 }
 
 function elementalistMenu () {
-  document.title = 'Elementalist - Precision Calculator - Guild Wars 2 - Knouy';
+  document.title = 'Elementalist - Precision Calculator - Fiery Greatsword';
   resetProfession();
   document.getElementById('elementalist').style.borderColor = '#00FF00';
   elementalist = 1;
@@ -481,7 +497,7 @@ function elementalistMenu () {
 }
 
 function mesmerMenu () {
-  document.title = 'Mesmer - Precision Calculator - Guild Wars 2 - Knouy';
+  document.title = 'Mesmer - Precision Calculator - Fiery Greatsword';
   resetProfession();
   document.getElementById('mesmer').style.borderColor = '#00FF00';
   mesmer = 1;
@@ -494,7 +510,7 @@ function mesmerMenu () {
 }
 
 function necromancerMenu () {
-  document.title = 'Necromancer - Precision Calculator - Guild Wars 2 - Knouy';
+  document.title = 'Necromancer - Precision Calculator - Fiery Greatsword';
   resetProfession();
   document.getElementById('necromancer').style.borderColor = '#00FF00';
   necromancer = 1;
@@ -519,7 +535,7 @@ function necromancerMenu () {
 }
 
 function guardianMenu () {
-  document.title = 'Guardian - Precision Calculator - Guild Wars 2 - Knouy';
+  document.title = 'Guardian - Precision Calculator - Fiery Greatsword';
   resetProfession();
   document.getElementById('guardian').style.borderColor = '#00FF00';
   guardian = 1;
@@ -540,7 +556,7 @@ function guardianMenu () {
 }
 
 function revenantMenu () {
-  document.title = 'Revenant - Precision Calculator - Guild Wars 2 - Knouy';
+  document.title = 'Revenant - Precision Calculator - Fiery Greatsword';
   resetProfession();
   document.getElementById('revenant').style.borderColor = '#00FF00';
   revenant = 1;
@@ -553,11 +569,15 @@ function revenantMenu () {
 }
 
 function warriorMenu () {
-  document.title = 'Warrior - Precision Calculator - Guild Wars 2 - Knouy';
+  document.title = 'Warrior - Precision Calculator - Fiery Greatsword';
   resetProfession();
   document.getElementById('warrior').style.borderColor = '#00FF00';
   warrior = 1;
   $(($) => {
+    $('#burstPrecision').on('click', () => {
+      burstPrecision = onClick(100, 'burstPrecision');
+      calculate();
+    });
     $('#doubledStandards').on('click', () => {
       doubledStandards = onClick(1, 'doubledStandards');
       calculate();
@@ -593,7 +613,7 @@ let apiKey = '?access_token=74C4807F-4E95-5B4F-A649-2C47D7F54965C4414169-033B' +
   '-405A-BE36-5A638C14C1D2';
 
 function uceCounter () {
-  document.title = 'UCE Counter - Guild Wars 2 - Knouy';
+  document.title = 'UCE Counter - Fiery Greatsword';
   const UCE = document.getElementById('uce');
   const REQUEST = 'https://api.guildwars2.com/v2/';
   const S = document.getElementById('s');
