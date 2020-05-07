@@ -1,8 +1,8 @@
-import { home } from '../model/home.js';
-import { countdown } from '../model/countdown.js';
-import { onClick } from '../model/on-click.js';
-import { resetProfessionMenu } from '../model/reset-profession-menu.js';
-import { count } from '../model/count.js';
+/* terser controller/*.js -o terser/controller.min.js -c -m */
+/* terser model/*.js -o terser/model.min.js -c -m */
+
+import { count, countdown, home, onClick, resetProfessionMenu } from
+  '../terser/model.min.js';
 
 /* index.html */
 
@@ -126,6 +126,21 @@ let conjureLightningHammer = 0;
 let signetOfAgility = 0;
 let signetOfFire = 0;
 let signetOfFury = 0;
+/* Equipment */
+let headSlot = 45;
+let shoulderSlot = 34;
+let chestSlot = 101;
+let handSlot = 34;
+let legSlot = 67;
+let feetSlot = 34;
+let swordSlot = 90;
+let shieldSlot = 90;
+let backSlot = 40;
+let bearTrinketSlot = 74;
+let cubeTrinketSlot = 74;
+let amuletSlot = 108;
+let rightRingSlot = 85;
+let leftRingSlot = 85;
 
 function precisionCalulator () {
   document.title = 'Precision Calculator - Fiery Greatsword';
@@ -325,6 +340,64 @@ function precisionCalulator () {
       vitality = document.getElementById('vitality').value;
       calculate();
     });
+    /* Equipment */
+    $('#headSlot').on('click', () => {
+      headSlot = equipment('headSlot', [45, 63, 30, 54]);
+      calculate();
+    });
+    $('#shoulderSlot').on('click', () => {
+      shoulderSlot = equipment('shoulderSlot', [34, 47, 22, 40]);
+      calculate();
+    });
+    $('#chestSlot').on('click', () => {
+      chestSlot = equipment('chestSlot', [101, 141, 67, 121]);
+      calculate();
+    });
+    $('#handSlot').on('click', () => {
+      handSlot = equipment('handSlot', [34, 47, 22, 40]);
+      calculate();
+    });
+    $('#legSlot').on('click', () => {
+      legSlot = equipment('legSlot', [67, 94, 44, 81]);
+      calculate();
+    });
+    $('#feetSlot').on('click', () => {
+      feetSlot = equipment('feetSlot', [34, 47, 22, 40]);
+      calculate();
+    });
+    $('#swordSlot').on('click', () => {
+      swordSlot = equipment('swordSlot', [90, 125, 59, 108, 179, 251, 118, 215])
+      ;
+      calculate();
+    });
+    $('#shieldSlot').on('click', () => {
+      shieldSlot = equipment('shieldSlot', [90, 125, 59, 108, 0]);
+      calculate();
+    });
+    $('#backSlot').on('click', () => {
+      backSlot = equipment('backSlot', [40, 63, 27, 52]);
+      calculate();
+    });
+    $('#bearTrinketSlot').on('click', () => {
+      bearTrinketSlot = equipment('bearTrinketSlot', [74, 110, 49, 92]);
+      calculate();
+    });
+    $('#cubeTrinketSlot').on('click', () => {
+      cubeTrinketSlot = equipment('cubeTrinketSlot', [74, 110, 49, 92]);
+      calculate();
+    });
+    $('#amuletSlot').on('click', () => {
+      amuletSlot = equipment('amuletSlot', [108, 157, 71, 133]);
+      calculate();
+    });
+    $('#rightRingSlot').on('click', () => {
+      rightRingSlot = equipment('rightRingSlot', [85, 126, 56, 106]);
+      calculate();
+    });
+    $('#leftRingSlot').on('click', () => {
+      leftRingSlot = equipment('leftRingSlot', [85, 126, 56, 106]);
+      calculate();
+    });
   });
 }
 
@@ -372,6 +445,13 @@ function loadPrecisionCalculator () {
       eval(temp + 'Menu()');
     });
   }
+  const EQUIPMENT = ['headSlot', 'shoulderSlot', 'chestSlot', 'handSlot',
+    'legSlot', 'feetSlot', 'swordSlot', 'shieldSlot', 'backSlot',
+    'bearTrinketSlot', 'cubeTrinketSlot', 'amuletSlot', 'rightRingSlot',
+    'leftRingSlot'];
+  EQUIPMENT.forEach(element => {
+    document.getElementById(element + 'Precision').innerText = eval(element);
+  });
 }
 
 function calculate () {
@@ -384,7 +464,10 @@ function calculate () {
     beQuickOrBeKilled + silentScope + (elementsOfRage * vitality) +
     furiousDemise + rightHandStrength + ((doubledStandards + 1) *
       bannerOfDiscipline) + conjureLightningHammer + signetOfAgility +
-    signetOfFire + signetOfFury).toString();
+    signetOfFire + signetOfFury + headSlot + shoulderSlot + chestSlot +
+    handSlot + legSlot + feetSlot + swordSlot + shieldSlot + backSlot +
+    bearTrinketSlot + cubeTrinketSlot + amuletSlot + rightRingSlot +
+    leftRingSlot).toString();
   document.getElementById('criticalChance').innerText = (5 +
     ((document.getElementById('precision').innerText - 1000) / 21) + (fury *
       20) + minorSigilOfAccuracy + majorSigilOfAccuracy +
@@ -599,6 +682,17 @@ function resetMistAttunement () {
 
 function resetSigilOfAccuracy () {
   minorSigilOfAccuracy = majorSigilOfAccuracy = superiorSigilOfAccuracy = 0;
+}
+
+function equipment (id, int) {
+  let precision = int[0];
+  for (let i = 0; i < int.length; i++) {
+    if (eval(id) === int[i] && i !== int.length - 1) {
+      precision = int[i + 1];
+    }
+  }
+  document.getElementById(id + 'Precision').innerText = precision;
+  return precision;
 }
 
 function resetProfession () {

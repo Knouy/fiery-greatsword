@@ -73,6 +73,16 @@
     z-index: 1;
 }
 
+.slot {
+    position: relative;
+}
+
+.slot div {
+    left: 6px;
+    position: absolute;
+    top: 4px;
+}
+
 .tooltip {
     align-items: center;
     display: flex;
@@ -132,7 +142,14 @@
 }
 
 @font-face {
-    font-family: 'PT Serif';
+    font-display: swap;
+    font-family: "NewKrytan";
+    src: url("font/NewKrytan/NewKrytan.woff2");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "PT Serif";
     src: url("font/PT_Serif/PTSerif-Regular.ttf");
 }
 
@@ -209,6 +226,7 @@ body {
 /* home.html */
 
 #description {
+    font-family: "NewKrytan", serif;
     width: 50%;
     z-index: 1;
 }
@@ -218,6 +236,10 @@ body {
 }
 
 /* precisionCalculator.html */
+
+#buffs {
+    width: calc(100% - 30px);
+}
 
 #temp {
     z-index: 1;
