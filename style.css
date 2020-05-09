@@ -237,10 +237,6 @@ body {
 
 /* precisionCalculator.html */
 
-#buffs {
-    width: calc(100% - 30px);
-}
-
 #temp {
     z-index: 1;
 }
