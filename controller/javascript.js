@@ -69,7 +69,7 @@ let slow = 0;
 let vulnerability = 0;
 let weakness = 0;
 /* Consumable */
-let anguishedTearOfAlba = 10;
+let anguishedTearOfAlba = 1;
 /* Fractal Attunement */
 let agonyChanneler = 0;
 let recursiveResourcing = 0;
@@ -243,7 +243,7 @@ function precisionCalulator () {
     });
     /* Consumable */
     $('#anguishedTearOfAlba').on('click', () => {
-      anguishedTearOfAlba = onClick(10, 'anguishedTearOfAlba');
+      anguishedTearOfAlba = onClick(1, 'anguishedTearOfAlba');
       calculate();
     });
     /* Fractal Attunement */
@@ -455,29 +455,50 @@ function loadPrecisionCalculator () {
 }
 
 function calculate () {
-  document.getElementById('precision').innerText = (1000 + ((162 +
-    agonyImpedance + (anguishedTearOfAlba / 10 * (anguishedTearOfAlba + (5 *
-      (agonyChanneler + recursiveResourcing + mistlockSingularities > 0 ? 1
-        : 0)))) + mistAttunement1 + mistAttunement2 + mistAttunement3 +
-    mistAttunement4) * (agonyChanneler + recursiveResourcing +
-    mistlockSingularities) / 100) * infiniteMistOmnipotion + spotter +
-    beQuickOrBeKilled + silentScope + (elementsOfRage * vitality) +
-    furiousDemise + rightHandStrength + ((doubledStandards + 1) *
-      bannerOfDiscipline) + conjureLightningHammer + signetOfAgility +
-    signetOfFire + signetOfFury + headSlot + shoulderSlot + chestSlot +
-    handSlot + legSlot + feetSlot + swordSlot + shieldSlot + backSlot +
-    bearTrinketSlot + cubeTrinketSlot + amuletSlot + rightRingSlot +
-    leftRingSlot).toString();
-  document.getElementById('criticalChance').innerText = (5 +
-    ((document.getElementById('precision').innerText - 1000) / 21) + (fury *
-      20) + minorSigilOfAccuracy + majorSigilOfAccuracy +
-    superiorSigilOfAccuracy + (hematicFocus * bleeding) + highCaliber +
-    huntersTactics + preciseStrike + (viciousQuarry * fury) + hiddenKiller +
-    keenObserver + twinFangs + (superiorElements * weakness) + (dangerTime *
-      slow) + deathPerception + (decimateDefenses * vulnerability) +
-    targetTheWeak + (radiantPower * burning) + (retaliation *
-      righteousInstinct) + brutalMomentum + burstPrecision + unsuspectingFoe)
-    .toString();
+  const AGONY = 162 + agonyImpedance + (anguishedTearOfAlba * (10 +
+    (agonyChanneler + recursiveResourcing + mistlockSingularities > 0 ? 5
+      : 0))) + mistAttunement1 + mistAttunement2 + mistAttunement3 +
+    mistAttunement4;
+  const AGONY_PPRECISION = AGONY * (agonyChanneler + recursiveResourcing +
+    mistlockSingularities) / 100 * infiniteMistOmnipotion;
+  const EQUIPMENT = headSlot + shoulderSlot + chestSlot + handSlot + legSlot +
+    feetSlot + swordSlot + shieldSlot + backSlot + bearTrinketSlot +
+    cubeTrinketSlot + amuletSlot + rightRingSlot + leftRingSlot;
+  const TRAIT_RANGER_PRECISION = spotter;
+  const TRAIT_THIEF_PRECISION = beQuickOrBeKilled + silentScope;
+  const TRAIT_ELEMENTALIST_PRECISION = elementsOfRage * vitality;
+  const TRAIT_NECROMANCER_PRECISION = furiousDemise;
+  const TRAIT_GUARDIAN_PRECISION = rightHandStrength;
+  const UTILITY_SKILL = (doubledStandards + 1) * bannerOfDiscipline +
+    conjureLightningHammer + signetOfAgility + signetOfFire + signetOfFury;
+  const PRECISION = 1000 + AGONY_PPRECISION + EQUIPMENT +
+    TRAIT_RANGER_PRECISION + TRAIT_THIEF_PRECISION +
+    TRAIT_ELEMENTALIST_PRECISION + TRAIT_NECROMANCER_PRECISION +
+    TRAIT_GUARDIAN_PRECISION + UTILITY_SKILL;
+  document.getElementById('precision').innerText = PRECISION.toLocaleString();
+  const BUFF = fury * 20;
+  const SIGIL_OF_ACCURACY = minorSigilOfAccuracy + majorSigilOfAccuracy +
+    superiorSigilOfAccuracy;
+  const TRAIT_ENGINEER_CRITICAL_CHANCE = hematicFocus * bleeding + highCaliber;
+  const TRAIT_RANGER_CRITICAL_CHANCE = huntersTactics + preciseStrike +
+    viciousQuarry * fury;
+  const TRAIT_THIEF_CRITICAL_CHANCE = hiddenKiller + keenObserver + twinFangs;
+  const TRAIT_ELEMENTALIST_CRITICAL_CHANCE = superiorElements * weakness;
+  const TRAIT_MESMER_CRITICAL_CHANCE = dangerTime * slow;
+  const TRAIT_NECROMANCER_CRITICAL_CHANCE = deathPerception + decimateDefenses *
+    vulnerability + targetTheWeak;
+  const TRAIT_GUARDIAN_CRITICAL_CHANCE = radiantPower * burning +
+    righteousInstinct * retaliation;
+  const TRAIT_REVENANT_CRITICAL_CHANCE = brutalMomentum;
+  const TRAIT_WARRIOR_CRITICAL_CHANCE = burstPrecision + unsuspectingFoe;
+  const CRITICAL_CHANCE = 5 + (PRECISION - 1000) / 21 + BUFF +
+    SIGIL_OF_ACCURACY + TRAIT_ENGINEER_CRITICAL_CHANCE +
+    TRAIT_RANGER_CRITICAL_CHANCE + TRAIT_THIEF_CRITICAL_CHANCE +
+    TRAIT_ELEMENTALIST_CRITICAL_CHANCE + TRAIT_MESMER_CRITICAL_CHANCE +
+    TRAIT_NECROMANCER_CRITICAL_CHANCE + TRAIT_GUARDIAN_CRITICAL_CHANCE +
+    TRAIT_REVENANT_CRITICAL_CHANCE + TRAIT_WARRIOR_CRITICAL_CHANCE;
+  document.getElementById('criticalChance').innerText = CRITICAL_CHANCE
+    .toFixed(2) + '%';
 }
 
 function resetTrait () {
