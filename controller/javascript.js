@@ -1,7 +1,7 @@
 /* terser controller/*.js -o terser/controller.min.js -c -m */
 /* terser model/*.js -o terser/model.min.js -c -m */
 
-import { count, countdown, home, onClick, resetProfessionMenu } from
+import { count, countdown, demoStart, home, onClick, resetProfessionMenu } from
   '../terser/model.min.js';
 
 /* index.html */
@@ -475,7 +475,8 @@ function calculate () {
     TRAIT_RANGER_PRECISION + TRAIT_THIEF_PRECISION +
     TRAIT_ELEMENTALIST_PRECISION + TRAIT_NECROMANCER_PRECISION +
     TRAIT_GUARDIAN_PRECISION + UTILITY_SKILL;
-  document.getElementById('precision').innerText = PRECISION.toLocaleString();
+  demoStart(parseInt(document.getElementById('precision').innerText.replace(',',
+    '').substring(12)), 0, 'Precision : ', '', 'precision', PRECISION);
   const BUFF = fury * 20;
   const SIGIL_OF_ACCURACY = minorSigilOfAccuracy + majorSigilOfAccuracy +
     superiorSigilOfAccuracy;
@@ -497,8 +498,10 @@ function calculate () {
     TRAIT_ELEMENTALIST_CRITICAL_CHANCE + TRAIT_MESMER_CRITICAL_CHANCE +
     TRAIT_NECROMANCER_CRITICAL_CHANCE + TRAIT_GUARDIAN_CRITICAL_CHANCE +
     TRAIT_REVENANT_CRITICAL_CHANCE + TRAIT_WARRIOR_CRITICAL_CHANCE;
-  document.getElementById('criticalChance').innerText = CRITICAL_CHANCE
-    .toFixed(2) + '%';
+  demoStart(parseFloat(document.getElementById('criticalChance').innerText
+    .substring(18, document.getElementById('criticalChance').innerText.length -
+      1)), 2, 'Critical Chance : ', '%', 'criticalChance', CRITICAL_CHANCE
+    .toFixed(2));
 }
 
 function resetTrait () {
