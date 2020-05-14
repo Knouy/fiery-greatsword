@@ -153,15 +153,20 @@ function precisionCalulator () {
     /* Agony Impedance */
     $('#agonyImpedance').on('change', () => {
       if (document.getElementById('agonyImpedance').value === '' || document
-        .getElementById('agonyImpedance').value < 0) {
+        .getElementById('agonyImpedance').value.replace('.', '') < 0) {
         document.getElementById('agonyImpedance').value = 0;
-      } else if (document.getElementById('agonyImpedance').value > 4) {
+      } else if (document.getElementById('agonyImpedance').value.replace('.', ''
+      ) > 4) {
         document.getElementById('agonyImpedance').value = 4;
+      } else {
+        document.getElementById('agonyImpedance').value = document
+          .getElementById('agonyImpedance').value.replace('.', '');
       }
-      agonyResistance += 5 * document.getElementById('agonyImpedance').value -
-        agonyImpedance;
+      agonyResistance += 5 * document.getElementById('agonyImpedance').value
+        .replace('.', '') - agonyImpedance;
       document.getElementById('agonyResistance').value = agonyResistance;
-      agonyImpedance = 5 * document.getElementById('agonyImpedance').value;
+      agonyImpedance = 5 * document.getElementById('agonyImpedance').value
+        .replace('.', '');
       calculate();
     });
     /* a Agony Impedance */
@@ -174,24 +179,30 @@ function precisionCalulator () {
     /* Agony Resistance */
     $('#agonyResistance').on('change', () => {
       if (document.getElementById('agonyResistance').value === '' || document
-        .getElementById('agonyResistance').value < 0) {
-        document.getElementById('agonyResistance').value = 0;
-      } else if (document.getElementById('agonyResistance').value > 348) {
-        document.getElementById('agonyResistance').value = 348;
+        .getElementById('agonyResistance').value.replace('.', '') < 0) {
+        agonyResistance = 0;
+      } else if (document.getElementById('agonyResistance').value.replace('.',
+        '') > 348) {
+        agonyResistance = 348;
+      } else {
+        agonyResistance = parseInt(document.getElementById('agonyResistance')
+          .value.replace('.', ''));
       }
-      agonyResistance = parseInt(document.getElementById('agonyResistance')
-        .value);
+      document.getElementById('agonyResistance').value = agonyResistance;
       calculate();
     });
     /* Vitality */
     $('#vitality').on('change', () => {
       if (document.getElementById('vitality').value === '' || document
-        .getElementById('vitality').value < 1000) {
-        document.getElementById('vitality').value = 1000;
-      } else if (document.getElementById('vitality').value > 9999) {
-        document.getElementById('vitality').value = 9999;
+        .getElementById('vitality').value.replace('.', '') < 1000) {
+        vitality = 1000;
+      } else if (document.getElementById('vitality').value.replace('.', '') >
+        9999) {
+        vitality = 9999;
+      } else {
+        vitality = document.getElementById('vitality').value.replace('.', '');
       }
-      vitality = document.getElementById('vitality').value;
+      document.getElementById('vitality').value = vitality;
       calculate();
     });
     /* a Agony Resistance */

@@ -14642,3 +14642,11 @@ C
 model/demo-start.js,e\8\e880a6576263133f1978a9a356e1ed97e45a50e3
 C
 dist/countUp.min.js,a\8\a8615b968b304212915faf819e8201608a4c8d0a
+e
+5node_modules/resolve/test/resolver/browser_field/a.js,1\f\1f2174c3e9d4e46bdb90676769c1acb0a7961bc6
+e
+5node_modules/resolve/test/resolver/browser_field/b.js,7\9\7999fb4e7955fafbe7d6bd0fa757d2d63cc41908
+^
+.node_modules/resolve/test/resolver/baz/doom.js,1\0\104189d887b2c73c9c926d66e2f1e59f7e94bf3d
+e
+5node_modules/resolve/test/pathfilter/deep_ref/main.js,d\7\d739bb0a848a8057a090e812dda4d693cbd36ce0
