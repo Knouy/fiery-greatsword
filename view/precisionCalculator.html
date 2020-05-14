@@ -1,531 +1,477 @@
-<div class="page">
-    <!-- Profession -->
-    <div class="aPadding15 horizontalMenu imgHeight64">
-        <ul>
-            <li>
-                <div class="horizontalMenu">
-                    <ul>
-                        <li class="height98 tooltip width98">
-                            <a href="javascript:void(0);" id="engineer" style="border: transparent solid 2px;">
-                                <img alt="Engineer" src="https://wiki.guildwars2.com/images/4/41/Engineer_icon.png">
-                            </a>
-                            <span>Engineer</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Engineer -->
-            <li>
-                <div class="horizontalMenu">
-                    <ul>
-                        <li class="height98 tooltip width98">
-                            <a href="javascript:void(0);" id="ranger" style="border: transparent solid 2px;">
-                                <img alt="Ranger" src="https://wiki.guildwars2.com/images/9/9c/Ranger_icon.png">
-                            </a>
-                            <span>Ranger</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Thief -->
-            <li>
-                <div class="horizontalMenu">
-                    <ul>
-                        <li class="height98 tooltip width98">
-                            <a href="javascript:void(0);" id="thief" style="border: transparent solid 2px;">
-                                <img alt="Thief" src="https://wiki.guildwars2.com/images/d/d8/Thief_icon.png">
-                            </a>
-                            <span>Thief</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Elementalist -->
-            <li>
-                <div class="horizontalMenu">
-                    <ul>
-                        <li class="height98 tooltip width98">
-                            <a href="javascript:void(0);" id="elementalist" style="border: transparent solid 2px;">
-                                <img alt="Elementalist" src="https://wiki.guildwars2.com/images/a/a2/Elementalist_icon.png">
-                            </a>
-                            <span>Elementalist</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Mesmer -->
-            <li>
-                <div class="horizontalMenu">
-                    <ul>
-                        <li class="height98 tooltip width98">
-                            <a href="javascript:void(0);" id="mesmer" style="border: transparent solid 2px;">
-                                <img alt="Mesmer" src="https://wiki.guildwars2.com/images/3/3a/Mesmer_icon.png">
-                            </a>
-                            <span>Mesmer</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Necromancer -->
-            <li>
-                <div class="horizontalMenu">
-                    <ul>
-                        <li class="height98 tooltip width98">
-                            <a href="javascript:void(0);" id="necromancer" style="border: transparent solid 2px;">
-                                <img alt="Necromancer" src="https://wiki.guildwars2.com/images/6/62/Necromancer_icon.png">
-                            </a>
-                            <span>Necromancer</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Guardian -->
-            <li>
-                <div class="horizontalMenu">
-                    <ul>
-                        <li class="height98 tooltip width98">
-                            <a href="javascript:void(0);" id="guardian" style="border: transparent solid 2px;">
-                                <img alt="Guardian" src="https://wiki.guildwars2.com/images/c/cc/Guardian_icon.png">
-                            </a>
-                            <span>Guardian</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Revenant -->
-            <li>
-                <div class="horizontalMenu">
-                    <ul>
-                        <li class="height98 tooltip width98">
-                            <a href="javascript:void(0);" id="revenant" style="border: transparent solid 2px;">
-                                <img alt="Revenant" src="https://wiki.guildwars2.com/images/8/89/Revenant_icon.png">
-                            </a>
-                            <span>Revenant</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Warrior -->
-            <li>
-                <div class="horizontalMenu">
-                    <ul>
-                        <li class="height98 tooltip width98">
-                            <a href="javascript:void(0);" id="warrior" style="border: transparent solid 2px;">
-                                <img alt="Warrior" src="https://wiki.guildwars2.com/images/c/c8/Warrior_icon.png">
-                            </a>
-                            <span>Warrior</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+<div class="page" id="precisionCalculator">
+    <div class="tooltip">
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Warrior -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="warrior" style="border: transparent solid 2px;">
+                        <img alt="Warrior" src="https://wiki.guildwars2.com/images/c/c8/Warrior_icon.png">
+                    </a>
+                </li>
+                <!-- Guardian -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="guardian" style="border: transparent solid 2px;">
+                        <img alt="Guardian" src="https://wiki.guildwars2.com/images/c/cc/Guardian_icon.png">
+                    </a>
+                </li>
+                <!-- Revenant -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="revenant" style="border: transparent solid 2px;">
+                        <img alt="Revenant" src="https://wiki.guildwars2.com/images/8/89/Revenant_icon.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Ranger -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="ranger" style="border: transparent solid 2px;">
+                        <img alt="Ranger" src="https://wiki.guildwars2.com/images/9/9c/Ranger_icon.png">
+                    </a>
+                </li>
+                <!-- Thief -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="thief" style="border: transparent solid 2px;">
+                        <img alt="Thief" src="https://wiki.guildwars2.com/images/d/d8/Thief_icon.png">
+                    </a>
+                </li>
+                <!-- Engineer -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="engineer" style="border: transparent solid 2px;">
+                        <img alt="Engineer" src="https://wiki.guildwars2.com/images/4/41/Engineer_icon.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Necromancer -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="necromancer" style="border: transparent solid 2px;">
+                        <img alt="Necromancer" src="https://wiki.guildwars2.com/images/6/62/Necromancer_icon.png">
+                    </a>
+                </li>
+                <!-- Elementalist -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="elementalist" style="border: transparent solid 2px;">
+                        <img alt="Elementalist" src="https://wiki.guildwars2.com/images/a/a2/Elementalist_icon.png">
+                    </a>
+                </li>
+                <!-- Mesmer -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="mesmer" style="border: transparent solid 2px;">
+                        <img alt="Mesmer" src="https://wiki.guildwars2.com/images/3/3a/Mesmer_icon.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <span id="profession"></span>
     </div>
-    <!-- Buffs -->
-    <div class="horizontalMenu imgHeight18">
-        <ul>
-            <!-- Agony Impedance -->
-            <li>
-                <div class="aPadding15 horizontalMenu verticalMenu">
-                    <ul>
-                        <li class="height52 tooltip width123">
-                            <a class="height18" href="javascript:void(0);" style="border: transparent solid 2px;">
-                                <img alt="Agony Impedance" src="https://wiki.guildwars2.com/images/9/9c/11_Agony_Infusion.png">
-                                <label>
-                                    <input class="width52" id="agonyImpedance" max="4" min="0" type="number" value="4">
-                                </label>
-                            </a>
-                            <span>Agony Impedance</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Attribute -->
-            <li>
-                <div class="aPadding15 horizontalMenu verticalMenu">
-                    <ul>
-                        <li class="height52 tooltip width123">
-                            <a class="height18" href="javascript:void(0);" style="border: transparent solid 2px;">
-                                <img alt="Vitality" src="https://wiki.guildwars2.com/images/b/be/Vitality.png">
-                                <label>
-                                    <input class="width52" id="vitality" max="9999" min="1000" type="number" value="1000">
-                                </label>
-                            </a>
-                            <span>Vitality</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Buff -->
-            <li>
-                <div class="aPadding15 horizontalMenu">
-                    <ul>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="fury" style="border: #00FF00 solid 2px;">
-                                <img alt="Fury" src="https://wiki.guildwars2.com/images/4/46/Fury.png">
-                            </a>
-                            <span>Fury</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="retaliation" style="border: transparent solid 2px;">
-                                <img alt="Retaliation" src="https://wiki.guildwars2.com/images/5/53/Retaliation.png">
-                            </a>
-                            <span>Retaliation</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Condition -->
-            <li>
-                <div class="aPadding15 horizontalMenu">
-                    <ul>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="bleeding" style="border: transparent solid 2px;">
-                                <img alt="Bleeding" src="https://wiki.guildwars2.com/images/3/33/Bleeding.png">
-                            </a>
-                            <span>Bleeding</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="burning" style="border: transparent solid 2px;">
-                                <img alt="Burning" src="https://wiki.guildwars2.com/images/4/45/Burning.png">
-                            </a>
-                            <span>Burning</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="slow" style="border: transparent solid 2px;">
-                                <img alt="Slow" src="https://wiki.guildwars2.com/images/f/f5/Slow.png">
-                            </a>
-                            <span>Slow</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="vulnerability" style="border: transparent solid 2px;">
-                                <img alt="Vulnerability" src="https://wiki.guildwars2.com/images/a/af/Vulnerability.png">
-                            </a>
-                            <span>Vulnerability</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="weakness" style="border: transparent solid 2px;">
-                                <img alt="Weakness" src="https://wiki.guildwars2.com/images/f/f9/Weakness.png">
-                            </a>
-                            <span>Weakness</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Consumable -->
-            <li>
-                <div class="aPadding15 horizontalMenu">
-                    <ul>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="anguishedTearOfAlba" style="border: #00FF00 solid 2px;">
-                                <img alt="Anguished Tear of Alba" src="https://wiki.guildwars2.com/images/e/e9/Anguished_Tear_of_Alba.png">
-                            </a>
-                            <span>Anguished Tear of Alba</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Fractal Attunement -->
-            <li>
-                <div class="aPadding15 horizontalMenu">
-                    <ul>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="agonyChanneler" style="border: transparent solid 2px;">
-                                <img alt="Agony Channeler" src="https://wiki.guildwars2.com/images/4/4b/Agony_Channeler.png">
-                            </a>
-                            <span>Agony Channeler</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="recursiveResourcing" style="border: transparent solid 2px;">
-                                <img alt="Recursive Resourcing" src="https://wiki.guildwars2.com/images/7/75/Recursive_Resourcing.png">
-                            </a>
-                            <span>Recursive Resourcing</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="mistlockSingularities" style="border: #00FF00 solid 2px;">
-                                <img alt="Mistlock Singularities" src="https://wiki.guildwars2.com/images/d/d9/Mistlock_Singularities.png">
-                            </a>
-                            <span>Mistlock Singularities</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Gizmo -->
-            <li>
-                <div class="aPadding15 horizontalMenu">
-                    <ul>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="infiniteMistOmnipotion" style="border: #00FF00 solid 2px;">
-                                <img alt="Infinite Mist Omnipotion" src="https://wiki.guildwars2.com/images/1/14/Infinite_Mist_Omnipotion.png">
-                            </a>
-                            <span>Infinite Mist Omnipotion</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Mist Attunement -->
-            <li>
-                <div class="aPadding15 horizontalMenu">
-                    <ul>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="mistAttunement1" style="border: transparent solid 2px;">
-                                <img alt="Mist Attunement 1" src="https://wiki.guildwars2.com/images/c/cb/Malign_9_Agony_Infusion.png">
-                            </a>
-                            <span>Mist Attunement 1</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="mistAttunement2" style="border: transparent solid 2px;">
-                                <img alt="Mist Attunement 2" src="https://wiki.guildwars2.com/images/1/11/Mighty_9_Agony_Infusion.png">
-                            </a>
-                            <span>Mist Attunement 2</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="mistAttunement3" style="border: transparent solid 2px;">
-                                <img alt="Mist Attunement 3" src="https://wiki.guildwars2.com/images/3/3d/Precise_9_Agony_Infusion.png">
-                            </a>
-                            <span>Mist Attunement 3</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="mistAttunement4" style="border: #00FF00 solid 2px;">
-                                <img alt="Mist Attunement 4" src="https://wiki.guildwars2.com/images/2/22/Healing_9_Agony_Infusion.png">
-                            </a>
-                            <span>Mist Attunement 4</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Sigil of Accuracy -->
-            <li>
-                <div class="aPadding15 horizontalMenu">
-                    <ul>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="minorSigilOfAccuracy" style="border: transparent solid 2px;">
-                                <img alt="Minor Sigil of Accuracy" src="https://wiki.guildwars2.com/images/7/77/Minor_Sigil_of_Accuracy.png">
-                            </a>
-                            <span>Minor Sigil of Accuracy</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="majorSigilOfAccuracy" style="border: transparent solid 2px;">
-                                <img alt="Major Sigil of Accuracy" src="https://wiki.guildwars2.com/images/4/4f/Major_Sigil_of_Accuracy.png">
-                            </a>
-                            <span>Major Sigil of Accuracy</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="superiorSigilOfAccuracy" style="border: transparent solid 2px;">
-                                <img alt="Superior Sigil of Accuracy" src="https://wiki.guildwars2.com/images/5/5a/Superior_Sigil_of_Accuracy.png">
-                            </a>
-                            <span>Superior Sigil of Accuracy</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Utility skill -->
-            <li>
-                <div class="aPadding15 horizontalMenu">
-                    <ul>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="bannerOfDiscipline" style="border: #00FF00 solid 2px;">
-                                <img alt="Banner of Discipline" src="https://wiki.guildwars2.com/images/5/5f/Banner_of_Discipline.png">
-                            </a>
-                            <span>Banner of Discipline</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="conjureLightningHammer" style="border: transparent solid 2px;">
-                                <img alt="Conjure Lightning Hammer" src="https://wiki.guildwars2.com/images/1/1f/Conjure_Lightning_Hammer.png">
-                            </a>
-                            <span>Conjure Lightning Hammer</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="signetOfAgility" style="border: transparent solid 2px;">
-                                <img alt="Signet of Agility" src="https://wiki.guildwars2.com/images/1/1d/Signet_of_Agility.png">
-                            </a>
-                            <span>Signet of Agility</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="signetOfFire" style="border: transparent solid 2px;">
-                                <img alt="Signet of Fire" src="https://wiki.guildwars2.com/images/b/b0/Signet_of_Fire.png">
-                            </a>
-                            <span>Signet of Fire</span>
-                        </li>
-                        <li class="height52 tooltip width52">
-                            <a href="javascript:void(0);" id="signetOfFury" style="border: transparent solid 2px;">
-                                <img alt="Signet of Fury" src="https://wiki.guildwars2.com/images/c/c1/Signet_of_Fury.png">
-                            </a>
-                            <span>Signet of Fury</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+    <div class="tooltip">
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Head Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="headSlot" style="border: transparent solid 2px;">
+                        <img alt="Head Slot" src="https://wiki.guildwars2.com/images/3/35/Head_slot.png">
+                        <div class="slotPrecision" id="headSlotPrecision">45</div>
+                    </a>
+                </li>
+                <!-- Vitality -->
+                <li class="aPadding18">
+                    <a href="javascript:void(0);" id="aVitality" style="border: transparent solid 2px;">
+                        <img alt="Vitality" src="https://wiki.guildwars2.com/images/b/be/Vitality.png">
+                        <label class="number">
+                            <input id="vitality" max="9999" min="1000" type="number" value="1000">
+                        </label>
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Shoulder Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="shoulderSlot" style="border: transparent solid 2px;">
+                        <img alt="Shoulder Slot" src="https://wiki.guildwars2.com/images/c/c5/Shoulder_slot.png">
+                        <div class="slotPrecision" id="shoulderSlotPrecision">34</div>
+                    </a>
+                </li>
+                <!-- Precision -->
+                <li class="aPadding18">
+                    <a class="number" href="javascript:void(0);" id="aPrecision" style="border: transparent solid 2px;">
+                        <img alt="Precision" src="https://wiki.guildwars2.com/images/e/ee/Precision.png">
+                        <div id="precision">0</div>
+                    </a>
+                </li>
+                <!-- Critical Chance -->
+                <li class="aPadding18 imgHeight18">
+                    <a class="number" href="javascript:void(0);" id="aCriticalChance" style="border: transparent solid 2px;">
+                        <img alt="Critical Chance" src="https://wiki.guildwars2.com/images/9/95/Critical_Chance.png">
+                        <div id="criticalChance">0 %</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Chest Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="chestSlot" style="border: transparent solid 2px;">
+                        <img alt="Chest Slot" src="https://wiki.guildwars2.com/images/2/2c/Chest_slot.png">
+                        <div class="slotPrecision" id="chestSlotPrecision">101</div>
+                    </a>
+                </li>
+                <!-- Agony Resistance -->
+                <li class="aPadding18 imgHeight18">
+                    <a href="javascript:void(0);" id="aAgonyResistance" style="border: transparent solid 2px;">
+                        <img alt="Agony Resistance" src="https://wiki.guildwars2.com/images/0/0e/Agony_Resistance.png">
+                        <label class="number">
+                            <input id="agonyResistance" max="348" min="0" type="number" value="222">
+                        </label>
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Hand Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="handSlot" style="border: transparent solid 2px;">
+                        <img alt="Hand Slot" src="https://wiki.guildwars2.com/images/4/45/Hand_slot.png">
+                        <div class="slotPrecision" id="handSlotPrecision">34</div>
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Leg Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="legSlot" style="border: transparent solid 2px;">
+                        <img alt="Leg Slot" src="https://wiki.guildwars2.com/images/0/0c/Leg_slot.png">
+                        <div class="slotPrecision" id="legSlotPrecision">67</div>
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Feet Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="feetSlot" style="border: transparent solid 2px;">
+                        <img alt="Feet Slot" src="https://wiki.guildwars2.com/images/8/84/Feet_slot.png">
+                        <div class="slotPrecision" id="feetSlotPrecision">34</div>
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Sword Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="swordSlot" style="border: transparent solid 2px;">
+                        <img alt="Sword Slot" src="https://wiki.guildwars2.com/images/d/de/Sword_slot.png">
+                        <div class="slotPrecision" id="swordSlotPrecision">90</div>
+                    </a>
+                </li>
+                <!-- Superior Sigil of Accuracy -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="superiorSigilOfAccuracy" style="border: transparent solid 2px;">
+                        <img alt="Superior Sigil of Accuracy" src="https://wiki.guildwars2.com/images/5/5a/Superior_Sigil_of_Accuracy.png">
+                    </a>
+                </li>
+                <!-- Major Sigil of Accuracy -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="majorSigilOfAccuracy" style="border: transparent solid 2px;">
+                        <img alt="Major Sigil of Accuracy" src="https://wiki.guildwars2.com/images/4/4f/Major_Sigil_of_Accuracy.png">
+                    </a>
+                </li>
+                <!-- Minor Sigil of Accuracy -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="minorSigilOfAccuracy" style="border: transparent solid 2px;">
+                        <img alt="Minor Sigil of Accuracy" src="https://wiki.guildwars2.com/images/7/77/Minor_Sigil_of_Accuracy.png">
+                    </a>
+                </li>
+                <!-- Back Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="backSlot" style="border: transparent solid 2px;">
+                        <img alt="Back Slot" src="https://wiki.guildwars2.com/images/8/89/Back_slot.png">
+                        <div class="slotPrecision" id="backSlotPrecision">40</div>
+                    </a>
+                </li>
+                <!-- Bear Trinket Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="bearTrinketSlot" style="border: transparent solid 2px;">
+                        <img alt="Bear Trinket Slot" src="https://wiki.guildwars2.com/images/e/ef/Bear_trinket_slot.png">
+                        <div class="slotPrecision" id="bearTrinketSlotPrecision">74</div>
+                    </a>
+                </li>
+                <!-- Cube Trinket Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="cubeTrinketSlot" style="border: transparent solid 2px;">
+                        <img alt="Cube Trinket Slot" src="https://wiki.guildwars2.com/images/6/61/Cube_trinket_slot.png">
+                        <div class="slotPrecision" id="cubeTrinketSlotPrecision">74</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Shield Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="shieldSlot" style="border: transparent solid 2px;">
+                        <img alt="Shield Slot" src="https://wiki.guildwars2.com/images/d/d9/Shield_slot.png">
+                        <div class="slotPrecision" id="shieldSlotPrecision">90</div>
+                    </a>
+                </li>
+                <!-- Superior Sigil of Vision -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="superiorSigilOfVision" style="border: transparent solid 2px;">
+                        <img alt="Superior Sigil of Vision" src="https://wiki.guildwars2.com/images/4/4f/Superior_Sigil_of_Vision.png">
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <!-- Amulet Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="amuletSlot" style="border: transparent solid 2px;">
+                        <img alt="Amulet Slot" src="https://wiki.guildwars2.com/images/4/40/Amulet_slot.png">
+                        <div class="slotPrecision" id="amuletSlotPrecision">108</div>
+                    </a>
+                </li>
+                <!-- Right Ring Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="rightRingSlot" style="border: transparent solid 2px;">
+                        <img alt="Right Ring Slot" src="https://wiki.guildwars2.com/images/d/de/Right_ring_slot.png">
+                        <div class="slotPrecision" id="rightRingSlotPrecision">85</div>
+                    </a>
+                </li>
+                <!-- Left Ring Slot -->
+                <li class="slot">
+                    <a href="javascript:void(0);" id="leftRingSlot" style="border: transparent solid 2px;">
+                        <img alt="Left Ring Slot" src="https://wiki.guildwars2.com/images/8/89/Left_ring_slot.png">
+                        <div class="slotPrecision" id="leftRingSlotPrecision">85</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <span id="equipment"></span>
     </div>
-    <!-- Equipment -->
-    <!-- Armor Slot -->
-    <div class="horizontalMenu imgHeight18">
-        <ul>
-            <li>
-                <div class="horizontalMenu imgHeight48">
-                    <ul>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="headSlot" style="border: transparent solid 2px;">
-                                <img alt="Head Slot" src="https://wiki.guildwars2.com/images/3/35/Head_slot.png">
-                                <div id="headSlotPrecision">45</div>
-                            </a>
-                            <span>Head Slot</span>
-                        </li>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="shoulderSlot" style="border: transparent solid 2px;">
-                                <img alt="Shoulder Slot" src="https://wiki.guildwars2.com/images/c/c5/Shoulder_slot.png">
-                                <div id="shoulderSlotPrecision">34</div>
-                            </a>
-                            <span>Shoulder Slot</span>
-                        </li>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="chestSlot" style="border: transparent solid 2px;">
-                                <img alt="Chest Slot" src="https://wiki.guildwars2.com/images/2/2c/Chest_slot.png">
-                                <div id="chestSlotPrecision">101</div>
-                            </a>
-                            <span>Chest Slot</span>
-                        </li>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="handSlot" style="border: transparent solid 2px;">
-                                <img alt="Hand Slot" src="https://wiki.guildwars2.com/images/4/45/Hand_slot.png">
-                                <div id="handSlotPrecision">34</div>
-                            </a>
-                            <span>Hand Slot</span>
-                        </li>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="legSlot" style="border: transparent solid 2px;">
-                                <img alt="Leg Slot" src="https://wiki.guildwars2.com/images/0/0c/Leg_slot.png">
-                                <div id="legSlotPrecision">67</div>
-                            </a>
-                            <span>Leg Slot</span>
-                        </li>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="feetSlot" style="border: transparent solid 2px;">
-                                <img alt="Feet Slot" src="https://wiki.guildwars2.com/images/8/84/Feet_slot.png">
-                                <div id="feetSlotPrecision">34</div>
-                            </a>
-                            <span>Feet Slot</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Equipment -->
-            <!-- Weapon Slot -->
-            <li>
-                <div class="horizontalMenu imgHeight48">
-                    <ul>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="swordSlot" style="border: transparent solid 2px;">
-                                <img alt="Sword Slot" src="https://wiki.guildwars2.com/images/d/de/Sword_slot.png">
-                                <div id="swordSlotPrecision">90</div>
-                            </a>
-                            <span>Sword Slot</span>
-                        </li>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="shieldSlot" style="border: transparent solid 2px;">
-                                <img alt="Shield Slot" src="https://wiki.guildwars2.com/images/d/d9/Shield_slot.png">
-                                <div id="shieldSlotPrecision">90</div>
-                            </a>
-                            <span>Shield Slot</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Equipment -->
-            <!-- Back Slot -->
-            <li>
-                <div class="horizontalMenu imgHeight48">
-                    <ul>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="backSlot" style="border: transparent solid 2px;">
-                                <img alt="Back Slot" src="https://wiki.guildwars2.com/images/8/89/Back_slot.png">
-                                <div id="backSlotPrecision">40</div>
-                            </a>
-                            <span>Back Slot</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Equipment -->
-            <!-- Trinket Slot -->
-            <li>
-                <div class="horizontalMenu imgHeight48">
-                    <ul>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="bearTrinketSlot" style="border: transparent solid 2px;">
-                                <img alt="Bear Trinket Slot" src="https://wiki.guildwars2.com/images/e/ef/Bear_trinket_slot.png">
-                                <div id="bearTrinketSlotPrecision">74</div>
-                            </a>
-                            <span>Bear Trinket Slot</span>
-                        </li>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="cubeTrinketSlot" style="border: transparent solid 2px;">
-                                <img alt="Cube Trinket Slot" src="https://wiki.guildwars2.com/images/6/61/Cube_trinket_slot.png">
-                                <div id="cubeTrinketSlotPrecision">74</div>
-                            </a>
-                            <span>Cube Trinket Slot</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Equipment -->
-            <!-- Amulet Slot -->
-            <li>
-                <div class="horizontalMenu imgHeight48">
-                    <ul>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="amuletSlot" style="border: transparent solid 2px;">
-                                <img alt="Amulet Slot" src="https://wiki.guildwars2.com/images/4/40/Amulet_slot.png">
-                                <div id="amuletSlotPrecision">108</div>
-                            </a>
-                            <span>Amulet Slot</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <!-- Equipment -->
-            <!-- Ring Slot -->
-            <li>
-                <div class="horizontalMenu imgHeight48">
-                    <ul>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="rightRingSlot" style="border: transparent solid 2px;">
-                                <img alt="Right Ring Slot" src="https://wiki.guildwars2.com/images/d/de/Right_ring_slot.png">
-                                <div id="rightRingSlotPrecision">85</div>
-                            </a>
-                            <span>Right Ring Slot</span>
-                        </li>
-                        <li class="height52 slot tooltip width52">
-                            <a href="javascript:void(0);" id="leftRingSlot" style="border: transparent solid 2px;">
-                                <img alt="Left Ring Slot" src="https://wiki.guildwars2.com/images/8/89/Left_ring_slot.png">
-                                <div id="leftRingSlotPrecision">85</div>
-                            </a>
-                            <span>Left Ring Slot</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <!-- Trait -->
-    <div class="horizontalMenu imgHeight18">
-        <ul>
-            <li>
-                <div class="aPadding15 horizontalMenu" id="trait">
-                    <ul>
-                        <li class="height52 tooltip width82">
-                            <a class="height18" href="javascript:void(0);" style="border: transparent solid 2px;">
-                                ...
-                            </a>
-                            <span>Choose a profession</span>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div id="temp">
-        <div id="criticalChance">Critical Chance : 0%</div>
-        <div id="precision">Precision : 0</div>
+    <div class="tooltip">
+        <div class="horizontalMenu">
+            <ul id="trait">
+                <li class="filler height58 width58"></li>
+                <li class="filler height58 width58"></li>
+                <li class="filler height58 width58"></li>
+                <li class="filler height58 width58"></li>
+                <li class="filler height58 width58"></li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Agony Channeler -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="agonyChanneler" style="border: transparent solid 2px;">
+                        <img alt="Agony Channeler" src="https://wiki.guildwars2.com/images/4/4b/Agony_Channeler.png">
+                    </a>
+                </li>
+                <!-- Recursive Resourcing -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="recursiveResourcing" style="border: transparent solid 2px;">
+                        <img alt="Recursive Resourcing" src="https://wiki.guildwars2.com/images/7/75/Recursive_Resourcing.png">
+                    </a>
+                </li>
+                <!-- Mistlock Singularities -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="mistlockSingularities" style="border: #00FF00 solid 2px;">
+                        <img alt="Mistlock Singularities" src="https://wiki.guildwars2.com/images/d/d9/Mistlock_Singularities.png">
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Agony Impedance -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="aAgonyImpedance" style="border: transparent solid 2px;">
+                        <img alt="Agony Impedance" src="https://wiki.guildwars2.com/images/9/9c/11_Agony_Infusion.png">
+                        <label class="number">
+                            <input id="agonyImpedance" max="4" min="0" type="number" value="4">
+                        </label>
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Mist Attunement 1 -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="mistAttunement1" style="border: transparent solid 2px;">
+                        <img alt="Mist Attunement 1" src="https://wiki.guildwars2.com/images/c/cb/Malign_9_Agony_Infusion.png">
+                    </a>
+                </li>
+                <!-- Mist Attunement 2 -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="mistAttunement2" style="border: transparent solid 2px;">
+                        <img alt="Mist Attunement 2" src="https://wiki.guildwars2.com/images/1/11/Mighty_9_Agony_Infusion.png">
+                    </a>
+                </li>
+                <!-- Mist Attunement 3 -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="mistAttunement3" style="border: transparent solid 2px;">
+                        <img alt="Mist Attunement 3" src="https://wiki.guildwars2.com/images/3/3d/Precise_9_Agony_Infusion.png">
+                    </a>
+                </li>
+                <!-- Mist Attunement 4 -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="mistAttunement4" style="border: #00FF00 solid 2px;">
+                        <img alt="Mist Attunement 4" src="https://wiki.guildwars2.com/images/2/22/Healing_9_Agony_Infusion.png">
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Fury -->
+                <li class="aPadding11">
+                    <a href="javascript:void(0);" id="fury" style="border: #00FF00 solid 2px;">
+                        <img alt="Fury" src="https://wiki.guildwars2.com/images/4/46/Fury.png">
+                    </a>
+                </li>
+                <!-- Retaliation -->
+                <li class="aPadding11">
+                    <a href="javascript:void(0);" id="retaliation" style="border: transparent solid 2px;">
+                        <img alt="Retaliation" src="https://wiki.guildwars2.com/images/5/53/Retaliation.png">
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Anguished Tear of Alba -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="anguishedTearOfAlba" style="border: #00FF00 solid 2px;">
+                        <img alt="Anguished Tear of Alba" src="https://wiki.guildwars2.com/images/e/e9/Anguished_Tear_of_Alba.png">
+                    </a>
+                </li>
+                <!-- Infinite Mist Omnipotion -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="infiniteMistOmnipotion" style="border: #00FF00 solid 2px;">
+                        <img alt="Infinite Mist Omnipotion" src="https://wiki.guildwars2.com/images/1/14/Infinite_Mist_Omnipotion.png">
+                    </a>
+                </li>
+                <!-- Spotter -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="spotter" style="border: transparent solid 2px;">
+                        <img alt="Spotter" src="https://wiki.guildwars2.com/images/b/b0/Spotter.png">
+                    </a>
+                </li>
+                <!-- Banner of Discipline -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="bannerOfDiscipline" style="border: #00FF00 solid 2px;">
+                        <img alt="Banner of Discipline" src="img/output/precisionCalculator/Banner_of_Discipline.png">
+                    </a>
+                </li>
+                <!-- Conjure Lightning Hammer -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="conjureLightningHammer" style="border: transparent solid 2px;">
+                        <img alt="Conjure Lightning Hammer" src="img/output/precisionCalculator/Conjure_Lightning_Hammer.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Bleeding -->
+                <li class="aPadding11">
+                    <a href="javascript:void(0);" id="bleeding" style="border: transparent solid 2px;">
+                        <img alt="Bleeding" src="https://wiki.guildwars2.com/images/3/33/Bleeding.png">
+                    </a>
+                </li>
+                <!-- Burning -->
+                <li class="aPadding11">
+                    <a href="javascript:void(0);" id="burning" style="border: transparent solid 2px;">
+                        <img alt="Burning" src="https://wiki.guildwars2.com/images/4/45/Burning.png">
+                    </a>
+                </li>
+                <!-- Slow -->
+                <li class="aPadding11">
+                    <a href="javascript:void(0);" id="slow" style="border: transparent solid 2px;">
+                        <img alt="Slow" src="https://wiki.guildwars2.com/images/f/f5/Slow.png">
+                    </a>
+                </li>
+                <!-- Vulnerability -->
+                <li class="aPadding11">
+                    <a href="javascript:void(0);" id="vulnerability" style="border: transparent solid 2px;">
+                        <img alt="Vulnerability" src="https://wiki.guildwars2.com/images/a/af/Vulnerability.png">
+                    </a>
+                </li>
+                <!-- Weakness -->
+                <li class="aPadding11">
+                    <a href="javascript:void(0);" id="weakness" style="border: transparent solid 2px;">
+                        <img alt="Weakness" src="https://wiki.guildwars2.com/images/f/f9/Weakness.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="horizontalMenu">
+            <ul>
+                <!-- Signet of Agility -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="signetOfAgility" style="border: transparent solid 2px;">
+                        <img alt="Signet of Agility" src="img/output/precisionCalculator/Signet_of_Agility.png">
+                    </a>
+                </li>
+                <!-- Signet of Fire -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="signetOfFire" style="border: transparent solid 2px;">
+                        <img alt="Signet of Fire" src="img/output/precisionCalculator/Signet_of_Fire.png">
+                    </a>
+                </li>
+                <!-- Signet of Fury -->
+                <li class="imgHeight54">
+                    <a href="javascript:void(0);" id="signetOfFury" style="border: transparent solid 2px;">
+                        <img alt="Signet of Fury" src="img/output/precisionCalculator/Signet_of_Fury.png">
+                    </a>
+                </li>
+                <li class="filler width58"></li>
+                <li class="filler width58"></li>
+            </ul>
+        </div>
+        <span id="heroPanel"></span>
     </div>
 </div>

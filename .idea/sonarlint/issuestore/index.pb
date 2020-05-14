@@ -14640,3 +14640,5 @@ N
 node_modules/lodash/zipWith.js,2\b\2bbe45ce5abe4f19792177a8b3a0a530ecece517
 C
 model/demo-start.js,e\8\e880a6576263133f1978a9a356e1ed97e45a50e3
+C
+dist/countUp.min.js,a\8\a8615b968b304212915faf819e8201608a4c8d0a
