@@ -820,10 +820,7 @@ function loadPrecisionCalculator () {
 }
 
 function calculate () {
-  const AGONY_RESISTANCE = agonyResistance + (anguishedTearOfAlba * (10 +
-    (agonyChanneler + recursiveResourcing + mistlockSingularities > 0 ? 5 : 0)))
-  ;
-  const AGONY_RESISTANCE_PRECISION = AGONY_RESISTANCE * (agonyChanneler +
+  const AGONY_RESISTANCE_PRECISION = agonyResistance * (agonyChanneler +
     recursiveResourcing + mistlockSingularities) / 100 * infiniteMistOmnipotion;
   const EQUIPMENT = headSlot + shoulderSlot + chestSlot + handSlot + legSlot +
     feetSlot + swordSlot + shieldSlot + backSlot + bearTrinketSlot +
