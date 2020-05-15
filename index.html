@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <link as="font" crossorigin="" href="font/NewKrytan/NewKrytan.woff2" rel="preload">
-    <link as="script" crossorigin="" href="terser/model.min.js" rel="preload">
+    <link as="script" crossorigin="" href="dist/model.min.js" rel="preload">
     <link href="img/output/index/Conjure_Fiery_Greatsword.ico" rel="icon">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="dist/style.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <title>Fiery Greatsword</title>
 </head>
@@ -16,16 +16,20 @@
     <div id="fog"></div>
     <img alt="Bottom Graphics" id="bottomGraphics" src="img/output/index/Bottom_Graphics.webp">
 </div>
+<div class="imgHeight32" id="title">
+    <img alt="Conjure Fiery Greatsword" src="img/output/index/Conjure_Fiery_Greatsword.ico">
+    Fiery Greatsword
+</div>
 <div class="aPadding15 horizontalMenu marginBottom15" id="mainMenu">
     <ul>
         <li>
-            <a href="javascript:void(0);" id="menuHome">Home</a>
+            <a class="menu" href="javascript:void(0);" id="menuHome">Home</a>
         </li>
         <li>
-            <a href="javascript:void(0);" id="menuPrecisionCalculator">Precision Calculator</a>
+            <a class="menu" href="javascript:void(0);" id="menuPrecisionCalculator">Precision Calculator</a>
         </li>
         <li>
-            <a href="javascript:void(0);" id="menuUceCounter">UCE Counter</a>
+            <a class="menu" href="javascript:void(0);" id="menuUceCounter">UCE Counter</a>
         </li>
     </ul>
 </div>
@@ -47,7 +51,7 @@
     </ul>
 </div>
 <div id="countdown"></div>
-<script src="terser/controller.min.js" type="module"></script>
+<script src="dist/controller.min.js" type="module"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 </body>
 </html>

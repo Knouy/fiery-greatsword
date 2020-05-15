@@ -36,8 +36,6 @@ N
 model/reset-profession-menu.js,c\a\cac9db47a294c0fb9a70158f2bbc6a2cb60cb643
 A
 model/on-click.js,6\4\6452daa020fc1e619bb167de9d0fa35c800643dc
-9
-	style.css,4\6\46e3381e9569c09e85a30b9e5a2af7525ee9fd78
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 9
@@ -48,10 +46,6 @@ B
 model/countdown.js,c\f\cf7465f4e96e921ef6a83b22538204d61b8b34ac
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
-H
-terser/controller.min.js,4\5\45333ba1af79be6258f95ff28b7a39336d52a27a
-C
-terser/model.min.js,6\1\6168aa25625c172191a72a7fed5c602a84fd6333
 L
 font/NewKrytan/NewKrytan.svg,f\6\f64865898d8486b61dfae9116d3b27d7bd0a18de
 <
@@ -14650,3 +14644,15 @@ e
 .node_modules/resolve/test/resolver/baz/doom.js,1\0\104189d887b2c73c9c926d66e2f1e59f7e94bf3d
 e
 5node_modules/resolve/test/pathfilter/deep_ref/main.js,d\7\d739bb0a848a8057a090e812dda4d693cbd36ce0
+C
+model/reset-menu.js,3\0\30a40bcd3135334ae91d215767d9a5ea96b7ee66
+A
+dist/model.min.js,d\4\d4e1e5b1c6ac8e38b5cd1ca37c0d113e48201750
+F
+dist/controller.min.js,0\e\0ee631975cab62bbfa218d3db758918b0bf756a5
+>
+dist/style.css,9\7\97f72f8e68f4178ce701132d29ac096e7ec5ed59
+;
+gulpfile.js,e\e\ee9d2cf188170ffae6c24450b921d4dd26b8dfaf
+?
+style/style.css,2\5\257d0fa8d58da6d96f5a7af9724b2e1c92c62a2d

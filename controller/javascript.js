@@ -1,8 +1,10 @@
+/* gulp minify-css */
 /* terser controller/*.js -o terser/controller.min.js -c -m */
 /* terser model/*.js -o terser/model.min.js -c -m */
 
-import { count, countdown, demoStart, home, onClick, resetProfessionMenu } from
-  '../terser/model.min.js';
+import {
+  count, countdown, demoStart, home, onClick, resetMenu, resetProfessionMenu
+} from '../dist/model.min.js';
 
 /* index.html */
 
@@ -147,6 +149,9 @@ let signetOfFury = 0;
 
 function precisionCalulator () {
   document.title = 'Precision Calculator - Fiery Greatsword';
+  resetMenu();
+  document.getElementById('menuPrecisionCalculator').style.borderBottomColor =
+    '#FFFFFF';
   loadPrecisionCalculator();
   calculate();
   $(($) => {
@@ -1214,6 +1219,8 @@ let apiKey = '?access_token=74C4807F-4E95-5B4F-A649-2C47D7F54965C4414169-033B' +
 
 function uceCounter () {
   document.title = 'UCE Counter - Fiery Greatsword';
+  resetMenu();
+  document.getElementById('menuUceCounter').style.borderBottomColor = '#FFFFFF';
   const UCE = document.getElementById('uce');
   const REQUEST = 'https://api.guildwars2.com/v2/';
   const S = document.getElementById('s');
