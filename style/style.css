@@ -14,6 +14,10 @@
     background-color: rgba(0, 0, 0, .5);
 }
 
+.fontSize13 {
+    font-size: 13px;
+}
+
 .height58 {
     height: 58px;
 }
@@ -71,6 +75,11 @@
     margin-bottom: 15px;
 }
 
+.marginLeftRight15 {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 .menu {
     border: transparent solid 2px;
 }
@@ -121,7 +130,7 @@
 }
 
 .tooltip span {
-    bottom: calc(-20px - 1%);
+    bottom: calc(-24px);
     color: transparent;
     font-family: "JetBrains Mono", serif;
     position: absolute;
@@ -279,6 +288,12 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     margin: 0 15px 15px 15px;
     padding: 2px;
     z-index: 1;
+}
+
+#tooltipPrecisionCalculator {
+    display: flex;
+    height: 464px;
+    width: 290px;
 }
 
 /* uceCounter.html */

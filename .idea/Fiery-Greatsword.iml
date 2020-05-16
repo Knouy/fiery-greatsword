@@ -14,5 +14,6 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="three.js" level="application" />
     <orderEntry type="library" name="vanta.fog" level="application" />
+    <orderEntry type="library" name="@types/jquery" level="application" />
   </component>
 </module>

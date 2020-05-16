@@ -1,9 +1,10 @@
 /* gulp minify-css */
-/* terser controller/*.js -o terser/controller.min.js -c -m */
-/* terser model/*.js -o terser/model.min.js -c -m */
+/* terser controller/*.js -o dist/controller.min.js -c -m */
+/* terser model/*.js -o dist/model.min.js -c -m */
 
 import {
-  count, countdown, demoStart, home, onClick, resetMenu, resetProfessionMenu
+  count, countdown, demoStart, home, onClick, resetMenu, resetProfessionMenu,
+  setTooltip
 } from '../dist/model.min.js';
 
 /* index.html */
@@ -176,9 +177,10 @@ function precisionCalulator () {
     });
     /* a Agony Impedance */
     $('#aAgonyImpedance').on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Agony Impedance';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Agony Impedance';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Attribute */
     /* Agony Resistance */
@@ -212,27 +214,31 @@ function precisionCalulator () {
     });
     /* a Agony Resistance */
     $('#aAgonyResistance').on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Agony Resistance';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Agony Resistance';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* a Critical Chance */
     $('#aCriticalChance').on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Critical Chance';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Critical Chance';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* a Precision */
     $('#aPrecision').on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Precision';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Precision';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* a Vitality */
     $('#aVitality').on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Vitality';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Vitality';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Buff */
     /* Fury */
@@ -240,18 +246,19 @@ function precisionCalulator () {
       fury = onClick(1, 'fury');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Fury';
+      document.getElementById('tooltipPrecisionCalculator').innerText = 'Fury';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Retaliation */
     $('#retaliation').on('click', () => {
       retaliation = onClick(1, 'retaliation');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Retaliation';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Retaliation';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Condition */
     /* Bleeding */
@@ -259,45 +266,49 @@ function precisionCalulator () {
       bleeding = onClick(1, 'bleeding');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Bleeding';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Bleeding';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Burning */
     $('#burning').on('click', () => {
       burning = onClick(1, 'burning');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Burning';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Burning';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Slow */
     $('#slow').on('click', () => {
       slow = onClick(1, 'slow');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Slow';
+      document.getElementById('tooltipPrecisionCalculator').innerText = 'Slow';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Vulnerability */
     $('#vulnerability').on('click', () => {
       vulnerability = onClick(25, 'vulnerability');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Vulnerability';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Vulnerability';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Weakness */
     $('#weakness').on('click', () => {
       weakness = onClick(1, 'weakness');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Weakness';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Weakness';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Consumable */
     /* Anguished Tear of Alba */
@@ -310,9 +321,10 @@ function precisionCalulator () {
       document.getElementById('agonyResistance').value = agonyResistance;
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Anguished Tear of Alba';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Anguished Tear of Alba';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Equipment */
     /* Head Slot */
@@ -320,54 +332,60 @@ function precisionCalulator () {
       headSlot = equipment('headSlot', [45, 63, 30, 54]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Head Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Head Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Shoulder Slot */
     $('#shoulderSlot').on('click', () => {
       shoulderSlot = equipment('shoulderSlot', [34, 47, 22, 40]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Shoulder Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Shoulder Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Chest Slot */
     $('#chestSlot').on('click', () => {
       chestSlot = equipment('chestSlot', [101, 141, 67, 121]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Chest Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Chest Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Hand Slot */
     $('#handSlot').on('click', () => {
       handSlot = equipment('handSlot', [34, 47, 22, 40]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Hand Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Hand Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Leg Slot */
     $('#legSlot').on('click', () => {
       legSlot = equipment('legSlot', [67, 94, 44, 81]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Leg Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Leg Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Feet Slot */
     $('#feetSlot').on('click', () => {
       feetSlot = equipment('feetSlot', [34, 47, 22, 40]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Feet Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Feet Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Sword Slot */
     $('#swordSlot').on('click', () => {
@@ -375,72 +393,80 @@ function precisionCalulator () {
       ;
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Sword Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Sword Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Shield Slot */
     $('#shieldSlot').on('click', () => {
       shieldSlot = equipment('shieldSlot', [90, 125, 59, 108, 0]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Shield Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Shield Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Back Slot */
     $('#backSlot').on('click', () => {
       backSlot = equipment('backSlot', [40, 63, 27, 52]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Back Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Back Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Bear Trinket Slot */
     $('#bearTrinketSlot').on('click', () => {
       bearTrinketSlot = equipment('bearTrinketSlot', [74, 110, 49, 92]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Bear Trinket Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Bear Trinket Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Cube Trinket Slot */
     $('#cubeTrinketSlot').on('click', () => {
       cubeTrinketSlot = equipment('cubeTrinketSlot', [74, 110, 49, 92]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Cube Trinket Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Cube Trinket Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Amulet Slot */
     $('#amuletSlot').on('click', () => {
       amuletSlot = equipment('amuletSlot', [108, 157, 71, 133]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Amulet Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Amulet Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Right Ring Slot */
     $('#rightRingSlot').on('click', () => {
       rightRingSlot = equipment('rightRingSlot', [85, 126, 56, 106]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Right Ring Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Right Ring Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Left Ring Slot */
     $('#leftRingSlot').on('click', () => {
       leftRingSlot = equipment('leftRingSlot', [85, 126, 56, 106]);
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Left Ring Slot';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Left Ring Slot';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Fractal Attunement */
     /* Agony Channeler */
@@ -453,9 +479,10 @@ function precisionCalulator () {
       document.getElementById('agonyResistance').value = agonyResistance;
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Agony Channeler';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Agony Channeler';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Recursive Resourcing */
     $('#recursiveResourcing').on('click', () => {
@@ -467,9 +494,10 @@ function precisionCalulator () {
       document.getElementById('agonyResistance').value = agonyResistance;
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Recursive Resourcing';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Recursive Resourcing';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Mistlock Singularities */
     $('#mistlockSingularities').on('click', () => {
@@ -481,9 +509,10 @@ function precisionCalulator () {
       document.getElementById('agonyResistance').value = agonyResistance;
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Mistlock Singularities';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Mistlock Singularities';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Gizmo */
     /* Infinite Mist Omnipotion */
@@ -491,10 +520,10 @@ function precisionCalulator () {
       infiniteMistOmnipotion = onClick(5, 'infiniteMistOmnipotion');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText =
+      document.getElementById('tooltipPrecisionCalculator').innerText =
         'Infinite Mist Omnipotion';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Mist Attunement */
     /* Mist Attunement 1 */
@@ -506,9 +535,10 @@ function precisionCalulator () {
       document.getElementById('agonyResistance').value = agonyResistance;
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Mist Attunement 1';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Mist Attunement 1';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Mist Attunement 2 */
     $('#mistAttunement2').on('click', () => {
@@ -519,9 +549,10 @@ function precisionCalulator () {
       document.getElementById('agonyResistance').value = agonyResistance;
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Mist Attunement 2';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Mist Attunement 2';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Mist Attunement 3 */
     $('#mistAttunement3').on('click', () => {
@@ -532,9 +563,10 @@ function precisionCalulator () {
       document.getElementById('agonyResistance').value = agonyResistance;
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Mist Attunement 3';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Mist Attunement 3';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Mist Attunement 4 */
     $('#mistAttunement4').on('click', () => {
@@ -545,9 +577,10 @@ function precisionCalulator () {
       document.getElementById('agonyResistance').value = agonyResistance;
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Mist Attunement 4';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Mist Attunement 4';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Profession */
     /* Elementalist */
@@ -557,9 +590,9 @@ function precisionCalulator () {
         elementalistMenu();
       });
     }).on('mouseenter', () => {
-      document.getElementById('profession').innerText = 'Elementalist';
+      setTooltip('elementalist');
     }).on('mouseleave', () => {
-      document.getElementById('profession').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Engineer */
     $('#engineer').on('click', () => {
@@ -568,9 +601,9 @@ function precisionCalulator () {
         engineerMenu();
       });
     }).on('mouseenter', () => {
-      document.getElementById('profession').innerText = 'Engineer';
+      setTooltip('engineer');
     }).on('mouseleave', () => {
-      document.getElementById('profession').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Guardian */
     $('#guardian').on('click', () => {
@@ -579,9 +612,9 @@ function precisionCalulator () {
         guardianMenu();
       });
     }).on('mouseenter', () => {
-      document.getElementById('profession').innerText = 'Guardian';
+      setTooltip('guardian');
     }).on('mouseleave', () => {
-      document.getElementById('profession').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Mesmer */
     $('#mesmer').on('click', () => {
@@ -590,9 +623,9 @@ function precisionCalulator () {
         mesmerMenu();
       });
     }).on('mouseenter', () => {
-      document.getElementById('profession').innerText = 'Mesmer';
+      setTooltip('mesmer');
     }).on('mouseleave', () => {
-      document.getElementById('profession').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Necromancer */
     $('#necromancer').on('click', () => {
@@ -601,9 +634,9 @@ function precisionCalulator () {
         necromancerMenu();
       });
     }).on('mouseenter', () => {
-      document.getElementById('profession').innerText = 'Necromancer';
+      setTooltip('necromancer');
     }).on('mouseleave', () => {
-      document.getElementById('profession').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Ranger */
     $('#ranger').on('click', () => {
@@ -612,9 +645,9 @@ function precisionCalulator () {
         rangerMenu();
       });
     }).on('mouseenter', () => {
-      document.getElementById('profession').innerText = 'Ranger';
+      setTooltip('ranger');
     }).on('mouseleave', () => {
-      document.getElementById('profession').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Revenant */
     $('#revenant').on('click', () => {
@@ -623,9 +656,9 @@ function precisionCalulator () {
         revenantMenu();
       });
     }).on('mouseenter', () => {
-      document.getElementById('profession').innerText = 'Revenant';
+      setTooltip('revenant');
     }).on('mouseleave', () => {
-      document.getElementById('profession').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Thief */
     $('#thief').on('click', () => {
@@ -634,9 +667,9 @@ function precisionCalulator () {
         thiefMenu();
       });
     }).on('mouseenter', () => {
-      document.getElementById('profession').innerText = 'Thief';
+      setTooltip('thief');
     }).on('mouseleave', () => {
-      document.getElementById('profession').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Warrior */
     $('#warrior').on('click', () => {
@@ -645,9 +678,9 @@ function precisionCalulator () {
         warriorMenu();
       });
     }).on('mouseenter', () => {
-      document.getElementById('profession').innerText = 'Warrior';
+      setTooltip('warrior');
     }).on('mouseleave', () => {
-      document.getElementById('profession').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Sigil of Accuracy */
     /* Minor Sigil of Accuracy */
@@ -657,10 +690,10 @@ function precisionCalulator () {
         'majorSigilOfAccuracy', 'superiorSigilOfAccuracy');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Minor Sigil of Accuracy'
-      ;
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Minor Sigil of Accuracy';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Major Sigil of Accuracy */
     $('#majorSigilOfAccuracy').on('click', () => {
@@ -669,10 +702,10 @@ function precisionCalulator () {
         'minorSigilOfAccuracy', 'superiorSigilOfAccuracy');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText = 'Major Sigil of Accuracy'
-      ;
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Major Sigil of Accuracy';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Superior Sigil of Accuracy */
     $('#superiorSigilOfAccuracy').on('click', () => {
@@ -681,10 +714,10 @@ function precisionCalulator () {
         'minorSigilOfAccuracy', 'majorSigilOfAccuracy');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText =
+      document.getElementById('tooltipPrecisionCalculator').innerText =
         'Superior Sigil of Accuracy';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Sigil of Vision */
     /* Superior Sigil of Vision */
@@ -692,10 +725,10 @@ function precisionCalulator () {
       superiorSigilOfVision = onClick(1, 'superiorSigilOfVision');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('equipment').innerText =
+      document.getElementById('tooltipPrecisionCalculator').innerText =
         'Superior Sigil of Vision';
     }).on('mouseleave', () => {
-      document.getElementById('equipment').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Trait */
     /* Spotter */
@@ -703,9 +736,10 @@ function precisionCalulator () {
       spotter = onClick(100, 'spotter');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Spotter';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Spotter';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Utility skill */
     /* Banner of Discipline */
@@ -713,46 +747,50 @@ function precisionCalulator () {
       bannerOfDiscipline = onClick(100, 'bannerOfDiscipline');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Banner of Discipline';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Banner of Discipline';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Conjure Lightning Hammer */
     $('#conjureLightningHammer').on('click', () => {
       conjureLightningHammer = onClick(180, 'conjureLightningHammer');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText =
+      document.getElementById('tooltipPrecisionCalculator').innerText =
         'Conjure Lightning Hammer';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Signet of Agility */
     $('#signetOfAgility').on('click', () => {
       signetOfAgility = onClick(180, 'signetOfAgility');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Signet of Agility';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Signet of Agility';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Signet of Fire */
     $('#signetOfFire').on('click', () => {
       signetOfFire = onClick(180, 'signetOfFire');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Signet of Fire';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Signet of Fire';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Signet of Fury */
     $('#signetOfFury').on('click', () => {
       signetOfFury = onClick(180, 'signetOfFury');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Signet of Fury';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Signet of Fury';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
   });
 }
@@ -893,18 +931,20 @@ function elementalistMenu () {
       elementsOfRage = onClick(0.13, 'elementsOfRage');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Elements of Rage';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Elements of Rage';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Superior Elements */
     $('#superiorElements').on('click', () => {
       superiorElements = onClick(10, 'superiorElements');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Superior Elements';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Superior Elements';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
   });
 }
@@ -920,18 +960,20 @@ function engineerMenu () {
       hematicFocus = onClick(10, 'hematicFocus');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Hematic Focus';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Hematic Focus';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* High Caliber */
     $('#highCaliber').on('click', () => {
       highCaliber = onClick(15, 'highCaliber');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'High Caliber';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'High Caliber';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
   });
 }
@@ -947,27 +989,30 @@ function guardianMenu () {
       radiantPower = onClick(10, 'radiantPower');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Radiant Power';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Radiant Power';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Right-Hand Strength */
     $('#rightHandStrength').on('click', () => {
       rightHandStrength = onClick(80, 'rightHandStrength');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Right-Hand Strength';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Right-Hand Strength';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Righteous Instinct */
     $('#righteousInstinct').on('click', () => {
       righteousInstinct = onClick(25, 'righteousInstinct');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Righteous Instinct';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Righteous Instinct';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
   });
 }
@@ -983,9 +1028,10 @@ function mesmerMenu () {
       dangerTime = onClick(15, 'dangerTime');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Danger Time';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Danger Time';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
   });
 }
@@ -1001,36 +1047,40 @@ function necromancerMenu () {
       deathPerception = onClick(33, 'deathPerception');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Death Perception';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Death Perception';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Decimate Defenses */
     $('#decimateDefenses').on('click', () => {
       decimateDefenses = onClick(2, 'decimateDefenses');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Decimate Defenses';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Decimate Defenses';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Furious Demise */
     $('#furiousDemise').on('click', () => {
       furiousDemise = onClick(180, 'furiousDemise');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Furious Demise';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Furious Demise';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Target the Weak */
     $('#targetTheWeak').on('click', () => {
       targetTheWeak = onClick(28, 'targetTheWeak');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Target the Weak';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Target the Weak';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
   });
 }
@@ -1046,27 +1096,30 @@ function rangerMenu () {
       huntersTactics = onClick(10, 'huntersTactics');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = "Hunter's Tactics";
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        "Hunter's Tactics";
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Precise Strike */
     $('#preciseStrike').on('click', () => {
       preciseStrike = onClick(100, 'preciseStrike');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Precise Strike';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Precise Strike';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Vicious Quarry */
     $('#viciousQuarry').on('click', () => {
       viciousQuarry = onClick(10, 'viciousQuarry');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Vicious Quarry';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Vicious Quarry';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
   });
 }
@@ -1082,9 +1135,10 @@ function revenantMenu () {
       brutalMomentum = onClick(33, 'brutalMomentum');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Brutal Momentum';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Brutal Momentum';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
   });
 }
@@ -1100,45 +1154,50 @@ function thiefMenu () {
       beQuickOrBeKilled = onClick(200, 'beQuickOrBeKilled');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Be Quick or Be Killed';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Be Quick or Be Killed';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Hidden Killer */
     $('#hiddenKiller').on('click', () => {
       hiddenKiller = onClick(100, 'hiddenKiller');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Hidden Killer';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Hidden Killer';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Keen Observer */
     $('#keenObserver').on('click', () => {
       keenObserver = onClick(5, 'keenObserver');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Keen Observer';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Keen Observer';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Silent Scope */
     $('#silentScope').on('click', () => {
       silentScope = onClick(240, 'silentScope');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Silent Scope';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Silent Scope';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Twin Fangs */
     $('#twinFangs').on('click', () => {
       twinFangs = onClick(7, 'twinFangs');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Twin Fangs';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Twin Fangs';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
   });
 }
@@ -1154,27 +1213,30 @@ function warriorMenu () {
       burstPrecision = onClick(100, 'burstPrecision');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Burst Precision';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Burst Precision';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Doubled Standards */
     $('#doubledStandards').on('click', () => {
       doubledStandards = onClick(1, 'doubledStandards');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Doubled Standards';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Doubled Standards';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
     /* Unsuspecting Foe */
     $('#unsuspectingFoe').on('click', () => {
       unsuspectingFoe = onClick(50, 'unsuspectingFoe');
       calculate();
     }).on('mouseenter', () => {
-      document.getElementById('heroPanel').innerText = 'Unsuspecting Foe';
+      document.getElementById('tooltipPrecisionCalculator').innerText =
+        'Unsuspecting Foe';
     }).on('mouseleave', () => {
-      document.getElementById('heroPanel').innerText = '';
+      document.getElementById('tooltipPrecisionCalculator').innerText = '';
     });
   });
 }
