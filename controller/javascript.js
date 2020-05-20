@@ -189,8 +189,8 @@ function precisionCalulator () {
         .getElementById('agonyResistance').value.replace('.', '') < 0) {
         agonyResistance = 0;
       } else if (document.getElementById('agonyResistance').value.replace('.',
-        '') > 348) {
-        agonyResistance = 348;
+        '') > 605) {
+        agonyResistance = 605;
       } else {
         agonyResistance = parseInt(document.getElementById('agonyResistance')
           .value.replace('.', ''));
