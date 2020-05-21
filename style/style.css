@@ -189,6 +189,10 @@ body {
     overflow: hidden;
 }
 
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -277,13 +281,13 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 
 /* home.html */
 
-#description {
+#home {
     font-family: "NewKrytan", serif;
     width: 50%;
     z-index: 1;
 }
 
-#description > ul > li > ul {
+#home > ul > li > ul {
     columns: 2;
 }
 

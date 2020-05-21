@@ -3,7 +3,8 @@
 /* terser model/*.js -o dist/model.min.js -c -m */
 
 import {
-  count, countdown, demoStart, home, onClick, resetMenu, resetProfessionMenu
+  count, countdown, demoStart, home, onClick, resetMenu, resetProfessionMenu,
+  resetUtilitySkillMenu
 } from '../dist/model.min.js';
 
 /* index.html */
@@ -50,7 +51,7 @@ setInterval(() => countdown(), 1000);
 /* Agony Impedance */
 let agonyImpedance = 20;
 /* Attribute */
-let agonyResistance = 222;
+let agonyResistance = 227;
 let vitality = 1000;
 /* Buff */
 let fury = 1;
@@ -63,6 +64,8 @@ let vulnerability = 0;
 let weakness = 0;
 /* Consumable */
 let anguishedTearOfAlba = 1;
+/* Effect */
+let rigorousCertainty = 5;
 /* Equipment */
 let headSlot = 45;
 let shoulderSlot = 34;
@@ -325,6 +328,20 @@ function precisionCalulator () {
     }).on('mouseenter', () => {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/consumable/a' +
         'nguishedTearOfAlba.html');
+    }).on('mouseleave', () => {
+      document.getElementById('tooltipBox').innerText = '';
+    });
+    /* Effect */
+    /* Rigorous Certainty */
+    $('#rigorousCertainty').on('click', () => {
+      agonyResistance -= rigorousCertainty;
+      rigorousCertainty = onClick(5, 'rigorousCertainty');
+      agonyResistance += rigorousCertainty;
+      document.getElementById('agonyResistance').value = agonyResistance;
+      calculate();
+    }).on('mouseenter', () => {
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/effect/rigorousCertainty.html');
     }).on('mouseleave', () => {
       document.getElementById('tooltipBox').innerText = '';
     });
@@ -778,6 +795,7 @@ function precisionCalulator () {
     });
     /* Signet of Agility */
     $('#signetOfAgility').on('click', () => {
+      resetUtilitySkill('signetOfAgility');
       signetOfAgility = onClick(180, 'signetOfAgility');
       calculate();
     }).on('mouseenter', () => {
@@ -789,6 +807,7 @@ function precisionCalulator () {
     });
     /* Signet of Fire */
     $('#signetOfFire').on('click', () => {
+      resetUtilitySkill('signetOfFire');
       signetOfFire = onClick(180, 'signetOfFire');
       calculate();
     }).on('mouseenter', () => {
@@ -799,6 +818,7 @@ function precisionCalulator () {
     });
     /* Signet of Fury */
     $('#signetOfFury').on('click', () => {
+      resetUtilitySkill('signetOfFury');
       signetOfFury = onClick(180, 'signetOfFury');
       calculate();
     }).on('mouseenter', () => {
@@ -814,6 +834,16 @@ function loadPrecisionCalculator () {
   document.getElementById('agonyImpedance').value = agonyImpedance / 5;
   document.getElementById('agonyResistance').value = agonyResistance;
   document.getElementById('vitality').value = vitality;
+  const PRECISION_CALCULATOR = [['fury', 1], ['retaliation', 1], ['bleeding',
+    1], ['burning', 1], ['slow', 1], ['vulnerability', 25], ['weakness', 1],
+  ['anguishedTearOfAlba', 1], ['rigorousCertainty', 5], ['agonyChanneler', 10],
+  ['recursiveResourcing', 25], ['mistlockSingularities', 30],
+  ['infiniteMistOmnipotion', 5], ['mistAttunement1', 5], ['mistAttunement2',
+    10], ['mistAttunement3', 15], ['mistAttunement4', 25],
+  ['minorSigilOfAccuracy', 3], ['majorSigilOfAccuracy', 5],
+  ['superiorSigilOfAccuracy', 7], ['superiorSigilOfVision', 1], ['spotter',
+    100], ['bannerOfDiscipline', 100], ['conjureLightningHammer', 180],
+  ['signetOfAgility', 180], ['signetOfFire', 180], ['signetOfFury', 180]];
   const PROFESSION = [['engineer', ['hematicFocus', 10], ['highCaliber', 15]],
     ['ranger', ['huntersTactics', 10], ['preciseStrike', 100], ['viciousQuarry',
       10]], ['thief', ['beQuickOrBeKilled', 200], ['hiddenKiller', 100],
@@ -825,16 +855,6 @@ function loadPrecisionCalculator () {
       ['righteousInstinct', 25]], ['revenant', ['brutalMomentum', 33]],
     ['warrior', ['burstPrecision', 100], ['doubledStandards', 1],
       ['unsuspectingFoe', 50]]];
-  const PRECISION_CALCULATOR = [['fury', 1], ['retaliation', 1], ['bleeding',
-    1], ['burning', 1], ['slow', 1], ['vulnerability', 25], ['weakness', 1],
-  ['anguishedTearOfAlba', 1], ['agonyChanneler', 10], ['recursiveResourcing',
-    25], ['mistlockSingularities', 30], ['infiniteMistOmnipotion', 5],
-  ['mistAttunement1', 5], ['mistAttunement2', 10], ['mistAttunement3', 15],
-  ['mistAttunement4', 25], ['minorSigilOfAccuracy', 3], ['majorSigilOfAccuracy',
-    5], ['superiorSigilOfAccuracy', 7], ['superiorSigilOfVision', 1],
-  ['spotter', 100], ['bannerOfDiscipline', 100], ['conjureLightningHammer',
-    180], ['signetOfAgility', 180], ['signetOfFire', 180], ['signetOfFury',
-    180]];
   let temp = null;
   PROFESSION.forEach(element => {
     if (eval(element[0]) === 1) {
@@ -1260,6 +1280,17 @@ function warriorMenu () {
   });
 }
 
+function equipment (id, int) {
+  let precision = int[0];
+  for (let i = 0; i < int.length; i++) {
+    if (eval(id) === int[i] && i !== int.length - 1) {
+      precision = int[i + 1];
+    }
+  }
+  document.getElementById(id + 'Precision').innerText = precision;
+  return precision;
+}
+
 function resetFractalAttunement () {
   agonyResistance -= (anguishedTearOfAlba * (10 + (agonyChanneler +
   recursiveResourcing + mistlockSingularities > 0 ? 5 : 0)));
@@ -1276,15 +1307,9 @@ function resetSigilOfAccuracy () {
   minorSigilOfAccuracy = majorSigilOfAccuracy = superiorSigilOfAccuracy = 0;
 }
 
-function equipment (id, int) {
-  let precision = int[0];
-  for (let i = 0; i < int.length; i++) {
-    if (eval(id) === int[i] && i !== int.length - 1) {
-      precision = int[i + 1];
-    }
-  }
-  document.getElementById(id + 'Precision').innerText = precision;
-  return precision;
+function resetUtilitySkill (string) {
+  resetUtilitySkillMenu(string);
+  signetOfAgility = signetOfFire = signetOfFury = 0;
 }
 
 function resetProfession () {
