@@ -20519,8 +20519,6 @@ Nview/precisionCalculator/tooltipBox/fractalAttunement/recursiveResourcing.html
 i
 9view/precisionCalculator/tooltipBox/buff/retaliation.html,f\2\f2a663178c81bd8d9b309197df78ee2d47524ad4
 y
-Iview/precisionCalculator/tooltipBox/trait/guardian/righteousInstinct.html,1\c\1c032ef4a4e2bd21fc22defcd71d0e560a0511ab
-y
 Iview/precisionCalculator/tooltipBox/trait/guardian/rightHandStrength.html,f\c\fc09363e1a75454f9444175337c3d6e82b7e7624
 p
 @view/precisionCalculator/tooltipBox/equipment/rightRingSlot.html,7\d\7d14f47819b6aa9f706e3e418b62545c80706c79
@@ -20566,3 +20564,5 @@ Q
 !model/reset-utility-skill-menu.js,3\f\3f4fbc5089f96efd7826ee68570cad6f8320c210
 q
 Aview/precisionCalculator/tooltipBox/effect/rigorousCertainty.html,0\b\0bfe4ecc9134ab3d7012759b8b70cd07893d1889
+z
+Jview/precisionCalculator/tooltipBox/trait/guardian/righteousInstincts.html,7\7\7773542e48a063cdc5e2d6b848913a515fb441a6
