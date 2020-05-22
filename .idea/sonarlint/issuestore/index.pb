@@ -20562,3 +20562,7 @@ p
 @view/precisionCalculator/tooltipBox/condition/vulnerability.html,f\3\f3015d8e1a6fb965666ab25b318c4fff75a99d5e
 k
 ;view/precisionCalculator/tooltipBox/condition/weakness.html,2\d\2d0de473b76b0329ecf8ead21dfc296c6762bffc
+Q
+!model/reset-utility-skill-menu.js,3\f\3f4fbc5089f96efd7826ee68570cad6f8320c210
+q
+Aview/precisionCalculator/tooltipBox/effect/rigorousCertainty.html,0\b\0bfe4ecc9134ab3d7012759b8b70cd07893d1889

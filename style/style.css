@@ -14,6 +14,10 @@
     background-color: rgba(0, 0, 0, .5);
 }
 
+.fontSize11 {
+    font-size: 11px;
+}
+
 .fontSize13 {
     font-size: 13px;
 }
@@ -26,8 +30,28 @@
     font-size: 15px;
 }
 
+.fontSize16 {
+    font-size: 16px;
+}
+
+.fontSize18 {
+    font-size: 18px;
+}
+
+.fontSize25 {
+    font-size: 25px;
+}
+
 .fontSize27 {
     font-size: 27px;
+}
+
+.fontSize28 {
+    font-size: 28px;
+}
+
+.fontSize29 {
+    font-size: 29px;
 }
 
 .height58 {
@@ -36,6 +60,10 @@
 
 .height98 {
     height: 98px;
+}
+
+.height464 {
+    height: 464px;
 }
 
 .horizontalMenu {
@@ -158,6 +186,10 @@
 
 .width58 {
     width: 58px;
+}
+
+.width290 {
+    width: 290px;
 }
 
 @font-face {
@@ -308,8 +340,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 
 #tooltipBox {
     display: flex;
-    height: 464px;
-    width: 290px;
+    justify-content: center;
 }
 
 /* uceCounter.html */
