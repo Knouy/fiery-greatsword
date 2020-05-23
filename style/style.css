@@ -34,6 +34,10 @@
     font-size: 16px;
 }
 
+.fontSize17 {
+    font-size: 17px;
+}
+
 .fontSize18 {
     font-size: 18px;
 }
@@ -46,12 +50,20 @@
     font-size: 21px;
 }
 
+.fontSize23 {
+    font-size: 23px;
+}
+
 .fontSize24 {
     font-size: 24px;
 }
 
 .fontSize25 {
     font-size: 25px;
+}
+
+.fontSize26 {
+    font-size: 26px;
 }
 
 .fontSize27 {

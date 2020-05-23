@@ -1,7 +1,6 @@
 /* gulp minify-css */
 /* terser controller/*.js -o dist/controller.min.js -c -m */
 /* terser model/*.js -o dist/model.min.js -c -m */
-/* test */
 
 import {
   count, countdown, demoStart, home, onClick, resetMenu, resetProfessionMenu,
