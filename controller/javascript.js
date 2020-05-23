@@ -1,4 +1,4 @@
-/* gulp minify-css */
+/* agulp minify-css */
 /* terser controller/*.js -o dist/controller.min.js -c -m */
 /* terser model/*.js -o dist/model.min.js -c -m */
 
