@@ -882,15 +882,15 @@ function loadPrecisionCalculator () {
     100], ['bannerOfDiscipline', 100], ['conjureLightningHammer', 180],
   ['signetOfAgility', 180], ['signetOfFire', 180], ['signetOfFury', 180]];
   const PROFESSION = [['engineer', ['hematicFocus', 10], ['highCaliber', 15]],
-    ['ranger', ['huntersTactics', 10], ['preciseStrike', 100], ['viciousQuarry',
-      10]], ['thief', ['beQuickOrBeKilled', 200], ['hiddenKiller', 100],
+    ['ranger', ['huntersTactics', 10], ['preciseStrike', 1], ['viciousQuarry',
+      10]], ['thief', ['beQuickOrBeKilled', 200], ['hiddenKiller', 1],
       ['keenObserver', 5], ['silentScope', 240], ['twinFangs', 7]],
     ['elementalist', ['elementsOfRage', 0.13], ['superiorElements', 10]],
     ['mesmer', ['dangerTime', 15]], ['necromancer', ['deathPerception', 33],
       ['decimateDefenses', 2], ['furiousDemise', 180], ['targetTheWeak', 28]],
     ['guardian', ['radiantPower', 10], ['rightHandStrength', 80],
       ['righteousInstincts', 25]], ['revenant', ['brutalMomentum', 33]],
-    ['warrior', ['burstPrecision', 100], ['doubledStandards', 1],
+    ['warrior', ['burstPrecision', 1], ['doubledStandards', 1],
       ['unsuspectingFoe', 50]]];
   let temp = null;
   PROFESSION.forEach(element => {
@@ -957,24 +957,21 @@ function calculate () {
   const SIGIL_OF_ACCURACY = minorSigilOfAccuracy + majorSigilOfAccuracy +
     superiorSigilOfAccuracy;
   const TRAIT_ENGINEER_CRITICAL_CHANCE = hematicFocus * bleeding + highCaliber;
-  const TRAIT_RANGER_CRITICAL_CHANCE = huntersTactics + preciseStrike +
-    viciousQuarry * fury;
-  const TRAIT_THIEF_CRITICAL_CHANCE = hiddenKiller + keenObserver + twinFangs;
+  const TRAIT_RANGER_CRITICAL_CHANCE = huntersTactics + viciousQuarry * fury;
+  const TRAIT_THIEF_CRITICAL_CHANCE = keenObserver + twinFangs;
   const TRAIT_ELEMENTALIST_CRITICAL_CHANCE = superiorElements * weakness;
   const TRAIT_MESMER_CRITICAL_CHANCE = dangerTime * slow;
   const TRAIT_NECROMANCER_CRITICAL_CHANCE = deathPerception + decimateDefenses *
     vulnerability + targetTheWeak;
   const TRAIT_GUARDIAN_CRITICAL_CHANCE = radiantPower * burning +
     righteousInstincts * retaliation;
-  const TRAIT_REVENANT_CRITICAL_CHANCE = brutalMomentum;
-  const TRAIT_WARRIOR_CRITICAL_CHANCE = burstPrecision + unsuspectingFoe;
   let CRITICAL_CHANCE = 5 + (PRECISION - 1000) / 21 + BUFF + SIGIL_OF_ACCURACY +
     TRAIT_ENGINEER_CRITICAL_CHANCE + TRAIT_RANGER_CRITICAL_CHANCE +
     TRAIT_THIEF_CRITICAL_CHANCE + TRAIT_ELEMENTALIST_CRITICAL_CHANCE +
     TRAIT_MESMER_CRITICAL_CHANCE + TRAIT_NECROMANCER_CRITICAL_CHANCE +
-    TRAIT_GUARDIAN_CRITICAL_CHANCE + TRAIT_REVENANT_CRITICAL_CHANCE +
-    TRAIT_WARRIOR_CRITICAL_CHANCE;
-  if (superiorSigilOfVision === 1) {
+    TRAIT_GUARDIAN_CRITICAL_CHANCE + brutalMomentum + unsuspectingFoe;
+  if (burstPrecision === 1 || hiddenKiller === 1 || preciseStrike === 1 ||
+    superiorSigilOfVision === 1) {
     CRITICAL_CHANCE = 100;
   }
   demoStart(parseFloat(document.getElementById('criticalChance').innerText
@@ -1180,7 +1177,7 @@ function rangerMenu () {
     });
     /* Precise Strike */
     $('#preciseStrike').on('click', () => {
-      preciseStrike = onClick(100, 'preciseStrike');
+      preciseStrike = onClick(1, 'preciseStrike');
       calculate();
     }).on('mouseenter', () => {
       $('#tooltipBox').load(
@@ -1242,7 +1239,7 @@ function thiefMenu () {
     });
     /* Hidden Killer */
     $('#hiddenKiller').on('click', () => {
-      hiddenKiller = onClick(100, 'hiddenKiller');
+      hiddenKiller = onClick(1, 'hiddenKiller');
       calculate();
     }).on('mouseenter', () => {
       $('#tooltipBox').load(
@@ -1295,7 +1292,7 @@ function warriorMenu () {
   $(($) => {
     /* Burst Precision */
     $('#burstPrecision').on('click', () => {
-      burstPrecision = onClick(100, 'burstPrecision');
+      burstPrecision = onClick(1, 'burstPrecision');
       calculate();
     }).on('mouseenter', () => {
       $('#tooltipBox').load(
