@@ -157,6 +157,9 @@ function precisionCalulator () {
     '#FFFFFF';
   loadPrecisionCalculator();
   calculate();
+  $('#tooltipBox').load(
+    'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+    .fadeIn();
   $(($) => {
     /* Agony Impedance */
     $('#agonyImpedance').on('change', () => {
@@ -183,7 +186,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/agonyImpedance/agonyImpedance.html'
       ).hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Attribute */
     /* Agony Resistance */
@@ -221,7 +226,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/attribute/agonyResistance.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* a Critical Chance */
     $('#aCriticalChance').on('mouseenter', () => {
@@ -229,7 +236,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/attribute/criticalChance.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* a Precision */
     $('#aPrecision').on('mouseenter', () => {
@@ -237,7 +246,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/attribute/precision.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* a Vitality */
     $('#aVitality').on('mouseenter', () => {
@@ -245,7 +256,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/attribute/vitality.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Buff */
     /* Fury */
@@ -256,7 +269,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/buff/fury.html'
       ).hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Retaliation */
     $('#retaliation').on('click', () => {
@@ -267,7 +282,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/buff/retaliation.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Condition */
     /* Bleeding */
@@ -279,7 +296,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/condition/bleeding.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Burning */
     $('#burning').on('click', () => {
@@ -290,7 +309,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/condition/burning.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Slow */
     $('#slow').on('click', () => {
@@ -301,7 +322,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/condition/slow.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Vulnerability */
     $('#vulnerability').on('click', () => {
@@ -312,7 +335,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/condition/vulnerability.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Weakness */
     $('#weakness').on('click', () => {
@@ -323,7 +348,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/condition/weakness.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Consumable */
     /* Anguished Tear of Alba */
@@ -339,7 +366,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/consumable/a' +
         'nguishedTearOfAlba.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Effect */
     /* Rigorous Certainty */
@@ -354,7 +383,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/effect/rigorousCertainty.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Equipment */
     /* Head Slot */
@@ -366,7 +397,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/headSlot.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Shoulder Slot */
     $('#shoulderSlot').on('click', () => {
@@ -377,7 +410,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/shoulderSlot.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Chest Slot */
     $('#chestSlot').on('click', () => {
@@ -388,7 +423,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/chestSlot.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Hand Slot */
     $('#handSlot').on('click', () => {
@@ -399,7 +436,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/handSlot.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Leg Slot */
     $('#legSlot').on('click', () => {
@@ -410,7 +449,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/legSlot.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Feet Slot */
     $('#feetSlot').on('click', () => {
@@ -421,7 +462,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/feetSlot.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Sword Slot */
     $('#swordSlot').on('click', () => {
@@ -433,7 +476,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/swordSlot.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Shield Slot */
     $('#shieldSlot').on('click', () => {
@@ -444,7 +489,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/shieldSlot.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Back Slot */
     $('#backSlot').on('click', () => {
@@ -455,7 +502,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/backSlot.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Bear Trinket Slot */
     $('#bearTrinketSlot').on('click', () => {
@@ -466,7 +515,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/bearTrinketSlot.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Cube Trinket Slot */
     $('#cubeTrinketSlot').on('click', () => {
@@ -477,7 +528,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/cubeTrinketSlot.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Amulet Slot */
     $('#amuletSlot').on('click', () => {
@@ -488,7 +541,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/amuletSlot.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Right Ring Slot */
     $('#rightRingSlot').on('click', () => {
@@ -499,7 +554,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/rightRingSlot.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Left Ring Slot */
     $('#leftRingSlot').on('click', () => {
@@ -510,7 +567,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/equipment/leftRingSlot.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Fractal Attunement */
     /* Agony Channeler */
@@ -526,7 +585,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/fractalAttun' +
         'ement/agonyChanneler.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Recursive Resourcing */
     $('#recursiveResourcing').on('click', () => {
@@ -541,7 +602,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/fractalAttun' +
         'ement/recursiveResourcing.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Mistlock Singularities */
     $('#mistlockSingularities').on('click', () => {
@@ -556,7 +619,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/fractalAttun' +
         'ement/mistlockSingularities.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Gizmo */
     /* Infinite Mist Omnipotion */
@@ -568,7 +633,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/gizmo/infiniteMistOmnipotion.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Mist Attunement */
     /* Mist Attunement 1 */
@@ -583,7 +650,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/mistAttuneme' +
         'nt/mistAttunement1.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Mist Attunement 2 */
     $('#mistAttunement2').on('click', () => {
@@ -597,7 +666,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/mistAttuneme' +
         'nt/mistAttunement2.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Mist Attunement 3 */
     $('#mistAttunement3').on('click', () => {
@@ -611,7 +682,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/mistAttuneme' +
         'nt/mistAttunement3.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Mist Attunement 4 */
     $('#mistAttunement4').on('click', () => {
@@ -625,7 +698,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/mistAttuneme' +
         'nt/mistAttunement4.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Profession */
     /* Elementalist */
@@ -640,7 +715,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/profession/elementalist.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Engineer */
     $('#engineer').on('click', () => {
@@ -653,7 +730,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/profession/engineer.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Guardian */
     $('#guardian').on('click', () => {
@@ -666,7 +745,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/profession/guardian.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Mesmer */
     $('#mesmer').on('click', () => {
@@ -679,7 +760,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/profession/mesmer.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Necromancer */
     $('#necromancer').on('click', () => {
@@ -693,7 +776,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/profession/necromancer.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Ranger */
     $('#ranger').on('click', () => {
@@ -706,7 +791,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/profession/ranger.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Revenant */
     $('#revenant').on('click', () => {
@@ -719,7 +806,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/profession/revenant.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Thief */
     $('#thief').on('click', () => {
@@ -732,7 +821,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/profession/thief.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Warrior */
     $('#warrior').on('click', () => {
@@ -745,7 +836,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/profession/warrior.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Sigil of Accuracy */
     /* Minor Sigil of Accuracy */
@@ -758,7 +851,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/sigilOfAccur' +
         'acy/minorSigilOfAccuracy.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Major Sigil of Accuracy */
     $('#majorSigilOfAccuracy').on('click', () => {
@@ -770,7 +865,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/sigilOfAccur' +
         'acy/majorSigilOfAccuracy.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Superior Sigil of Accuracy */
     $('#superiorSigilOfAccuracy').on('click', () => {
@@ -782,7 +879,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/sigilOfAccur' +
         'acy/superiorSigilOfAccuracy.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Sigil of Vision */
     /* Superior Sigil of Vision */
@@ -793,7 +892,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/sigilOfVisio' +
         'n/superiorSigilOfVision.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Trait */
     /* Spotter */
@@ -805,7 +906,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/trait/ranger/spotter.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Utility skill */
     /* Banner of Discipline */
@@ -816,7 +919,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/utilitySkill' +
         '/bannerOfDiscipline.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Conjure Lightning Hammer */
     $('#conjureLightningHammer').on('click', () => {
@@ -826,7 +931,9 @@ function precisionCalulator () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/utilitySkill' +
         '/conjureLightningHammer.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Signet of Agility */
     $('#signetOfAgility').on('click', () => {
@@ -838,7 +945,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/utilitySkill/signetOfAgility.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Signet of Fire */
     $('#signetOfFire').on('click', () => {
@@ -850,7 +959,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/utilitySkill/signetOfFire.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Signet of Fury */
     $('#signetOfFury').on('click', () => {
@@ -862,7 +973,9 @@ function precisionCalulator () {
         'view/precisionCalculator/tooltipBox/utilitySkill/signetOfFury.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
   });
 }
@@ -1003,7 +1116,9 @@ function elementalistMenu () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/elemen' +
         'talist/elementsOfRage.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Superior Elements */
     $('#superiorElements').on('click', () => {
@@ -1013,7 +1128,9 @@ function elementalistMenu () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/elemen' +
         'talist/superiorElements.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
   });
 }
@@ -1033,7 +1150,9 @@ function engineerMenu () {
         'view/precisionCalculator/tooltipBox/trait/engineer/hematicFocus.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* High Caliber */
     $('#highCaliber').on('click', () => {
@@ -1044,7 +1163,9 @@ function engineerMenu () {
         'view/precisionCalculator/tooltipBox/trait/engineer/highCaliber.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
   });
 }
@@ -1064,7 +1185,9 @@ function guardianMenu () {
         'view/precisionCalculator/tooltipBox/trait/guardian/radiantPower.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Right-Hand Strength */
     $('#rightHandStrength').on('click', () => {
@@ -1074,7 +1197,9 @@ function guardianMenu () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/guardi' +
         'an/rightHandStrength.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Righteous Instinct */
     $('#righteousInstincts').on('click', () => {
@@ -1084,7 +1209,9 @@ function guardianMenu () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/guardi' +
         'an/righteousInstincts.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
   });
 }
@@ -1104,7 +1231,9 @@ function mesmerMenu () {
         'view/precisionCalculator/tooltipBox/trait/mesmer/dangerTime.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
   });
 }
@@ -1123,7 +1252,9 @@ function necromancerMenu () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/necrom' +
         'ancer/deathPerception.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Decimate Defenses */
     $('#decimateDefenses').on('click', () => {
@@ -1133,7 +1264,9 @@ function necromancerMenu () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/necrom' +
         'ancer/decimateDefenses.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Furious Demise */
     $('#furiousDemise').on('click', () => {
@@ -1143,7 +1276,9 @@ function necromancerMenu () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/necrom' +
         'ancer/furiousDemise.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Target the Weak */
     $('#targetTheWeak').on('click', () => {
@@ -1153,7 +1288,9 @@ function necromancerMenu () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/necrom' +
         'ancer/targetTheWeak.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
   });
 }
@@ -1173,7 +1310,9 @@ function rangerMenu () {
         'view/precisionCalculator/tooltipBox/trait/ranger/huntersTactics.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Precise Strike */
     $('#preciseStrike').on('click', () => {
@@ -1184,7 +1323,9 @@ function rangerMenu () {
         'view/precisionCalculator/tooltipBox/trait/ranger/preciseStrike.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Vicious Quarry */
     $('#viciousQuarry').on('click', () => {
@@ -1195,7 +1336,9 @@ function rangerMenu () {
         'view/precisionCalculator/tooltipBox/trait/ranger/viciousQuarry.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
   });
 }
@@ -1215,7 +1358,9 @@ function revenantMenu () {
         'view/precisionCalculator/tooltipBox/trait/revenant/brutalMomentum.html'
       ).hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
   });
 }
@@ -1235,7 +1380,9 @@ function thiefMenu () {
         'view/precisionCalculator/tooltipBox/trait/thief/beQuickOrBeKilled.html'
       ).hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Hidden Killer */
     $('#hiddenKiller').on('click', () => {
@@ -1246,7 +1393,9 @@ function thiefMenu () {
         'view/precisionCalculator/tooltipBox/trait/thief/hiddenKiller.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Keen Observer */
     $('#keenObserver').on('click', () => {
@@ -1257,7 +1406,9 @@ function thiefMenu () {
         'view/precisionCalculator/tooltipBox/trait/thief/keenObserver.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Silent Scope */
     $('#silentScope').on('click', () => {
@@ -1268,7 +1419,9 @@ function thiefMenu () {
         'view/precisionCalculator/tooltipBox/trait/thief/silentScope.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Twin Fangs */
     $('#twinFangs').on('click', () => {
@@ -1279,7 +1432,9 @@ function thiefMenu () {
         'view/precisionCalculator/tooltipBox/trait/thief/twinFangs.html').hide()
         .fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
   });
 }
@@ -1299,7 +1454,9 @@ function warriorMenu () {
         'view/precisionCalculator/tooltipBox/trait/warrior/burstPrecision.html')
         .hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Doubled Standards */
     $('#doubledStandards').on('click', () => {
@@ -1309,7 +1466,9 @@ function warriorMenu () {
       $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/warrio' +
         'r/doubledStandards.html').hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
     /* Unsuspecting Foe */
     $('#unsuspectingFoe').on('click', () => {
@@ -1320,7 +1479,9 @@ function warriorMenu () {
         'view/precisionCalculator/tooltipBox/trait/warrior/unsuspectingFoe.html'
       ).hide().fadeIn();
     }).on('mouseleave', () => {
-      document.getElementById('tooltipBox').innerText = '';
+      $('#tooltipBox').load(
+        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
+        .fadeIn();
     });
   });
 }
