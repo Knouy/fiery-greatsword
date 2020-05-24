@@ -246,14 +246,13 @@
     src: url("../font/PT_Serif/PTSerif-Regular.ttf");
 }
 
-@font-face {
-    font-display: swap;
-    font-family: "GWTwoFont";
-    src: url("../font/gw-two/GWTwoFont.ttf");
+body {
+    -ms-overflow-style: none;
+    margin: 0;
 }
 
-body {
-    margin: 0;
+body::-webkit-scrollbar {
+    display: none;
 }
 
 input[type=number] {
@@ -295,22 +294,6 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
     left: 0;
     position: absolute;
     width: 100%;
-}
-
-#title {
-    align-items: center;
-    color: #FFFFFF;
-    display: none;
-    font-family: "GWTwoFont", serif;
-    font-size: 32px;
-    height: 54px;
-    left: 26px;
-    position: absolute;
-    top: 15px;
-}
-
-#title img {
-    padding: 0 15px 0 0;
 }
 
 #mainMenu {
