@@ -1,0 +1,18 @@
+.number {
+    height: 18px;
+}
+
+.number div, .number input {
+    align-items: center;
+    background-color: transparent;
+    border: transparent solid 0;
+    color: #FFFFFF;
+    display: flex;
+    font-family: "JetBrains Mono", serif;
+    font-size: 16px;
+    height: 18px;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    width: 116px;
+}

@@ -1,0 +1,10 @@
+#home {
+    font-family: "NewKrytan", serif;
+    max-width: 960px;
+    width: calc(100% - 30px);
+    z-index: 1;
+}
+
+#home > ul > li > ul {
+    columns: 2;
+}

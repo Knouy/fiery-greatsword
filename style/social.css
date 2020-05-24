@@ -1,0 +1,13 @@
+#social {
+    bottom: 32px;
+    height: 32px;
+    position: fixed;
+    width: 100%;
+}
+
+#social li {
+    flex-direction: column;
+    height: 32px;
+    margin: 0 15px;
+    width: 32px;
+}

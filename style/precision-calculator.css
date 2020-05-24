@@ -1,0 +1,12 @@
+#precisionCalculator {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#precisionCalculator > div {
+    border: rgba(0, 0, 0, .5) solid 2px;
+    margin: 0 15px 15px 15px;
+    padding: 2px;
+    z-index: 1;
+}

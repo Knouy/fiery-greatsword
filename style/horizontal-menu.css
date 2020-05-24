@@ -1,0 +1,32 @@
+.horizontalMenu {
+    display: flex;
+    font-family: "JetBrains Mono", serif;
+    justify-content: center;
+}
+
+.horizontalMenu a:link, .horizontalMenu a:visited {
+    align-items: center;
+    background-color: rgba(0, 0, 0, .5);
+    color: #FFFFFF;
+    display: flex;
+    text-decoration: none;
+    transition: .15s;
+}
+
+.horizontalMenu a:hover {
+    background-color: rgba(0, 0, 0, .75);
+}
+
+.horizontalMenu ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.horizontalMenu li {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}

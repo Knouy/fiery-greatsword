@@ -1,0 +1,14 @@
+#head {
+    display: flex;
+    z-index: 1;
+}
+
+#head label {
+    background-image: url("https://discretize.eu/static/gw2a--2xxYo-bcb9f385f6b4d1fde8546c4730c687a1.png");
+    border: #000000 solid 2px;
+    color: #62A4DA;
+    font-family: 'PT Serif', serif;
+    margin: 0 15px 0 0;
+    padding: 0 0 0 15px;
+    text-shadow: #000000 1px 1px;
+}

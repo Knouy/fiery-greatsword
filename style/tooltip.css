@@ -1,0 +1,21 @@
+.tooltip {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.tooltip span {
+    bottom: calc(-24px);
+    color: transparent;
+    font-family: "JetBrains Mono", serif;
+    position: absolute;
+    transition: .15s;
+    visibility: hidden;
+}
+
+.tooltip:hover span {
+    color: #FFFFFF;
+    visibility: visible;
+    white-space: nowrap;
+}
