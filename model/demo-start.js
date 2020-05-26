@@ -1,7 +1,7 @@
 import { CountUp } from '../dist/countUp.min.js';
 
-export function demoStart (startVal, decimalPlaces, prefix, suffix, id,
-  endVal) {
+export function demoStart (startVal, decimalPlaces, prefix, suffix, id, endVal
+) {
   const OPTIONS = {
     startVal: startVal,
     decimalPlaces: decimalPlaces,

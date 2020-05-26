@@ -8,7 +8,7 @@ const CONCAT = require('gulp-concat');
 const CLEAN_CSS = require('gulp-clean-css');
 const RENAME = require('gulp-rename');
 
-GULP.task('concat-clean-css-rename', () => {
+GULP.task('build', () => {
   return GULP.src('style/*.css')
     .pipe(CONCAT('style.css'))
     .pipe(CLEAN_CSS({ compatibility: 'ie8' }))

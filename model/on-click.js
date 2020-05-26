@@ -1,5 +1,5 @@
 export function onClick (int, id1, id2, id3, id4) {
-  if (id1 === 'silentScope') {
+  if (id1 === 'P.SILENT_SCOPE') {
     if (document.getElementById(id1).style.borderColor === 'rgb(0, 255, 0)') {
       document.getElementById(id1).style.borderColor = '#ED7F10';
       return 120;

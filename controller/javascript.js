@@ -1,10 +1,9 @@
-/* gulp minify-css */
 /* terser controller/*.js -o dist/controller.min.js -c -m */
 /* terser model/*.js -o dist/model.min.js -c -m */
 
 import {
-  count, countdown, demoStart, home, onClick, resetMenu, resetProfessionMenu,
-  resetUtilitySkillMenu
+  P, count, countdown, demoStart, menu, onClick, resetMenu, resetProfession,
+  resetTooltipBox, resetUtilitySkillMenu, setTooltipBox
 } from '../dist/model.min.js';
 
 /* index.html */
@@ -23,988 +22,448 @@ VANTA.FOG({
   zoom: 1.80
 });
 
+const PAGE = $('#page');
+
 /* global $ */
-$(($) => {
-  const PAGE = $('#page');
-  $('#menuHome').on('click', () => {
-    PAGE.fadeOut(400, () => PAGE.load('view/home.html', () => home()).hide()
-      .fadeIn());
-  });
-  $('#menuPrecisionCalculator').on('click', () => {
-    PAGE.fadeOut(400, () => PAGE.load('view/precisionCalculator.html', () =>
-      precisionCalulator()).hide().fadeIn());
-  });
-  $('#menuUceCounter').on('click', () => {
-    PAGE.fadeOut(400, () => PAGE.load('view/uceCounter.html', () => {
-      uceCounter();
-      $('#fetch').on('click', () => uceCounter());
-    }).hide().fadeIn());
+$(() => {
+  $('.menu').on('click', function () {
+    PAGE.fadeOut(400, () => PAGE.load('view/' + $(this).data('menu') + '.html',
+      () => menu($(this).data('menu'))).hide().fadeIn());
   });
 });
 
-$('#page').load('view/home.html').hide().fadeIn();
-
 setInterval(() => countdown(), 1000);
+
+/* home.html */
+
+PAGE.load('view/home.html').hide().fadeIn();
 
 /* precisionCalculator.html */
 
-/* Agony Impedance */
-let agonyImpedance = 20;
-/* Attribute */
-let agonyResistance = 227;
-let vitality = 1000;
-/* Buff */
-let fury = 1;
-let retaliation = 0;
-/* Condition */
-let bleeding = 0;
-let burning = 0;
-let slow = 0;
-let vulnerability = 0;
-let weakness = 0;
-/* Consumable */
-let anguishedTearOfAlba = 1;
-/* Effect */
-let rigorousCertainty = 5;
-/* Equipment */
-let headSlot = 45;
-let shoulderSlot = 34;
-let chestSlot = 101;
-let handSlot = 34;
-let legSlot = 67;
-let feetSlot = 34;
-let swordSlot = 90;
-let shieldSlot = 90;
-let backSlot = 40;
-let bearTrinketSlot = 74;
-let cubeTrinketSlot = 74;
-let amuletSlot = 108;
-let rightRingSlot = 85;
-let leftRingSlot = 85;
-/* Fractal Attunement */
-let agonyChanneler = 0;
-let recursiveResourcing = 0;
-let mistlockSingularities = 30;
-/* Gizmo */
-let infiniteMistOmnipotion = 5;
-/* Mist Attunement */
-let mistAttunement1 = 0;
-let mistAttunement2 = 0;
-let mistAttunement3 = 0;
-let mistAttunement4 = 25;
-/* Profession */
-let engineer = 0;
-let ranger = 0;
-let thief = 0;
-let elementalist = 0;
-let mesmer = 0;
-let necromancer = 0;
-let guardian = 0;
-let revenant = 0;
-let warrior = 0;
-/* Sigil of Accuracy */
-let minorSigilOfAccuracy = 0;
-let majorSigilOfAccuracy = 0;
-let superiorSigilOfAccuracy = 0;
-/* Sigil of Vision */
-let superiorSigilOfVision = 0;
-/* Trait */
-/* Elementalist */
-let elementsOfRage = 0;
-let superiorElements = 0;
-/* Engineer */
-let hematicFocus = 0;
-let highCaliber = 0;
-/* Guardian */
-let radiantPower = 0;
-let rightHandStrength = 0;
-let righteousInstincts = 0;
-/* Mesmer */
-let dangerTime = 0;
-/* Necromancer */
-let deathPerception = 0;
-let decimateDefenses = 0;
-let furiousDemise = 0;
-let targetTheWeak = 0;
-/* Ranger */
-let huntersTactics = 0;
-let preciseStrike = 0;
-let spotter = 0;
-let viciousQuarry = 0;
-/* Revenant */
-let brutalMomentum = 0;
-/* Thief */
-let beQuickOrBeKilled = 0;
-let hiddenKiller = 0;
-let keenObserver = 0;
-let silentScope = 0;
-let twinFangs = 0;
-/* Warrior */
-let burstPrecision = 0;
-let doubledStandards = 0;
-let unsuspectingFoe = 0;
-/* Utility skill */
-let bannerOfDiscipline = 100;
-let conjureLightningHammer = 0;
-let signetOfAgility = 0;
-let signetOfFire = 0;
-let signetOfFury = 0;
-
-function precisionCalulator () {
-  document.title = 'Precision Calculator - Fiery Greatsword';
+export function precisionCalculator () {
   resetMenu();
   document.getElementById('menuPrecisionCalculator').style.borderBottomColor =
     '#FFFFFF';
   loadPrecisionCalculator();
   calculate();
-  $('#tooltipBox').load(
-    'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-    .fadeIn();
-  $(($) => {
+  resetTooltipBox();
+  $(() => {
+    setTooltipBox();
     /* Agony Impedance */
-    $('#agonyImpedance').on('change', () => {
-      if (document.getElementById('agonyImpedance').value === '' || document
-        .getElementById('agonyImpedance').value.replace('.', '') < 0) {
-        document.getElementById('agonyImpedance').value = 0;
-      } else if (document.getElementById('agonyImpedance').value.replace('.', ''
-      ) > 4) {
-        document.getElementById('agonyImpedance').value = 4;
+    $('#P\\.AGONY_IMPEDANCE').on('change', () => {
+      const AGONY_IMPEDANCE = document.getElementById('P.AGONY_IMPEDANCE');
+      if (AGONY_IMPEDANCE.value === '' || AGONY_IMPEDANCE.value.replace('.', ''
+      ) < 0) {
+        AGONY_IMPEDANCE.value = 0;
+      } else if (AGONY_IMPEDANCE.value.replace('.', '') > 4) {
+        AGONY_IMPEDANCE.value = 4;
       } else {
-        document.getElementById('agonyImpedance').value = document
-          .getElementById('agonyImpedance').value.replace('.', '');
+        AGONY_IMPEDANCE.value = AGONY_IMPEDANCE.value.replace('.', '');
       }
-      agonyResistance += 5 * document.getElementById('agonyImpedance').value
-        .replace('.', '') - agonyImpedance;
-      document.getElementById('agonyResistance').value = agonyResistance;
-      agonyImpedance = 5 * document.getElementById('agonyImpedance').value
-        .replace('.', '');
+      P.AGONY_RESISTANCE += 5 * AGONY_IMPEDANCE.value.replace('.', '') - P
+        .AGONY_IMPEDANCE;
+      document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
+      P.AGONY_IMPEDANCE = 5 * AGONY_IMPEDANCE.value.replace('.', '');
       calculate();
-    });
-    /* a Agony Impedance */
-    $('#aAgonyImpedance').on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/agonyImpedance/agonyImpedance.html'
-      ).hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Attribute */
     /* Agony Resistance */
-    $('#agonyResistance').on('change', () => {
-      if (document.getElementById('agonyResistance').value === '' || document
-        .getElementById('agonyResistance').value.replace('.', '') < 0) {
-        agonyResistance = 0;
-      } else if (document.getElementById('agonyResistance').value.replace('.',
-        '') > 605) {
-        agonyResistance = 605;
+    $('#P\\.AGONY_RESISTANCE').on('change', () => {
+      const AGONY_RESISTANCE = document.getElementById('P.AGONY_RESISTANCE');
+      if (AGONY_RESISTANCE.value === '' || AGONY_RESISTANCE.value.replace('.',
+        '') < 0) {
+        P.AGONY_RESISTANCE = 0;
+      } else if (AGONY_RESISTANCE.value.replace('.', '') > 605) {
+        P.AGONY_RESISTANCE = 605;
       } else {
-        agonyResistance = parseInt(document.getElementById('agonyResistance')
-          .value.replace('.', ''));
+        P.AGONY_RESISTANCE = parseInt(AGONY_RESISTANCE.value.replace('.', ''));
       }
-      document.getElementById('agonyResistance').value = agonyResistance;
+      AGONY_RESISTANCE.value = P.AGONY_RESISTANCE;
       calculate();
     });
     /* Vitality */
-    $('#vitality').on('change', () => {
-      if (document.getElementById('vitality').value === '' || document
-        .getElementById('vitality').value.replace('.', '') < 1000) {
-        vitality = 1000;
-      } else if (document.getElementById('vitality').value.replace('.', '') >
-        9999) {
-        vitality = 9999;
+    $('#P\\.VITALITY').on('change', () => {
+      const VITALITY = document.getElementById('P.VITALITY');
+      if (VITALITY.value === '' || VITALITY.value.replace('.', '') < 1000) {
+        P.VITALITY = 1000;
+      } else if (VITALITY.value.replace('.', '') > 9999) {
+        P.VITALITY = 9999;
       } else {
-        vitality = document.getElementById('vitality').value.replace('.', '');
+        P.VITALITY = VITALITY.value.replace('.', '');
       }
-      document.getElementById('vitality').value = vitality;
+      VITALITY.value = P.VITALITY;
       calculate();
     });
-    /* a Agony Resistance */
-    $('#aAgonyResistance').on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/attribute/agonyResistance.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* a Critical Chance */
-    $('#aCriticalChance').on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/attribute/criticalChance.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* a Precision */
-    $('#aPrecision').on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/attribute/precision.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* a Vitality */
-    $('#aVitality').on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/attribute/vitality.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* Buff */
+    /* Boon */
     /* Fury */
-    $('#fury').on('click', () => {
-      fury = onClick(1, 'fury');
+    $('#P\\.FURY').on('click', () => {
+      P.FURY = onClick(1, 'P.FURY');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/buff/fury.html'
-      ).hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Retaliation */
-    $('#retaliation').on('click', () => {
-      retaliation = onClick(1, 'retaliation');
+    $('#P\\.RETALIATION').on('click', () => {
+      P.RETALIATION = onClick(1, 'P.RETALIATION');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/buff/retaliation.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Condition */
     /* Bleeding */
-    $('#bleeding').on('click', () => {
-      bleeding = onClick(1, 'bleeding');
+    $('#P\\.BLEEDING').on('click', () => {
+      P.BLEEDING = onClick(1, 'P.BLEEDING');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/condition/bleeding.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Burning */
-    $('#burning').on('click', () => {
-      burning = onClick(1, 'burning');
+    $('#P\\.BURNING').on('click', () => {
+      P.BURNING = onClick(1, 'P.BURNING');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/condition/burning.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Slow */
-    $('#slow').on('click', () => {
-      slow = onClick(1, 'slow');
+    $('#P\\.SLOW').on('click', () => {
+      P.SLOW = onClick(1, 'P.SLOW');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/condition/slow.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Vulnerability */
-    $('#vulnerability').on('click', () => {
-      vulnerability = onClick(25, 'vulnerability');
+    $('#P\\.VULNERABILITY').on('click', () => {
+      P.VULNERABILITY = onClick(25, 'P.VULNERABILITY');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/condition/vulnerability.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Weakness */
-    $('#weakness').on('click', () => {
-      weakness = onClick(1, 'weakness');
+    $('#P\\.WEAKNESS').on('click', () => {
+      P.WEAKNESS = onClick(1, 'P.WEAKNESS');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/condition/weakness.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Consumable */
     /* Anguished Tear of Alba */
-    $('#anguishedTearOfAlba').on('click', () => {
-      agonyResistance -= (anguishedTearOfAlba * (10 + (agonyChanneler +
-      recursiveResourcing + mistlockSingularities > 0 ? 5 : 0)));
-      anguishedTearOfAlba = onClick(1, 'anguishedTearOfAlba');
-      agonyResistance += (anguishedTearOfAlba * (10 + (agonyChanneler +
-      recursiveResourcing + mistlockSingularities > 0 ? 5 : 0)));
-      document.getElementById('agonyResistance').value = agonyResistance;
+    $('#P\\.ANGUISHED_TEAR_OF_ALBA').on('click', () => {
+      P.AGONY_RESISTANCE -= (P.ANGUISHED_TEAR_OF_ALBA * (10 + (P
+        .AGONY_CHANNELER + P.RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES > 0
+        ? 5 : 0)));
+      P.ANGUISHED_TEAR_OF_ALBA = onClick(1, 'P.ANGUISHED_TEAR_OF_ALBA');
+      P.AGONY_RESISTANCE += (P.ANGUISHED_TEAR_OF_ALBA * (10 + (P
+        .AGONY_CHANNELER + P.RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES > 0
+        ? 5 : 0)));
+      document.getElementById('agonyResistance').value = P.AGONY_RESISTANCE;
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/consumable/a' +
-        'nguishedTearOfAlba.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Effect */
     /* Rigorous Certainty */
-    $('#rigorousCertainty').on('click', () => {
-      agonyResistance -= rigorousCertainty;
-      rigorousCertainty = onClick(5, 'rigorousCertainty');
-      agonyResistance += rigorousCertainty;
-      document.getElementById('agonyResistance').value = agonyResistance;
+    $('#P\\.RIGOROUS_CERTAINTY').on('click', () => {
+      P.AGONY_RESISTANCE -= P.RIGOROUS_CERTAINTY;
+      P.RIGOROUS_CERTAINTY = onClick(5, 'P.RIGOROUS_CERTAINTY');
+      P.AGONY_RESISTANCE += P.RIGOROUS_CERTAINTY;
+      document.getElementById('agonyResistance').value = P.AGONY_RESISTANCE;
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/effect/rigorousCertainty.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Equipment */
-    /* Head Slot */
-    $('#headSlot').on('click', () => {
-      headSlot = equipment('headSlot', [45, 63, 30, 54]);
+    /* Amulet Slot */
+    $('#P\\.AMULET_SLOT').on('click', () => {
+      P.AMULET_SLOT = equipment('P.AMULET_SLOT', [108, 157, 71, 133, 72]);
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/headSlot.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* Shoulder Slot */
-    $('#shoulderSlot').on('click', () => {
-      shoulderSlot = equipment('shoulderSlot', [34, 47, 22, 40]);
-      calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/shoulderSlot.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* Chest Slot */
-    $('#chestSlot').on('click', () => {
-      chestSlot = equipment('chestSlot', [101, 141, 67, 121]);
-      calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/chestSlot.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* Hand Slot */
-    $('#handSlot').on('click', () => {
-      handSlot = equipment('handSlot', [34, 47, 22, 40]);
-      calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/handSlot.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* Leg Slot */
-    $('#legSlot').on('click', () => {
-      legSlot = equipment('legSlot', [67, 94, 44, 81]);
-      calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/legSlot.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* Feet Slot */
-    $('#feetSlot').on('click', () => {
-      feetSlot = equipment('feetSlot', [34, 47, 22, 40]);
-      calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/feetSlot.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* Sword Slot */
-    $('#swordSlot').on('click', () => {
-      swordSlot = equipment('swordSlot', [90, 125, 59, 108, 179, 251, 118, 215])
-      ;
-      calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/swordSlot.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
-    /* Shield Slot */
-    $('#shieldSlot').on('click', () => {
-      shieldSlot = equipment('shieldSlot', [90, 125, 59, 108, 0]);
-      calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/shieldSlot.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Back Slot */
-    $('#backSlot').on('click', () => {
-      backSlot = equipment('backSlot', [40, 63, 27, 52, 28]);
+    $('#P\\.BACK_SLOT').on('click', () => {
+      P.BACK_SLOT = equipment('P.BACK_SLOT', [40, 63, 27, 52, 28]);
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/backSlot.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Bear Trinket Slot */
-    $('#bearTrinketSlot').on('click', () => {
-      bearTrinketSlot = equipment('bearTrinketSlot', [74, 110, 49, 92, 50]);
+    $('#P\\.BEAR_TRINKET_SLOT').on('click', () => {
+      P.BEAR_TRINKET_SLOT = equipment('P.BEAR_TRINKET_SLOT', [74, 110, 49, 92,
+        50]);
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/bearTrinketSlot.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
+    });
+    /* Chest Slot */
+    $('#P\\.CHEST_SLOT').on('click', () => {
+      P.CHEST_SLOT = equipment('P.CHEST_SLOT', [101, 141, 67, 121]);
+      calculate();
     });
     /* Cube Trinket Slot */
-    $('#cubeTrinketSlot').on('click', () => {
-      cubeTrinketSlot = equipment('cubeTrinketSlot', [74, 110, 49, 92, 50]);
+    $('#P\\.CUBE_TRINKET_SLOT').on('click', () => {
+      P.CUBE_TRINKET_SLOT = equipment('P.CUBE_TRINKET_SLOT', [74, 110, 49, 92,
+        50]);
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/cubeTrinketSlot.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
-    /* Amulet Slot */
-    $('#amuletSlot').on('click', () => {
-      amuletSlot = equipment('amuletSlot', [108, 157, 71, 133, 72]);
+    /* Feet Slot */
+    $('#P\\.FEET_SLOT').on('click', () => {
+      P.FEET_SLOT = equipment('P.FEET_SLOT', [34, 47, 22, 40]);
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/amuletSlot.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
-    /* Right Ring Slot */
-    $('#rightRingSlot').on('click', () => {
-      rightRingSlot = equipment('rightRingSlot', [85, 126, 56, 106, 57]);
+    /* Hand Slot */
+    $('#P\\.HAND_SLOT').on('click', () => {
+      P.HAND_SLOT = equipment('P.HAND_SLOT', [34, 47, 22, 40]);
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/rightRingSlot.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
+    });
+    /* Head Slot */
+    $('#P\\.HEAD_SLOT').on('click', () => {
+      P.HEAD_SLOT = equipment('P.HEAD_SLOT', [45, 63, 30, 54]);
+      calculate();
     });
     /* Left Ring Slot */
-    $('#leftRingSlot').on('click', () => {
-      leftRingSlot = equipment('leftRingSlot', [85, 126, 56, 106, 57]);
+    $('#P\\.LEFT_RING_SLOT').on('click', () => {
+      P.LEFT_RING_SLOT = equipment('P.LEFT_RING_SLOT', [85, 126, 56, 106, 57]);
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/equipment/leftRingSlot.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
+    });
+    /* Leg Slot */
+    $('#P\\.LEG_SLOT').on('click', () => {
+      P.LEG_SLOT = equipment('P.LEG_SLOT', [67, 94, 44, 81]);
+      calculate();
+    });
+    /* Right Ring Slot */
+    $('#P\\.RIGHT_RING_SLOT').on('click', () => {
+      P.RIGHT_RING_SLOT = equipment('P.RIGHT_RING_SLOT', [85, 126, 56, 106, 57])
+      ;
+      calculate();
+    });
+    /* Shield Slot */
+    $('#P\\.SHIELD_SLOT').on('click', () => {
+      P.SHIELD_SLOT = equipment('P.SHIELD_SLOT', [90, 125, 59, 108, 0]);
+      calculate();
+    });
+    /* Shoulder Slot */
+    $('#P\\.SHOULDER_SLOT').on('click', () => {
+      P.SHOULDER_SLOT = equipment('P.SHOULDER_SLOT', [34, 47, 22, 40]);
+      calculate();
+    });
+    /* Sword Slot */
+    $('#P\\.SWORD_SLOT').on('click', () => {
+      P.SWORD_SLOT = equipment('P.SWORD_SLOT', [90, 125, 59, 108, 179, 251, 118,
+        215]);
+      calculate();
     });
     /* Fractal Attunement */
     /* Agony Channeler */
-    $('#agonyChanneler').on('click', () => {
+    $('#P\\.AGONY_CHANNELER').on('click', () => {
       resetFractalAttunement();
-      agonyChanneler = onClick(10, 'agonyChanneler', 'recursiveResourcing',
-        'mistlockSingularities');
-      agonyResistance += (anguishedTearOfAlba * (10 + (agonyChanneler +
-      recursiveResourcing + mistlockSingularities > 0 ? 5 : 0)));
-      document.getElementById('agonyResistance').value = agonyResistance;
+      P.AGONY_CHANNELER = onClick(10, 'P.AGONY_CHANNELER',
+        'P.RECURSIVE_RESOURCING', 'P.MISTLOCK_SINGULARITIES');
+      P.AGONY_RESISTANCE += (P.ANGUISHED_TEAR_OF_ALBA * (10 + (P
+        .AGONY_CHANNELER + P.RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES > 0
+        ? 5 : 0)));
+      document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/fractalAttun' +
-        'ement/agonyChanneler.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Recursive Resourcing */
-    $('#recursiveResourcing').on('click', () => {
+    $('#P\\.RECURSIVE_RESOURCING').on('click', () => {
       resetFractalAttunement();
-      recursiveResourcing = onClick(25, 'recursiveResourcing', 'agonyChanneler',
-        'mistlockSingularities');
-      agonyResistance += (anguishedTearOfAlba * (10 + (agonyChanneler +
-      recursiveResourcing + mistlockSingularities > 0 ? 5 : 0)));
-      document.getElementById('agonyResistance').value = agonyResistance;
+      P.RECURSIVE_RESOURCING = onClick(25, 'P.RECURSIVE_RESOURCING',
+        'P.AGONY_CHANNELER', 'P.MISTLOCK_SINGULARITIES');
+      P.AGONY_RESISTANCE += (P.ANGUISHED_TEAR_OF_ALBA * (10 + (P
+        .AGONY_CHANNELER + P.RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES > 0
+        ? 5 : 0)));
+      document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/fractalAttun' +
-        'ement/recursiveResourcing.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Mistlock Singularities */
-    $('#mistlockSingularities').on('click', () => {
+    $('#P\\.MISTLOCK_SINGULARITIES').on('click', () => {
       resetFractalAttunement();
-      mistlockSingularities = onClick(30, 'mistlockSingularities',
-        'agonyChanneler', 'recursiveResourcing');
-      agonyResistance += (anguishedTearOfAlba * (10 + (agonyChanneler +
-      recursiveResourcing + mistlockSingularities > 0 ? 5 : 0)));
-      document.getElementById('agonyResistance').value = agonyResistance;
+      P.MISTLOCK_SINGULARITIES = onClick(30, 'P.MISTLOCK_SINGULARITIES',
+        'P.AGONY_CHANNELER', 'P.RECURSIVE_RESOURCING');
+      P.AGONY_RESISTANCE += (P.ANGUISHED_TEAR_OF_ALBA * (10 + (P
+        .AGONY_CHANNELER + P.RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES > 0
+        ? 5 : 0)));
+      document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/fractalAttun' +
-        'ement/mistlockSingularities.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Gizmo */
     /* Infinite Mist Omnipotion */
-    $('#infiniteMistOmnipotion').on('click', () => {
-      infiniteMistOmnipotion = onClick(5, 'infiniteMistOmnipotion');
+    $('#P\\.INFINITE_MIST_OMNIPOTION').on('click', () => {
+      P.INFINITE_MIST_OMNIPOTION = onClick(5, 'P.INFINITE_MIST_OMNIPOTION');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/gizmo/infiniteMistOmnipotion.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Mist Attunement */
     /* Mist Attunement 1 */
-    $('#mistAttunement1').on('click', () => {
+    $('#P\\.MIST_ATTUNEMENT_1').on('click', () => {
       resetMistAttunement();
-      mistAttunement1 = onClick(5, 'mistAttunement1', 'mistAttunement2',
-        'mistAttunement3', 'mistAttunement4');
-      agonyResistance += mistAttunement1;
-      document.getElementById('agonyResistance').value = agonyResistance;
+      P.MIST_ATTUNEMENT_1 = onClick(5, 'P.MIST_ATTUNEMENT_1',
+        'P.MIST_ATTUNEMENT_2', 'P.MIST_ATTUNEMENT_3', 'P.MIST_ATTUNEMENT_4');
+      P.AGONY_RESISTANCE += P.MIST_ATTUNEMENT_1;
+      document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/mistAttuneme' +
-        'nt/mistAttunement1.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Mist Attunement 2 */
-    $('#mistAttunement2').on('click', () => {
+    $('#P\\.MIST_ATTUNEMENT_2').on('click', () => {
       resetMistAttunement();
-      mistAttunement2 = onClick(10, 'mistAttunement2', 'mistAttunement1',
-        'mistAttunement3', 'mistAttunement4');
-      agonyResistance += mistAttunement2;
-      document.getElementById('agonyResistance').value = agonyResistance;
+      P.MIST_ATTUNEMENT_2 = onClick(10, 'P.MIST_ATTUNEMENT_2',
+        'P.MIST_ATTUNEMENT_1', 'P.MIST_ATTUNEMENT_3', 'P.MIST_ATTUNEMENT_4');
+      P.AGONY_RESISTANCE += P.MIST_ATTUNEMENT_2;
+      document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/mistAttuneme' +
-        'nt/mistAttunement2.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Mist Attunement 3 */
-    $('#mistAttunement3').on('click', () => {
+    $('#P\\.MIST_ATTUNEMENT_3').on('click', () => {
       resetMistAttunement();
-      mistAttunement3 = onClick(15, 'mistAttunement3', 'mistAttunement1',
-        'mistAttunement2', 'mistAttunement4');
-      agonyResistance += mistAttunement3;
-      document.getElementById('agonyResistance').value = agonyResistance;
+      P.MIST_ATTUNEMENT_3 = onClick(15, 'P.MIST_ATTUNEMENT_3',
+        'P.MIST_ATTUNEMENT_1', 'P.MIST_ATTUNEMENT_2', 'P.MIST_ATTUNEMENT_4');
+      P.AGONY_RESISTANCE += P.MIST_ATTUNEMENT_3;
+      document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/mistAttuneme' +
-        'nt/mistAttunement3.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Mist Attunement 4 */
-    $('#mistAttunement4').on('click', () => {
+    $('#P\\.MIST_ATTUNEMENT_4').on('click', () => {
       resetMistAttunement();
-      mistAttunement4 = onClick(25, 'mistAttunement4', 'mistAttunement1',
-        'mistAttunement2', 'mistAttunement3');
-      agonyResistance += mistAttunement4;
-      document.getElementById('agonyResistance').value = agonyResistance;
+      P.MIST_ATTUNEMENT_4 = onClick(25, 'P.MIST_ATTUNEMENT_4',
+        'P.MIST_ATTUNEMENT_1', 'P.MIST_ATTUNEMENT_2', 'P.MIST_ATTUNEMENT_3');
+      P.AGONY_RESISTANCE += P.MIST_ATTUNEMENT_4;
+      document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/mistAttuneme' +
-        'nt/mistAttunement4.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Profession */
     /* Elementalist */
-    $('#elementalist').on('click', () => {
+    $('#P\\.ELEMENTALIST').on('click', () => {
       $('#trait').load('view/precisionCalculator/trait/elementalist.html',
         () => {
           resetTrait();
           elementalistMenu();
         });
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/profession/elementalist.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Engineer */
-    $('#engineer').on('click', () => {
+    $('#P\\.ENGINEER').on('click', () => {
       $('#trait').load('view/precisionCalculator/trait/engineer.html', () => {
         resetTrait();
         engineerMenu();
       });
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/profession/engineer.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Guardian */
-    $('#guardian').on('click', () => {
+    $('#P\\.GUARDIAN').on('click', () => {
       $('#trait').load('view/precisionCalculator/trait/guardian.html', () => {
         resetTrait();
         guardianMenu();
       });
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/profession/guardian.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Mesmer */
-    $('#mesmer').on('click', () => {
+    $('#P\\.MESMER').on('click', () => {
       $('#trait').load('view/precisionCalculator/trait/mesmer.html', () => {
         resetTrait();
         mesmerMenu();
       });
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/profession/mesmer.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Necromancer */
-    $('#necromancer').on('click', () => {
+    $('#P\\.NECROMANCER').on('click', () => {
       $('#trait').load('view/precisionCalculator/trait/necromancer.html',
         () => {
           resetTrait();
           necromancerMenu();
         });
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/profession/necromancer.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Ranger */
-    $('#ranger').on('click', () => {
+    $('#P\\.RANGER').on('click', () => {
       $('#trait').load('view/precisionCalculator/trait/ranger.html', () => {
         resetTrait();
         rangerMenu();
       });
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/profession/ranger.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Revenant */
-    $('#revenant').on('click', () => {
+    $('#P\\.REVENANT').on('click', () => {
       $('#trait').load('view/precisionCalculator/trait/revenant.html', () => {
         resetTrait();
         revenantMenu();
       });
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/profession/revenant.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Thief */
-    $('#thief').on('click', () => {
+    $('#P\\.THIEF').on('click', () => {
       $('#trait').load('view/precisionCalculator/trait/thief.html', () => {
         resetTrait();
         thiefMenu();
       });
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/profession/thief.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Warrior */
-    $('#warrior').on('click', () => {
+    $('#P\\.WARRIOR').on('click', () => {
       $('#trait').load('view/precisionCalculator/trait/warrior.html', () => {
         resetTrait();
         warriorMenu();
       });
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/profession/warrior.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
-    /* Sigil of Accuracy */
-    /* Minor Sigil of Accuracy */
-    $('#minorSigilOfAccuracy').on('click', () => {
-      resetSigilOfAccuracy();
-      minorSigilOfAccuracy = onClick(3, 'minorSigilOfAccuracy',
-        'majorSigilOfAccuracy', 'superiorSigilOfAccuracy');
-      calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/sigilOfAccur' +
-        'acy/minorSigilOfAccuracy.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
-    });
+    /* Sigil */
     /* Major Sigil of Accuracy */
-    $('#majorSigilOfAccuracy').on('click', () => {
+    $('#P\\.MAJOR_SIGIL_OF_ACCURACY').on('click', () => {
       resetSigilOfAccuracy();
-      majorSigilOfAccuracy = onClick(5, 'majorSigilOfAccuracy',
-        'minorSigilOfAccuracy', 'superiorSigilOfAccuracy');
+      P.MAJOR_SIGIL_OF_ACCURACY = onClick(5, 'P.MAJOR_SIGIL_OF_ACCURACY',
+        'P.MINOR_SIGIL_OF_ACCURACY', 'P.SUPERIOR_SIGIL_OF_ACCURACY');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/sigilOfAccur' +
-        'acy/majorSigilOfAccuracy.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
+    });
+    /* Minor Sigil of Accuracy */
+    $('#P\\.MINOR_SIGIL_OF_ACCURACY').on('click', () => {
+      resetSigilOfAccuracy();
+      P.MINOR_SIGIL_OF_ACCURACY = onClick(3, 'P.MINOR_SIGIL_OF_ACCURACY',
+        'P.MAJOR_SIGIL_OF_ACCURACY', 'P.SUPERIOR_SIGIL_OF_ACCURACY');
+      calculate();
     });
     /* Superior Sigil of Accuracy */
-    $('#superiorSigilOfAccuracy').on('click', () => {
+    $('#P\\.SUPERIOR_SIGIL_OF_ACCURACY').on('click', () => {
       resetSigilOfAccuracy();
-      superiorSigilOfAccuracy = onClick(7, 'superiorSigilOfAccuracy',
-        'minorSigilOfAccuracy', 'majorSigilOfAccuracy');
+      P.SUPERIOR_SIGIL_OF_ACCURACY = onClick(7, 'P.SUPERIOR_SIGIL_OF_ACCURACY',
+        'P.MAJOR_SIGIL_OF_ACCURACY', 'P.MINOR_SIGIL_OF_ACCURACY');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/sigilOfAccur' +
-        'acy/superiorSigilOfAccuracy.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
-    /* Sigil of Vision */
     /* Superior Sigil of Vision */
-    $('#superiorSigilOfVision').on('click', () => {
-      superiorSigilOfVision = onClick(1, 'superiorSigilOfVision');
+    $('#P\\.SUPERIOR_SIGIL_OF_VISION').on('click', () => {
+      P.SUPERIOR_SIGIL_OF_VISION = onClick(1, 'P.SUPERIOR_SIGIL_OF_VISION');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/sigilOfVisio' +
-        'n/superiorSigilOfVision.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Trait */
     /* Spotter */
-    $('#spotter').on('click', () => {
-      spotter = onClick(100, 'spotter');
+    $('#P\\.SPOTTER').on('click', () => {
+      P.SPOTTER = onClick(100, 'P.SPOTTER');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/ranger/spotter.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Utility skill */
     /* Banner of Discipline */
-    $('#bannerOfDiscipline').on('click', () => {
-      bannerOfDiscipline = onClick(100, 'bannerOfDiscipline');
+    $('#P.BANNER_OF_DISCIPLINE').on('click', () => {
+      P.BANNER_OF_DISCIPLINE = onClick(100, 'P.BANNER_OF_DISCIPLINE');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/utilitySkill' +
-        '/bannerOfDiscipline.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Conjure Lightning Hammer */
-    $('#conjureLightningHammer').on('click', () => {
-      conjureLightningHammer = onClick(180, 'conjureLightningHammer');
+    $('#P\\.CONJURE_LIGHTNING_HAMMER').on('click', () => {
+      P.CONJURE_LIGHTNING_HAMMER = onClick(180, 'P.CONJURE_LIGHTNING_HAMMER');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/utilitySkill' +
-        '/conjureLightningHammer.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Signet of Agility */
-    $('#signetOfAgility').on('click', () => {
-      resetUtilitySkill('signetOfAgility');
-      signetOfAgility = onClick(180, 'signetOfAgility');
+    $('#P\\.SIGNET_OF_AGILITY').on('click', () => {
+      resetUtilitySkill('P.SIGNET_OF_AGILITY');
+      P.SIGNET_OF_AGILITY = onClick(180, 'P.SIGNET_OF_AGILITY');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/utilitySkill/signetOfAgility.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Signet of Fire */
-    $('#signetOfFire').on('click', () => {
-      resetUtilitySkill('signetOfFire');
-      signetOfFire = onClick(180, 'signetOfFire');
+    $('#P\\.SIGNET_OF_FIRE').on('click', () => {
+      resetUtilitySkill('P.SIGNET_OF_FIRE');
+      P.SIGNET_OF_FIRE = onClick(180, 'P.SIGNET_OF_FIRE');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/utilitySkill/signetOfFire.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Signet of Fury */
-    $('#signetOfFury').on('click', () => {
-      resetUtilitySkill('signetOfFury');
-      signetOfFury = onClick(180, 'signetOfFury');
+    $('#P\\.SIGNET_OF_FURY').on('click', () => {
+      resetUtilitySkill('P.SIGNET_OF_FURY');
+      P.SIGNET_OF_FURY = onClick(180, 'P.SIGNET_OF_FURY');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/utilitySkill/signetOfFury.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
   });
 }
 
 function loadPrecisionCalculator () {
-  document.getElementById('agonyImpedance').value = agonyImpedance / 5;
-  document.getElementById('agonyResistance').value = agonyResistance;
-  document.getElementById('vitality').value = vitality;
-  const PRECISION_CALCULATOR = [['fury', 1], ['retaliation', 1], ['bleeding',
-    1], ['burning', 1], ['slow', 1], ['vulnerability', 25], ['weakness', 1],
-  ['anguishedTearOfAlba', 1], ['rigorousCertainty', 5], ['agonyChanneler', 10],
-  ['recursiveResourcing', 25], ['mistlockSingularities', 30],
-  ['infiniteMistOmnipotion', 5], ['mistAttunement1', 5], ['mistAttunement2',
-    10], ['mistAttunement3', 15], ['mistAttunement4', 25],
-  ['minorSigilOfAccuracy', 3], ['majorSigilOfAccuracy', 5],
-  ['superiorSigilOfAccuracy', 7], ['superiorSigilOfVision', 1], ['spotter',
-    100], ['bannerOfDiscipline', 100], ['conjureLightningHammer', 180],
-  ['signetOfAgility', 180], ['signetOfFire', 180], ['signetOfFury', 180]];
-  const PROFESSION = [['engineer', ['hematicFocus', 10], ['highCaliber', 15]],
-    ['ranger', ['huntersTactics', 10], ['preciseStrike', 1], ['viciousQuarry',
-      10]], ['thief', ['beQuickOrBeKilled', 200], ['hiddenKiller', 1],
-      ['keenObserver', 5], ['silentScope', 240], ['twinFangs', 7]],
-    ['elementalist', ['elementsOfRage', 0.13], ['superiorElements', 10]],
-    ['mesmer', ['dangerTime', 15]], ['necromancer', ['deathPerception', 33],
-      ['decimateDefenses', 2], ['furiousDemise', 180], ['targetTheWeak', 28]],
-    ['guardian', ['radiantPower', 10], ['rightHandStrength', 80],
-      ['righteousInstincts', 25]], ['revenant', ['brutalMomentum', 33]],
-    ['warrior', ['burstPrecision', 1], ['doubledStandards', 1],
-      ['unsuspectingFoe', 50]]];
+  document.getElementById('P.AGONY_IMPEDANCE').value = P.AGONY_IMPEDANCE / 5;
+  document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
+  document.getElementById('P.VITALITY').value = P.VITALITY;
+  const PRECISION_CALCULATOR = [['P.FURY', 1], ['P.RETALIATION', 1],
+    ['P.BLEEDING', 1], ['P.BURNING', 1], ['P.SLOW', 1], ['P.VULNERABILITY', 25],
+    ['P.WEAKNESS', 1], ['P.ANGUISHED_TEAR_OF_ALBA', 1], ['P.RIGOROUS_CERTAINTY',
+      5], ['P.AGONY_CHANNELER', 10], ['P.RECURSIVE_RESOURCING', 25],
+    ['P.MISTLOCK_SINGULARITIES', 30], ['P.INFINITE_MIST_OMNIPOTION', 5],
+    ['P.MIST_ATTUNEMENT_1', 5], ['P.MIST_ATTUNEMENT_2', 10],
+    ['P.MIST_ATTUNEMENT_3', 15], ['P.MIST_ATTUNEMENT_4', 25],
+    ['P.MAJOR_SIGIL_OF_ACCURACY', 5], ['P.MINOR_SIGIL_OF_ACCURACY', 3],
+    ['P.SUPERIOR_SIGIL_OF_ACCURACY', 7], ['P.SUPERIOR_SIGIL_OF_VISION', 1],
+    ['P.SPOTTER', 100], ['P.BANNER_OF_DISCIPLINE', 100],
+    ['P.CONJURE_LIGHTNING_HAMMER', 180], ['P.SIGNET_OF_AGILITY', 180],
+    ['P.SIGNET_OF_FIRE', 180], ['P.SIGNET_OF_FURY', 180]];
+  const PROFESSION = [['P.ELEMENTALIST', ['P.ELEMENTS_OF_RAGE', 0.13],
+    ['P.SUPERIOR_ELEMENTS', 10]], ['P.ENGINEER', ['P.HEMATIC.FOCUS', 10],
+    ['P.HIGH_CALIBER', 15]], ['P.GUARDIAN', ['P.RADIANT_POWER', 10],
+    ['P.RIGHT_HAND_STRENGTH', 80], ['P.RIGHTEAOUS_INSTINCTS', 25]], ['P.MESMER',
+    ['P.DANGER_TIME', 15]], ['P.NECROMANCER', ['P.DEATH_PERCEPTION', 33],
+    ['P.DECIMATE_DEFENSES', 2], ['P.FURIOUS_DEMISE', 180], ['P.TARGET_THE_WEAK',
+      28]], ['P.RANGER', ['P.HUNTERS_TACTICS', 10], ['P.PRECISE_STRIKE', 1],
+    ['P.VICIOUS_QUARRY', 10]], ['P.REVENANT', ['P.BRUTAL_MOMENTUM', 33]],
+  ['P.THIEF', ['P.BE_QUICK_OR_BE_KILLED', 200], ['P.HIDDEN_KILLER', 1],
+    ['P.KEEN_OBSERVER', 5], ['P.SILENT_SCOPE', 240], ['P.TWIN_FANGS', 7]],
+  ['P.WARRIOR', ['P.BURST_PRECISION', 1], ['P.DOUBLED_STANDARDS', 1],
+    ['P.UNSUSPECTING_FOE', 50]]];
   let temp = null;
   PROFESSION.forEach(element => {
     if (eval(element[0]) === 1) {
@@ -1015,7 +474,8 @@ function loadPrecisionCalculator () {
     }
   });
   if (temp != null) {
-    $('#trait').load('view/precisionCalculator/' + temp + '.html', () => {
+    $('#trait').load('view/precisionCalculator/trait/' + temp.substring(2)
+      .toLowerCase() + '.html', () => {
       PRECISION_CALCULATOR.forEach(element => {
         if (eval(element[0]) === 0) {
           document.getElementById(element[0]).style.borderColor = 'transparent';
@@ -1025,7 +485,7 @@ function loadPrecisionCalculator () {
           document.getElementById(element[0]).style.borderColor = '#ED7F10';
         }
       });
-      eval(temp + 'Menu()');
+      eval(temp.substring(2).toLowerCase() + 'Menu()');
     });
   } else {
     PRECISION_CALCULATOR.forEach(element => {
@@ -1038,450 +498,266 @@ function loadPrecisionCalculator () {
       }
     });
   }
-  const EQUIPMENT = ['headSlot', 'shoulderSlot', 'chestSlot', 'handSlot',
-    'legSlot', 'feetSlot', 'swordSlot', 'shieldSlot', 'backSlot',
-    'bearTrinketSlot', 'cubeTrinketSlot', 'amuletSlot', 'rightRingSlot',
-    'leftRingSlot'];
+  const EQUIPMENT = ['P.AMULET_SLOT', 'P.BACK_SLOT', 'P.BEAR_TRINKET_SLOT',
+    'P.CHEST_SLOT', 'P.CUBE_TRINKET_SLOT', 'P.FEET_SLOT', 'P.HAND_SLOT',
+    'P.HEAD_SLOT', 'P.LEFT_RING_SLOT', 'P.LEG_SLOT', 'P.RIGHT_RING_SLOT',
+    'P.SHIELD_SLOT', 'P.SHOULDER_SLOT', 'P.SWORD_SLOT'];
   EQUIPMENT.forEach(element => {
-    document.getElementById(element + 'Precision').innerText = eval(element);
+    document.getElementById(element + '_PRECISION').innerText = eval(element);
   });
 }
 
 function calculate () {
-  const AGONY_RESISTANCE_PRECISION = agonyResistance * (agonyChanneler +
-    recursiveResourcing + mistlockSingularities) / 100 * infiniteMistOmnipotion;
-  const EQUIPMENT = headSlot + shoulderSlot + chestSlot + handSlot + legSlot +
-    feetSlot + swordSlot + shieldSlot + backSlot + bearTrinketSlot +
-    cubeTrinketSlot + amuletSlot + rightRingSlot + leftRingSlot;
-  const TRAIT_RANGER_PRECISION = spotter;
-  const TRAIT_THIEF_PRECISION = beQuickOrBeKilled + silentScope;
-  const TRAIT_ELEMENTALIST_PRECISION = elementsOfRage * vitality;
-  const TRAIT_NECROMANCER_PRECISION = furiousDemise;
-  const TRAIT_GUARDIAN_PRECISION = rightHandStrength;
-  const UTILITY_SKILL = (doubledStandards + 1) * bannerOfDiscipline +
-    conjureLightningHammer + signetOfAgility + signetOfFire + signetOfFury;
+  const AGONY_RESISTANCE_PRECISION = P.AGONY_RESISTANCE * (P.AGONY_CHANNELER + P
+    .RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES) / 100 * P
+    .INFINITE_MIST_OMNIPOTION;
+  const EQUIPMENT = P.AMULET_SLOT + P.BACK_SLOT + P.BEAR_TRINKET_SLOT + P
+    .CHEST_SLOT + P.CUBE_TRINKET_SLOT + P.FEET_SLOT + P.HAND_SLOT + P
+    .HEAD_SLOT + P.LEFT_RING_SLOT + P.LEG_SLOT + P.RIGHT_RING_SLOT + P
+    .SHIELD_SLOT + P.SHOULDER_SLOT + P.SWORD_SLOT;
+  const TRAIT_RANGER_PRECISION = P.SPOTTER;
+  const TRAIT_THIEF_PRECISION = P.BE_QUICK_OR_BE_KILLED + P.SILENT_SCOPE;
+  const TRAIT_ELEMENTALIST_PRECISION = P.ELEMENTS_OF_RAGE * P.VITALITY;
+  const TRAIT_NECROMANCER_PRECISION = P.FURIOUS_DEMISE;
+  const TRAIT_GUARDIAN_PRECISION = P.RIGHT_HAND_STRENGTH;
+  const UTILITY_SKILL = (P.DOUBLED_STANDARDS + 1) * P.BANNER_OF_DISCIPLINE + P
+    .CONJURE_LIGHTNING_HAMMER + P.SIGNET_OF_AGILITY + P.SIGNET_OF_FIRE + P
+    .SIGNET_OF_FURY;
   const PRECISION = 1000 + AGONY_RESISTANCE_PRECISION + EQUIPMENT +
     TRAIT_RANGER_PRECISION + TRAIT_THIEF_PRECISION +
     TRAIT_ELEMENTALIST_PRECISION + TRAIT_NECROMANCER_PRECISION +
     TRAIT_GUARDIAN_PRECISION + UTILITY_SKILL;
-  demoStart(parseInt(document.getElementById('precision').innerText.replace(',',
-    '')), 0, '', '', 'precision', PRECISION);
-  const BUFF = fury * 20;
-  const SIGIL_OF_ACCURACY = minorSigilOfAccuracy + majorSigilOfAccuracy +
-    superiorSigilOfAccuracy;
-  const TRAIT_ENGINEER_CRITICAL_CHANCE = hematicFocus * bleeding + highCaliber;
-  const TRAIT_RANGER_CRITICAL_CHANCE = huntersTactics + viciousQuarry * fury;
-  const TRAIT_THIEF_CRITICAL_CHANCE = keenObserver + twinFangs;
-  const TRAIT_ELEMENTALIST_CRITICAL_CHANCE = superiorElements * weakness;
-  const TRAIT_MESMER_CRITICAL_CHANCE = dangerTime * slow;
-  const TRAIT_NECROMANCER_CRITICAL_CHANCE = deathPerception + decimateDefenses *
-    vulnerability + targetTheWeak;
-  const TRAIT_GUARDIAN_CRITICAL_CHANCE = radiantPower * burning +
-    righteousInstincts * retaliation;
+  demoStart(parseInt(document.getElementById('P.PRECISION').innerText.replace(
+    ',', '')), 0, '', '', 'P.PRECISION', PRECISION);
+  const BUFF = P.FURY * 20;
+  const SIGIL_OF_ACCURACY = P.MAJOR_SIGIL_OF_ACCURACY + P
+    .MINOR_SIGIL_OF_ACCURACY + P.SUPERIOR_SIGIL_OF_ACCURACY;
+  const TRAIT_ENGINEER_CRITICAL_CHANCE = P.HEMATIC_FOCUS * P.BLEEDING + P
+    .HIGH_CALIBER;
+  const TRAIT_RANGER_CRITICAL_CHANCE = P.HUNTERS_TACTICS + P.VICIOUS_QUARRY * P
+    .FURY;
+  const TRAIT_THIEF_CRITICAL_CHANCE = P.KEEN_OBSERVER + P.TWIN_FANGS;
+  const TRAIT_ELEMENTALIST_CRITICAL_CHANCE = P.SUPERIOR_ELEMENTS * P.WEAKNESS;
+  const TRAIT_MESMER_CRITICAL_CHANCE = P.DANGER_TIME * P.SLOW;
+  const TRAIT_NECROMANCER_CRITICAL_CHANCE = P.DEATH_PERCEPTION + P
+    .DECIMATE_DEFENSES * P.VULNERABILITY + P.TARGET_THE_WEAK;
+  const TRAIT_GUARDIAN_CRITICAL_CHANCE = P.RADIANT_POWER * P.BURNING + P
+    .RIGHTEOUS_INSTINCTS * P.RETALIATION;
   let CRITICAL_CHANCE = 5 + (PRECISION - 1000) / 21 + BUFF + SIGIL_OF_ACCURACY +
     TRAIT_ENGINEER_CRITICAL_CHANCE + TRAIT_RANGER_CRITICAL_CHANCE +
     TRAIT_THIEF_CRITICAL_CHANCE + TRAIT_ELEMENTALIST_CRITICAL_CHANCE +
     TRAIT_MESMER_CRITICAL_CHANCE + TRAIT_NECROMANCER_CRITICAL_CHANCE +
-    TRAIT_GUARDIAN_CRITICAL_CHANCE + brutalMomentum + unsuspectingFoe;
-  if (burstPrecision === 1 || hiddenKiller === 1 || preciseStrike === 1 ||
-    superiorSigilOfVision === 1) {
+    TRAIT_GUARDIAN_CRITICAL_CHANCE + P.BRUTAL_MOMENTUM + P.UNSUSPECTING_FOE;
+  if (P.BURST_PRECISION === 1 || P.HIDDEN_KILLER === 1 || P.PRECISE_STRIKE ===
+    1 || P.SUPERIOR_SIGIL_OF_VISION === 1) {
     CRITICAL_CHANCE = 100;
   }
-  demoStart(parseFloat(document.getElementById('criticalChance').innerText
-    .substring(0, document.getElementById('criticalChance').innerText.length -
-      2)), 2, '', ' %', 'criticalChance', CRITICAL_CHANCE.toFixed(2));
+  demoStart(parseFloat(document.getElementById('P.CRITICAL_CHANCE').innerText
+    .substring(0, document.getElementById('P.CRITICAL_CHANCE').innerText
+      .length - 2)), 2, '', ' %', 'P.CRITICAL_CHANCE', CRITICAL_CHANCE.toFixed(2
+  ));
 }
 
 function resetTrait () {
-  hematicFocus = highCaliber = preciseStrike = huntersTactics = viciousQuarry =
-    beQuickOrBeKilled = hiddenKiller = keenObserver = silentScope = twinFangs =
-      elementsOfRage = superiorElements = dangerTime = deathPerception =
-        decimateDefenses = furiousDemise = targetTheWeak = radiantPower =
-          rightHandStrength = righteousInstincts = brutalMomentum =
-            burstPrecision = doubledStandards = unsuspectingFoe = 0;
+  P.BE_QUICK_OR_BE_KILLED = P.BRUTAL_MOMENTUM = P.BURST_PRECISION = P
+    .DANGER_TIME = P.DEATH_PERCEPTION = P.DECIMATE_DEFENSES = P
+      .DOUBLED_STANDARDS = P.ELEMENTS_OF_RAGE = P.FURIOUS_DEMISE = P
+        .HEMATIC_FOCUS = P.HIDDEN_KILLER = P.HIGH_CALIBER = P.HUNTERS_TACTICS =
+    P.KEEN_OBSERVER = P.PRECISE_STRIKE = P.RADIANT_POWER = P
+      .RIGHTEOUS_INSTINCTS = P.RIGHT_HAND_STRENGTH = P.SILENT_SCOPE = P
+        .SUPERIOR_ELEMENTS = P.TARGET_THE_WEAK = P.TWIN_FANGS = P
+          .UNSUSPECTING_FOE = P.VICIOUS_QUARRY = 0;
   calculate();
 }
 
 function elementalistMenu () {
-  document.title = 'Elementalist - Precision Calculator - Fiery Greatsword';
   resetProfession();
-  document.getElementById('elementalist').style.borderColor = '#00FF00';
-  elementalist = 1;
-  $(($) => {
+  document.getElementById('P.ELEMENTALIST').style.borderColor = '#00FF00';
+  P.ELEMENTALIST = 1;
+  $(() => {
     /* Elements of Rage */
-    $('#elementsOfRage').on('click', () => {
-      elementsOfRage = onClick(0.13, 'elementsOfRage');
+    $('#P\\.ELEMENTS_OF_RAGE').on('click', () => {
+      P.ELEMENTS_OF_RAGE = onClick(0.13, 'P.ELEMENTS_OF_RAGE');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/elemen' +
-        'talist/elementsOfRage.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Superior Elements */
-    $('#superiorElements').on('click', () => {
-      superiorElements = onClick(10, 'superiorElements');
+    $('#P\\.SUPERIOR_ELEMENTS').on('click', () => {
+      P.SUPERIOR_ELEMENTS = onClick(10, 'P.SUPERIOR_ELEMENTS');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/elemen' +
-        'talist/superiorElements.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
   });
 }
 
 function engineerMenu () {
-  document.title = 'Engineer - Precision Calculator - Fiery Greatsword';
   resetProfession();
-  document.getElementById('engineer').style.borderColor = '#00FF00';
-  engineer = 1;
-  $(($) => {
+  document.getElementById('P.ENGINEER').style.borderColor = '#00FF00';
+  P.ENGINEER = 1;
+  $(() => {
     /* Hematic Focus */
-    $('#hematicFocus').on('click', () => {
-      hematicFocus = onClick(10, 'hematicFocus');
+    $('#P\\.HEMATIC_FOCUS').on('click', () => {
+      P.HEMATIC_FOCUS = onClick(10, 'P.HEMATIC_FOCUS');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/engineer/hematicFocus.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* High Caliber */
-    $('#highCaliber').on('click', () => {
-      highCaliber = onClick(15, 'highCaliber');
+    $('#P\\.HIGH_CALIBER').on('click', () => {
+      P.HIGH_CALIBER = onClick(15, 'P.HIGH_CALIBER');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/engineer/highCaliber.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
   });
 }
 
 function guardianMenu () {
-  document.title = 'Guardian - Precision Calculator - Fiery Greatsword';
   resetProfession();
-  document.getElementById('guardian').style.borderColor = '#00FF00';
-  guardian = 1;
-  $(($) => {
+  document.getElementById('P.GUARDIAN').style.borderColor = '#00FF00';
+  P.GUARDIAN = 1;
+  $(() => {
     /* Radiant Power */
-    $('#radiantPower').on('click', () => {
-      radiantPower = onClick(10, 'radiantPower');
+    $('#P\\.RADIANT_POWER').on('click', () => {
+      P.RADIANT_POWER = onClick(10, 'P.RADIANT_POWER');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/guardian/radiantPower.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Right-Hand Strength */
-    $('#rightHandStrength').on('click', () => {
-      rightHandStrength = onClick(80, 'rightHandStrength');
+    $('#P\\.RIGHT_HAND_STRENGTH').on('click', () => {
+      P.RIGHT_HAND_STRENGTH = onClick(80, 'P.RIGHT_HAND_STRENGTH');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/guardi' +
-        'an/rightHandStrength.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Righteous Instinct */
-    $('#righteousInstincts').on('click', () => {
-      righteousInstincts = onClick(25, 'righteousInstincts');
+    $('#P\\.RIGHTEOUS_INSTINCTS').on('click', () => {
+      P.RIGHTEOUS_INSTINCTS = onClick(25, 'P.RIGHTEOUS_INSTINCTS');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/guardi' +
-        'an/righteousInstincts.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
   });
 }
 
 function mesmerMenu () {
-  document.title = 'Mesmer - Precision Calculator - Fiery Greatsword';
   resetProfession();
-  document.getElementById('mesmer').style.borderColor = '#00FF00';
-  mesmer = 1;
-  $(($) => {
+  document.getElementById('P.MESMER').style.borderColor = '#00FF00';
+  P.MESMER = 1;
+  $(() => {
     /* Danger Time */
-    $('#dangerTime').on('click', () => {
-      dangerTime = onClick(15, 'dangerTime');
+    $('#P\\.DANGER_TIME').on('click', () => {
+      P.DANGER_TIME = onClick(15, 'P.DANGER_TIME');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/mesmer/dangerTime.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
   });
 }
 
 function necromancerMenu () {
-  document.title = 'Necromancer - Precision Calculator - Fiery Greatsword';
   resetProfession();
-  document.getElementById('necromancer').style.borderColor = '#00FF00';
-  necromancer = 1;
-  $(($) => {
+  document.getElementById('P.NECROMANCER').style.borderColor = '#00FF00';
+  P.NECROMANCER = 1;
+  $(() => {
     /* Death Perception */
-    $('#deathPerception').on('click', () => {
-      deathPerception = onClick(33, 'deathPerception');
+    $('#P\\.DEATH_PERCEPTION').on('click', () => {
+      P.DEATH_PERCEPTION = onClick(33, 'P.DEATH_PERCEPTION');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/necrom' +
-        'ancer/deathPerception.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Decimate Defenses */
-    $('#decimateDefenses').on('click', () => {
-      decimateDefenses = onClick(2, 'decimateDefenses');
+    $('#P\\.DECIMATE_DEFENSES').on('click', () => {
+      P.DECIMATE_DEFENSES = onClick(2, 'P.DECIMATE_DEFENSES');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/necrom' +
-        'ancer/decimateDefenses.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Furious Demise */
-    $('#furiousDemise').on('click', () => {
-      furiousDemise = onClick(180, 'furiousDemise');
+    $('#P\\.FURIOUS_DEMISE').on('click', () => {
+      P.FURIOUS_DEMISE = onClick(180, 'P.FURIOUS_DEMISE');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/necrom' +
-        'ancer/furiousDemise.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Target the Weak */
-    $('#targetTheWeak').on('click', () => {
-      targetTheWeak = onClick(28, 'targetTheWeak');
+    $('#P\\.TARGET_THE_WEAK').on('click', () => {
+      P.TARGET_THE_WEAK = onClick(28, 'P.TARGET_THE_WEAK');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/necrom' +
-        'ancer/targetTheWeak.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
   });
 }
 
 function rangerMenu () {
-  document.title = 'Ranger - Precision Calculator - Fiery Greatsword';
   resetProfession();
-  document.getElementById('ranger').style.borderColor = '#00FF00';
-  ranger = 1;
-  $(($) => {
+  document.getElementById('P.RANGER').style.borderColor = '#00FF00';
+  P.RANGER = 1;
+  $(() => {
     /* Hunter's Tactics */
-    $('#huntersTactics').on('click', () => {
-      huntersTactics = onClick(10, 'huntersTactics');
+    $('#P\\.HUNTERS_TACTICS').on('click', () => {
+      P.HUNTERS_TACTICS = onClick(10, 'P.HUNTERS_TACTICS');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/ranger/huntersTactics.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Precise Strike */
-    $('#preciseStrike').on('click', () => {
-      preciseStrike = onClick(1, 'preciseStrike');
+    $('#P\\.PRECISE_STRIKE').on('click', () => {
+      P.PRECISE_STRIKE = onClick(1, 'P.PRECISE_STRIKE');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/ranger/preciseStrike.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Vicious Quarry */
-    $('#viciousQuarry').on('click', () => {
-      viciousQuarry = onClick(10, 'viciousQuarry');
+    $('#P\\.VICIOUS_QUARRY').on('click', () => {
+      P.VICIOUS_QUARRY = onClick(10, 'P.VICIOUS_QUARRY');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/ranger/viciousQuarry.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
   });
 }
 
 function revenantMenu () {
-  document.title = 'Revenant - Precision Calculator - Fiery Greatsword';
   resetProfession();
-  document.getElementById('revenant').style.borderColor = '#00FF00';
-  revenant = 1;
-  $(($) => {
+  document.getElementById('P.REVENANT').style.borderColor = '#00FF00';
+  P.REVENANT = 1;
+  $(() => {
     /* Brutal Momentum */
-    $('#brutalMomentum').on('click', () => {
-      brutalMomentum = onClick(33, 'brutalMomentum');
+    $('#P\\.BRUTAL_MOMENTUM').on('click', () => {
+      P.BRUTAL_MOMENTUM = onClick(33, 'P.BRUTAL_MOMENTUM');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/revenant/brutalMomentum.html'
-      ).hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
   });
 }
 
 function thiefMenu () {
-  document.title = 'Thief - Precision Calculator - Fiery Greatsword';
   resetProfession();
-  document.getElementById('thief').style.borderColor = '#00FF00';
-  thief = 1;
-  $(($) => {
+  document.getElementById('P.THIEF').style.borderColor = '#00FF00';
+  P.THIEF = 1;
+  $(() => {
     /* Be Quick or Be Killed */
-    $('#beQuickOrBeKilled').on('click', () => {
-      beQuickOrBeKilled = onClick(200, 'beQuickOrBeKilled');
+    $('#P\\.BE_QUICK_OR_BE_KILLED').on('click', () => {
+      P.BE_QUICK_OR_BE_KILLED = onClick(200, 'P.BE_QUICK_OR_BE_KILLED');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/thief/beQuickOrBeKilled.html'
-      ).hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Hidden Killer */
-    $('#hiddenKiller').on('click', () => {
-      hiddenKiller = onClick(1, 'hiddenKiller');
+    $('#P\\.HIDDEN_KILLER').on('click', () => {
+      P.HIDDEN_KILLER = onClick(1, 'P.HIDDEN_KILLER');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/thief/hiddenKiller.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Keen Observer */
-    $('#keenObserver').on('click', () => {
-      keenObserver = onClick(5, 'keenObserver');
+    $('#P\\.KEEN_OBSERVER').on('click', () => {
+      P.KEEN_OBSERVER = onClick(5, 'P.KEEN_OBSERVER');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/thief/keenObserver.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Silent Scope */
-    $('#silentScope').on('click', () => {
-      silentScope = onClick(240, 'silentScope');
+    $('#P\\.SILENT_SCOPE').on('click', () => {
+      P.SILENT_SCOPE = onClick(240, 'P.SILENT_SCOPE');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/thief/silentScope.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Twin Fangs */
-    $('#twinFangs').on('click', () => {
-      twinFangs = onClick(7, 'twinFangs');
+    $('#P\\.TWIN_FANGS').on('click', () => {
+      P.TWIN_FANGS = onClick(7, 'P.TWIN_FANGS');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/thief/twinFangs.html').hide()
-        .fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
   });
 }
 
 function warriorMenu () {
-  document.title = 'Warrior - Precision Calculator - Fiery Greatsword';
   resetProfession();
-  document.getElementById('warrior').style.borderColor = '#00FF00';
-  warrior = 1;
-  $(($) => {
+  document.getElementById('P.WARRIOR').style.borderColor = '#00FF00';
+  P.WARRIOR = 1;
+  $(() => {
     /* Burst Precision */
-    $('#burstPrecision').on('click', () => {
-      burstPrecision = onClick(1, 'burstPrecision');
+    $('#P\\.BURST_PRECISION').on('click', () => {
+      P.BURST_PRECISION = onClick(1, 'P.BURST_PRECISION');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/warrior/burstPrecision.html')
-        .hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Doubled Standards */
-    $('#doubledStandards').on('click', () => {
-      doubledStandards = onClick(1, 'doubledStandards');
+    $('#P\\.DOUBLED_STANDARDS').on('click', () => {
+      P.DOUBLED_STANDARDS = onClick(1, 'P.DOUBLED_STANDARDS');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load('view/precisionCalculator/tooltipBox/trait/warrio' +
-        'r/doubledStandards.html').hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
     /* Unsuspecting Foe */
-    $('#unsuspectingFoe').on('click', () => {
-      unsuspectingFoe = onClick(50, 'unsuspectingFoe');
+    $('#P\\.UNSUSPECTING_FOE').on('click', () => {
+      P.UNSUSPECTING_FOE = onClick(50, 'P.UNSUSPECTING_FOE');
       calculate();
-    }).on('mouseenter', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/trait/warrior/unsuspectingFoe.html'
-      ).hide().fadeIn();
-    }).on('mouseleave', () => {
-      $('#tooltipBox').load(
-        'view/precisionCalculator/tooltipBox/precisionCalculator.html').hide()
-        .fadeIn();
     });
   });
 }
@@ -1493,35 +769,31 @@ function equipment (id, int) {
       precision = int[i + 1];
     }
   }
-  document.getElementById(id + 'Precision').innerText = precision;
+  document.getElementById(id + '_PRECISION').innerText = precision;
   return precision;
 }
 
 function resetFractalAttunement () {
-  agonyResistance -= (anguishedTearOfAlba * (10 + (agonyChanneler +
-  recursiveResourcing + mistlockSingularities > 0 ? 5 : 0)));
-  agonyChanneler = recursiveResourcing = mistlockSingularities = 0;
+  P.AGONY_RESISTANCE -= (P.ANGUISHED_TEAR_OF_ALBA * (10 + (P.AGONY_CHANNELER +
+  P.RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES > 0 ? 5 : 0)));
+  P.AGONY_CHANNELER = P.RECURSIVE_RESOURCING = P.MISTLOCK_SINGULARITIES = 0;
 }
 
 function resetMistAttunement () {
-  agonyResistance -= mistAttunement1 + mistAttunement2 + mistAttunement3 +
-    mistAttunement4;
-  mistAttunement1 = mistAttunement2 = mistAttunement3 = mistAttunement4 = 0;
+  P.AGONY_RESISTANCE -= P.MIST_ATTUNEMENT_1 + P.MIST_ATTUNEMENT_2 + P
+    .MIST_ATTUNEMENT_3 + P.MIST_ATTUNEMENT_4;
+  P.MIST_ATTUNEMENT_1 = P.MIST_ATTUNEMENT_2 = P.MIST_ATTUNEMENT_3 = P
+    .MIST_ATTUNEMENT_4 = 0;
 }
 
 function resetSigilOfAccuracy () {
-  minorSigilOfAccuracy = majorSigilOfAccuracy = superiorSigilOfAccuracy = 0;
+  P.MAJOR_SIGIL_OF_ACCURACY = P.MINOR_SIGIL_OF_ACCURACY = P
+    .SUPERIOR_SIGIL_OF_ACCURACY = 0;
 }
 
 function resetUtilitySkill (string) {
   resetUtilitySkillMenu(string);
-  signetOfAgility = signetOfFire = signetOfFury = 0;
-}
-
-function resetProfession () {
-  resetProfessionMenu();
-  engineer = ranger = thief = elementalist = mesmer = necromancer = guardian =
-    revenant = warrior = 0;
+  P.SIGNET_OF_AGILITY = P.SIGNET_OF_FIRE = P.SIGNET_OF_FURY = 0;
 }
 
 /* uceCounter.html */
@@ -1529,8 +801,7 @@ function resetProfession () {
 let apiKey = '?access_token=74C4807F-4E95-5B4F-A649-2C47D7F54965C4414169-033B' +
   '-405A-BE36-5A638C14C1D2';
 
-function uceCounter () {
-  document.title = 'UCE Counter - Fiery Greatsword';
+export function uceCounter () {
   resetMenu();
   document.getElementById('menuUceCounter').style.borderBottomColor = '#FFFFFF';
   const UCE = document.getElementById('uce');

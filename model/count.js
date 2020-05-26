@@ -5,7 +5,7 @@ export function count (element, uce, s, gold, silver) {
       : '&nbspUnstable Cosmic Essence';
     gold.innerHTML = (Math.trunc(Number(uce.textContent) / 2)).toString() +
       '&nbsp';
-    silver.innerHTML = Number(uce.textContent) % 2 === 1
-      ? '&nbsp&nbsp50&nbsp' : '&nbsp&nbsp0&nbsp';
+    silver.innerHTML = Number(uce.textContent) % 2 === 1 ? '&nbsp&nbsp50&nbsp'
+      : '&nbsp&nbsp0&nbsp';
   }
 }
