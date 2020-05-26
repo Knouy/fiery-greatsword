@@ -3,7 +3,7 @@
 
 import {
   P, count, countdown, demoStart, menu, onClick, resetMenu, resetProfession,
-  resetTooltipBox, resetUtilitySkillMenu, setTooltipBox
+  resetTooltipBox, setTooltipBox
 } from '../dist/model.min.js';
 
 /* index.html */
@@ -372,23 +372,25 @@ export function precisionCalculator () {
       });
     });
     /* Sigil */
+    const SIGIL_RADIO = ['P.MAJOR_SIGIL_OF_ACCURACY',
+      'P.MINOR_SIGIL_OF_ACCURACY', 'P.SUPERIOR_SIGIL_OF_ACCURACY'];
     /* Major Sigil of Accuracy */
     $('#P\\.MAJOR_SIGIL_OF_ACCURACY').on('click', () => {
-      resetSigilOfAccuracy();
+      checkRadio(SIGIL_RADIO, 'P.MAJOR_SIGIL_OF_ACCURACY');
       P.MAJOR_SIGIL_OF_ACCURACY = onClick(5, 'P.MAJOR_SIGIL_OF_ACCURACY',
         'P.MINOR_SIGIL_OF_ACCURACY', 'P.SUPERIOR_SIGIL_OF_ACCURACY');
       calculate();
     });
     /* Minor Sigil of Accuracy */
     $('#P\\.MINOR_SIGIL_OF_ACCURACY').on('click', () => {
-      resetSigilOfAccuracy();
+      checkRadio(SIGIL_RADIO, 'P.MINOR_SIGIL_OF_ACCURACY');
       P.MINOR_SIGIL_OF_ACCURACY = onClick(3, 'P.MINOR_SIGIL_OF_ACCURACY',
         'P.MAJOR_SIGIL_OF_ACCURACY', 'P.SUPERIOR_SIGIL_OF_ACCURACY');
       calculate();
     });
     /* Superior Sigil of Accuracy */
     $('#P\\.SUPERIOR_SIGIL_OF_ACCURACY').on('click', () => {
-      resetSigilOfAccuracy();
+      checkRadio(SIGIL_RADIO, 'P.SUPERIOR_SIGIL_OF_ACCURACY');
       P.SUPERIOR_SIGIL_OF_ACCURACY = onClick(7, 'P.SUPERIOR_SIGIL_OF_ACCURACY',
         'P.MAJOR_SIGIL_OF_ACCURACY', 'P.MINOR_SIGIL_OF_ACCURACY');
       calculate();
@@ -415,21 +417,23 @@ export function precisionCalculator () {
       P.CONJURE_LIGHTNING_HAMMER = onClick(180, 'P.CONJURE_LIGHTNING_HAMMER');
       calculate();
     });
+    const UTILITY_SKILL_RADIO = ['P.SIGNET_OF_AGILITY', 'P.SIGNET_OF_FIRE',
+      'P.SIGNET_OF_FURY'];
     /* Signet of Agility */
     $('#P\\.SIGNET_OF_AGILITY').on('click', () => {
-      resetUtilitySkill('P.SIGNET_OF_AGILITY');
+      checkRadio(UTILITY_SKILL_RADIO, 'P.SIGNET_OF_AGILITY');
       P.SIGNET_OF_AGILITY = onClick(180, 'P.SIGNET_OF_AGILITY');
       calculate();
     });
     /* Signet of Fire */
     $('#P\\.SIGNET_OF_FIRE').on('click', () => {
-      resetUtilitySkill('P.SIGNET_OF_FIRE');
+      checkRadio(UTILITY_SKILL_RADIO, 'P.SIGNET_OF_FIRE');
       P.SIGNET_OF_FIRE = onClick(180, 'P.SIGNET_OF_FIRE');
       calculate();
     });
     /* Signet of Fury */
     $('#P\\.SIGNET_OF_FURY').on('click', () => {
-      resetUtilitySkill('P.SIGNET_OF_FURY');
+      checkRadio(UTILITY_SKILL_RADIO, 'P.SIGNET_OF_FURY');
       P.SIGNET_OF_FURY = onClick(180, 'P.SIGNET_OF_FURY');
       calculate();
     });
@@ -786,14 +790,15 @@ function resetMistAttunement () {
     .MIST_ATTUNEMENT_4 = 0;
 }
 
-function resetSigilOfAccuracy () {
-  P.MAJOR_SIGIL_OF_ACCURACY = P.MINOR_SIGIL_OF_ACCURACY = P
-    .SUPERIOR_SIGIL_OF_ACCURACY = 0;
-}
-
-function resetUtilitySkill (string) {
-  resetUtilitySkillMenu(string);
-  P.SIGNET_OF_AGILITY = P.SIGNET_OF_FIRE = P.SIGNET_OF_FURY = 0;
+function checkRadio (array, property) {
+  for (const PROPERTY in array) {
+    if (Object.prototype.hasOwnProperty.call(array, PROPERTY) && array[PROPERTY
+    ] !== property) {
+      document.getElementById(array[PROPERTY]).style.borderColor = 'transparent'
+      ;
+      P[array[PROPERTY].substring(2)] = 0;
+    }
+  }
 }
 
 /* uceCounter.html */
