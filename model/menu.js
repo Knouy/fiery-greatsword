@@ -1,5 +1,3 @@
-import { precisionCalculator, uceCounter } from '../dist/controller.min.js';
-
 export function menu (string) {
   switch (string) {
     case 'home':
@@ -7,9 +5,11 @@ export function menu (string) {
       home();
       break;
     case 'precisionCalculator':
+      /* global precisionCalculator */
       precisionCalculator();
       break;
     case 'uceCounter':
+      /* global uceCounter */
       uceCounter();
       break;
   }

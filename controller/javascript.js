@@ -2,8 +2,8 @@
 /* terser model/*.js -o dist/model.min.js -c -m */
 
 import {
-  P, count, countdown, demoStart, menu, onClick, resetMenu, resetProfession,
-  resetTooltipBox, setTooltipBox
+  P, count, countdown, demoStart, menu, onClick, profession, resetMenu,
+  resetTooltipBox, setOnClick, setTooltipBox
 } from '../dist/model.min.js';
 
 /* index.html */
@@ -48,6 +48,7 @@ export function precisionCalculator () {
   calculate();
   resetTooltipBox();
   $(() => {
+    setOnClick();
     setTooltipBox();
     /* Agony Impedance */
     $('#P\\.AGONY_IMPEDANCE').on('change', () => {
@@ -92,43 +93,6 @@ export function precisionCalculator () {
         P.VITALITY = VITALITY.value.replace('.', '');
       }
       VITALITY.value = P.VITALITY;
-      calculate();
-    });
-    /* Boon */
-    /* Fury */
-    $('#P\\.FURY').on('click', () => {
-      P.FURY = onClick(1, 'P.FURY');
-      calculate();
-    });
-    /* Retaliation */
-    $('#P\\.RETALIATION').on('click', () => {
-      P.RETALIATION = onClick(1, 'P.RETALIATION');
-      calculate();
-    });
-    /* Condition */
-    /* Bleeding */
-    $('#P\\.BLEEDING').on('click', () => {
-      P.BLEEDING = onClick(1, 'P.BLEEDING');
-      calculate();
-    });
-    /* Burning */
-    $('#P\\.BURNING').on('click', () => {
-      P.BURNING = onClick(1, 'P.BURNING');
-      calculate();
-    });
-    /* Slow */
-    $('#P\\.SLOW').on('click', () => {
-      P.SLOW = onClick(1, 'P.SLOW');
-      calculate();
-    });
-    /* Vulnerability */
-    $('#P\\.VULNERABILITY').on('click', () => {
-      P.VULNERABILITY = onClick(25, 'P.VULNERABILITY');
-      calculate();
-    });
-    /* Weakness */
-    $('#P\\.WEAKNESS').on('click', () => {
-      P.WEAKNESS = onClick(1, 'P.WEAKNESS');
       calculate();
     });
     /* Consumable */
@@ -262,12 +226,6 @@ export function precisionCalculator () {
       document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
       calculate();
     });
-    /* Gizmo */
-    /* Infinite Mist Omnipotion */
-    $('#P\\.INFINITE_MIST_OMNIPOTION').on('click', () => {
-      P.INFINITE_MIST_OMNIPOTION = onClick(5, 'P.INFINITE_MIST_OMNIPOTION');
-      calculate();
-    });
     /* Mist Attunement */
     /* Mist Attunement 1 */
     $('#P\\.MIST_ATTUNEMENT_1').on('click', () => {
@@ -306,69 +264,12 @@ export function precisionCalculator () {
       calculate();
     });
     /* Profession */
-    /* Elementalist */
-    $('#P\\.ELEMENTALIST').on('click', () => {
-      $('#trait').load('view/precisionCalculator/trait/elementalist.html',
-        () => {
-          resetTrait();
-          elementalistMenu();
-        });
-    });
-    /* Engineer */
-    $('#P\\.ENGINEER').on('click', () => {
-      $('#trait').load('view/precisionCalculator/trait/engineer.html', () => {
-        resetTrait();
-        engineerMenu();
-      });
-    });
-    /* Guardian */
-    $('#P\\.GUARDIAN').on('click', () => {
-      $('#trait').load('view/precisionCalculator/trait/guardian.html', () => {
-        resetTrait();
-        guardianMenu();
-      });
-    });
-    /* Mesmer */
-    $('#P\\.MESMER').on('click', () => {
-      $('#trait').load('view/precisionCalculator/trait/mesmer.html', () => {
-        resetTrait();
-        mesmerMenu();
-      });
-    });
-    /* Necromancer */
-    $('#P\\.NECROMANCER').on('click', () => {
-      $('#trait').load('view/precisionCalculator/trait/necromancer.html',
-        () => {
-          resetTrait();
-          necromancerMenu();
-        });
-    });
-    /* Ranger */
-    $('#P\\.RANGER').on('click', () => {
-      $('#trait').load('view/precisionCalculator/trait/ranger.html', () => {
-        resetTrait();
-        rangerMenu();
-      });
-    });
-    /* Revenant */
-    $('#P\\.REVENANT').on('click', () => {
-      $('#trait').load('view/precisionCalculator/trait/revenant.html', () => {
-        resetTrait();
-        revenantMenu();
-      });
-    });
-    /* Thief */
-    $('#P\\.THIEF').on('click', () => {
-      $('#trait').load('view/precisionCalculator/trait/thief.html', () => {
-        resetTrait();
-        thiefMenu();
-      });
-    });
-    /* Warrior */
-    $('#P\\.WARRIOR').on('click', () => {
-      $('#trait').load('view/precisionCalculator/trait/warrior.html', () => {
-        resetTrait();
-        warriorMenu();
+    $('.profession').on('click', function () {
+      $('#trait').load('view/precisionCalculator/trait/' + this.id.substring(2)
+        .toLowerCase() + '.html', () => {
+        profession(this.id);
+        setOnClick();
+        setTooltipBox();
       });
     });
     /* Sigil */
@@ -395,28 +296,7 @@ export function precisionCalculator () {
         'P.MAJOR_SIGIL_OF_ACCURACY', 'P.MINOR_SIGIL_OF_ACCURACY');
       calculate();
     });
-    /* Superior Sigil of Vision */
-    $('#P\\.SUPERIOR_SIGIL_OF_VISION').on('click', () => {
-      P.SUPERIOR_SIGIL_OF_VISION = onClick(1, 'P.SUPERIOR_SIGIL_OF_VISION');
-      calculate();
-    });
-    /* Trait */
-    /* Spotter */
-    $('#P\\.SPOTTER').on('click', () => {
-      P.SPOTTER = onClick(100, 'P.SPOTTER');
-      calculate();
-    });
     /* Utility skill */
-    /* Banner of Discipline */
-    $('#P.BANNER_OF_DISCIPLINE').on('click', () => {
-      P.BANNER_OF_DISCIPLINE = onClick(100, 'P.BANNER_OF_DISCIPLINE');
-      calculate();
-    });
-    /* Conjure Lightning Hammer */
-    $('#P\\.CONJURE_LIGHTNING_HAMMER').on('click', () => {
-      P.CONJURE_LIGHTNING_HAMMER = onClick(180, 'P.CONJURE_LIGHTNING_HAMMER');
-      calculate();
-    });
     const UTILITY_SKILL_RADIO = ['P.SIGNET_OF_AGILITY', 'P.SIGNET_OF_FIRE',
       'P.SIGNET_OF_FURY'];
     /* Signet of Agility */
@@ -511,7 +391,7 @@ function loadPrecisionCalculator () {
   });
 }
 
-function calculate () {
+export function calculate () {
   const AGONY_RESISTANCE_PRECISION = P.AGONY_RESISTANCE * (P.AGONY_CHANNELER + P
     .RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES) / 100 * P
     .INFINITE_MIST_OMNIPOTION;
@@ -560,210 +440,6 @@ function calculate () {
     .substring(0, document.getElementById('P.CRITICAL_CHANCE').innerText
       .length - 2)), 2, '', ' %', 'P.CRITICAL_CHANCE', CRITICAL_CHANCE.toFixed(2
   ));
-}
-
-function resetTrait () {
-  P.BE_QUICK_OR_BE_KILLED = P.BRUTAL_MOMENTUM = P.BURST_PRECISION = P
-    .DANGER_TIME = P.DEATH_PERCEPTION = P.DECIMATE_DEFENSES = P
-      .DOUBLED_STANDARDS = P.ELEMENTS_OF_RAGE = P.FURIOUS_DEMISE = P
-        .HEMATIC_FOCUS = P.HIDDEN_KILLER = P.HIGH_CALIBER = P.HUNTERS_TACTICS =
-    P.KEEN_OBSERVER = P.PRECISE_STRIKE = P.RADIANT_POWER = P
-      .RIGHTEOUS_INSTINCTS = P.RIGHT_HAND_STRENGTH = P.SILENT_SCOPE = P
-        .SUPERIOR_ELEMENTS = P.TARGET_THE_WEAK = P.TWIN_FANGS = P
-          .UNSUSPECTING_FOE = P.VICIOUS_QUARRY = 0;
-  calculate();
-}
-
-function elementalistMenu () {
-  resetProfession();
-  document.getElementById('P.ELEMENTALIST').style.borderColor = '#00FF00';
-  P.ELEMENTALIST = 1;
-  $(() => {
-    /* Elements of Rage */
-    $('#P\\.ELEMENTS_OF_RAGE').on('click', () => {
-      P.ELEMENTS_OF_RAGE = onClick(0.13, 'P.ELEMENTS_OF_RAGE');
-      calculate();
-    });
-    /* Superior Elements */
-    $('#P\\.SUPERIOR_ELEMENTS').on('click', () => {
-      P.SUPERIOR_ELEMENTS = onClick(10, 'P.SUPERIOR_ELEMENTS');
-      calculate();
-    });
-  });
-}
-
-function engineerMenu () {
-  resetProfession();
-  document.getElementById('P.ENGINEER').style.borderColor = '#00FF00';
-  P.ENGINEER = 1;
-  $(() => {
-    /* Hematic Focus */
-    $('#P\\.HEMATIC_FOCUS').on('click', () => {
-      P.HEMATIC_FOCUS = onClick(10, 'P.HEMATIC_FOCUS');
-      calculate();
-    });
-    /* High Caliber */
-    $('#P\\.HIGH_CALIBER').on('click', () => {
-      P.HIGH_CALIBER = onClick(15, 'P.HIGH_CALIBER');
-      calculate();
-    });
-  });
-}
-
-function guardianMenu () {
-  resetProfession();
-  document.getElementById('P.GUARDIAN').style.borderColor = '#00FF00';
-  P.GUARDIAN = 1;
-  $(() => {
-    /* Radiant Power */
-    $('#P\\.RADIANT_POWER').on('click', () => {
-      P.RADIANT_POWER = onClick(10, 'P.RADIANT_POWER');
-      calculate();
-    });
-    /* Right-Hand Strength */
-    $('#P\\.RIGHT_HAND_STRENGTH').on('click', () => {
-      P.RIGHT_HAND_STRENGTH = onClick(80, 'P.RIGHT_HAND_STRENGTH');
-      calculate();
-    });
-    /* Righteous Instinct */
-    $('#P\\.RIGHTEOUS_INSTINCTS').on('click', () => {
-      P.RIGHTEOUS_INSTINCTS = onClick(25, 'P.RIGHTEOUS_INSTINCTS');
-      calculate();
-    });
-  });
-}
-
-function mesmerMenu () {
-  resetProfession();
-  document.getElementById('P.MESMER').style.borderColor = '#00FF00';
-  P.MESMER = 1;
-  $(() => {
-    /* Danger Time */
-    $('#P\\.DANGER_TIME').on('click', () => {
-      P.DANGER_TIME = onClick(15, 'P.DANGER_TIME');
-      calculate();
-    });
-  });
-}
-
-function necromancerMenu () {
-  resetProfession();
-  document.getElementById('P.NECROMANCER').style.borderColor = '#00FF00';
-  P.NECROMANCER = 1;
-  $(() => {
-    /* Death Perception */
-    $('#P\\.DEATH_PERCEPTION').on('click', () => {
-      P.DEATH_PERCEPTION = onClick(33, 'P.DEATH_PERCEPTION');
-      calculate();
-    });
-    /* Decimate Defenses */
-    $('#P\\.DECIMATE_DEFENSES').on('click', () => {
-      P.DECIMATE_DEFENSES = onClick(2, 'P.DECIMATE_DEFENSES');
-      calculate();
-    });
-    /* Furious Demise */
-    $('#P\\.FURIOUS_DEMISE').on('click', () => {
-      P.FURIOUS_DEMISE = onClick(180, 'P.FURIOUS_DEMISE');
-      calculate();
-    });
-    /* Target the Weak */
-    $('#P\\.TARGET_THE_WEAK').on('click', () => {
-      P.TARGET_THE_WEAK = onClick(28, 'P.TARGET_THE_WEAK');
-      calculate();
-    });
-  });
-}
-
-function rangerMenu () {
-  resetProfession();
-  document.getElementById('P.RANGER').style.borderColor = '#00FF00';
-  P.RANGER = 1;
-  $(() => {
-    /* Hunter's Tactics */
-    $('#P\\.HUNTERS_TACTICS').on('click', () => {
-      P.HUNTERS_TACTICS = onClick(10, 'P.HUNTERS_TACTICS');
-      calculate();
-    });
-    /* Precise Strike */
-    $('#P\\.PRECISE_STRIKE').on('click', () => {
-      P.PRECISE_STRIKE = onClick(1, 'P.PRECISE_STRIKE');
-      calculate();
-    });
-    /* Vicious Quarry */
-    $('#P\\.VICIOUS_QUARRY').on('click', () => {
-      P.VICIOUS_QUARRY = onClick(10, 'P.VICIOUS_QUARRY');
-      calculate();
-    });
-  });
-}
-
-function revenantMenu () {
-  resetProfession();
-  document.getElementById('P.REVENANT').style.borderColor = '#00FF00';
-  P.REVENANT = 1;
-  $(() => {
-    /* Brutal Momentum */
-    $('#P\\.BRUTAL_MOMENTUM').on('click', () => {
-      P.BRUTAL_MOMENTUM = onClick(33, 'P.BRUTAL_MOMENTUM');
-      calculate();
-    });
-  });
-}
-
-function thiefMenu () {
-  resetProfession();
-  document.getElementById('P.THIEF').style.borderColor = '#00FF00';
-  P.THIEF = 1;
-  $(() => {
-    /* Be Quick or Be Killed */
-    $('#P\\.BE_QUICK_OR_BE_KILLED').on('click', () => {
-      P.BE_QUICK_OR_BE_KILLED = onClick(200, 'P.BE_QUICK_OR_BE_KILLED');
-      calculate();
-    });
-    /* Hidden Killer */
-    $('#P\\.HIDDEN_KILLER').on('click', () => {
-      P.HIDDEN_KILLER = onClick(1, 'P.HIDDEN_KILLER');
-      calculate();
-    });
-    /* Keen Observer */
-    $('#P\\.KEEN_OBSERVER').on('click', () => {
-      P.KEEN_OBSERVER = onClick(5, 'P.KEEN_OBSERVER');
-      calculate();
-    });
-    /* Silent Scope */
-    $('#P\\.SILENT_SCOPE').on('click', () => {
-      P.SILENT_SCOPE = onClick(240, 'P.SILENT_SCOPE');
-      calculate();
-    });
-    /* Twin Fangs */
-    $('#P\\.TWIN_FANGS').on('click', () => {
-      P.TWIN_FANGS = onClick(7, 'P.TWIN_FANGS');
-      calculate();
-    });
-  });
-}
-
-function warriorMenu () {
-  resetProfession();
-  document.getElementById('P.WARRIOR').style.borderColor = '#00FF00';
-  P.WARRIOR = 1;
-  $(() => {
-    /* Burst Precision */
-    $('#P\\.BURST_PRECISION').on('click', () => {
-      P.BURST_PRECISION = onClick(1, 'P.BURST_PRECISION');
-      calculate();
-    });
-    /* Doubled Standards */
-    $('#P\\.DOUBLED_STANDARDS').on('click', () => {
-      P.DOUBLED_STANDARDS = onClick(1, 'P.DOUBLED_STANDARDS');
-      calculate();
-    });
-    /* Unsuspecting Foe */
-    $('#P\\.UNSUSPECTING_FOE').on('click', () => {
-      P.UNSUSPECTING_FOE = onClick(50, 'P.UNSUSPECTING_FOE');
-      calculate();
-    });
-  });
 }
 
 function equipment (id, int) {
