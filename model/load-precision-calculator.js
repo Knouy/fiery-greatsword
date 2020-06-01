@@ -1,5 +1,4 @@
 export function loadPrecisionCalculator () {
-  /* global P */
   document.getElementById('P.AGONY_IMPEDANCE').value = P.AGONY_IMPEDANCE / 5;
   document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
   document.getElementById('P.VITALITY').value = P.VITALITY;

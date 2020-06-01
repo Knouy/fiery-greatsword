@@ -1,5 +1,4 @@
 export function uceCounter () {
-  /* global resetMenu */
   resetMenu();
   document.getElementById('menuUceCounter').style.borderBottomColor = '#FFFFFF';
   const UCE = document.getElementById('uce');
@@ -7,7 +6,6 @@ export function uceCounter () {
   const S = document.getElementById('s');
   const GOLD = document.getElementById('gold');
   const SILVER = document.getElementById('silver');
-  /* global U */
   U.API_KEY = (document.getElementById('apiKey').value.length !== 0
     ? '?access_token=' + document.getElementById('apiKey').value : U.API_KEY);
   document.getElementById('apiKey').value = '';
@@ -17,7 +15,6 @@ export function uceCounter () {
   fetch(REQUEST + 'account/bank' + U.API_KEY)
     .then(response => response.json())
     .then(responseJson => responseJson.forEach(element => {
-      /* global count */
       count(element, UCE, S, GOLD, SILVER);
     }));
   fetch(REQUEST + 'account/inventory' + U.API_KEY)

@@ -5,7 +5,6 @@ import { countdown, menu } from '../dist/model.min.js';
 
 /* index.html */
 
-/* global VANTA */
 VANTA.FOG({
   el: '#fog',
   mouseControls: true,
@@ -19,9 +18,9 @@ VANTA.FOG({
   zoom: 1.80
 });
 
+/* global $ */
 const PAGE = $('#page');
 
-/* global $ */
 $(() => {
   $('.menu').on('click', function () {
     PAGE.fadeOut(400, () => PAGE.load('view/' + $(this).data('menu') + '.html',

@@ -1,21 +1,14 @@
 export function precisionCalculator () {
-  /* global resetMenu */
   resetMenu();
   document.getElementById('menuPrecisionCalculator').style.borderBottomColor =
     '#FFFFFF';
-  /* global loadPrecisionCalculator */
   loadPrecisionCalculator();
-  /* global calculate */
   calculate();
-  /* global resetTooltipBox */
   resetTooltipBox();
   /* global $ */
   $(() => {
-    /* global setOnClick */
     setOnClick();
-    /* global setTooltipBox */
     setTooltipBox();
-    /* Agony Impedance */
     $('#P\\.AGONY_IMPEDANCE').on('change', () => {
       const AGONY_IMPEDANCE = document.getElementById('P.AGONY_IMPEDANCE');
       if (AGONY_IMPEDANCE.value === '' || AGONY_IMPEDANCE.value.replace('.', ''
@@ -26,7 +19,6 @@ export function precisionCalculator () {
       } else {
         AGONY_IMPEDANCE.value = AGONY_IMPEDANCE.value.replace('.', '');
       }
-      /* global P */
       P.AGONY_RESISTANCE += 5 * AGONY_IMPEDANCE.value.replace('.', '') - P
         .AGONY_IMPEDANCE;
       document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
@@ -37,6 +29,7 @@ export function precisionCalculator () {
     /* Agony Resistance */
     $('#P\\.AGONY_RESISTANCE').on('change', () => {
       const AGONY_RESISTANCE = document.getElementById('P.AGONY_RESISTANCE');
+      // noinspection JSIncompatibleTypesComparison
       if (AGONY_RESISTANCE.value === '' || AGONY_RESISTANCE.value.replace('.',
         '') < 0) {
         P.AGONY_RESISTANCE = 0;
@@ -51,6 +44,7 @@ export function precisionCalculator () {
     /* Vitality */
     $('#P\\.VITALITY').on('change', () => {
       const VITALITY = document.getElementById('P.VITALITY');
+      // noinspection JSIncompatibleTypesComparison
       if (VITALITY.value === '' || VITALITY.value.replace('.', '') < 1000) {
         P.VITALITY = 1000;
       } else if (VITALITY.value.replace('.', '') > 9999) {
@@ -67,7 +61,6 @@ export function precisionCalculator () {
       P.AGONY_RESISTANCE -= (P.ANGUISHED_TEAR_OF_ALBA * (10 + (P
         .AGONY_CHANNELER + P.RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES > 0
         ? 5 : 0)));
-      /* global onClick */
       P.ANGUISHED_TEAR_OF_ALBA = onClick(1, 'P.ANGUISHED_TEAR_OF_ALBA');
       P.AGONY_RESISTANCE += (P.ANGUISHED_TEAR_OF_ALBA * (10 + (P
         .AGONY_CHANNELER + P.RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES > 0
@@ -87,7 +80,6 @@ export function precisionCalculator () {
     /* Equipment */
     /* Amulet Slot */
     $('#P\\.AMULET_SLOT').on('click', () => {
-      /* global equipment */
       P.AMULET_SLOT = equipment('P.AMULET_SLOT', [108, 157, 71, 133, 72]);
       calculate();
     });
@@ -163,7 +155,6 @@ export function precisionCalculator () {
     /* Fractal Attunement */
     /* Agony Channeler */
     $('#P\\.AGONY_CHANNELER').on('click', () => {
-      /* global resetFractalAttunement */
       resetFractalAttunement();
       P.AGONY_CHANNELER = onClick(10, 'P.AGONY_CHANNELER',
         'P.RECURSIVE_RESOURCING', 'P.MISTLOCK_SINGULARITIES');
@@ -198,7 +189,6 @@ export function precisionCalculator () {
     /* Mist Attunement */
     /* Mist Attunement 1 */
     $('#P\\.MIST_ATTUNEMENT_1').on('click', () => {
-      /* global resetMistAttunement */
       resetMistAttunement();
       P.MIST_ATTUNEMENT_1 = onClick(5, 'P.MIST_ATTUNEMENT_1',
         'P.MIST_ATTUNEMENT_2', 'P.MIST_ATTUNEMENT_3', 'P.MIST_ATTUNEMENT_4');
@@ -237,7 +227,6 @@ export function precisionCalculator () {
     $('.profession').on('click', function () {
       $('#trait').load('view/precisionCalculator/trait/' + this.id.substring(2)
         .toLowerCase() + '.html', () => {
-        /* global profession */
         profession(this.id);
         setOnClick();
         setTooltipBox();
@@ -248,7 +237,6 @@ export function precisionCalculator () {
       'P.MINOR_SIGIL_OF_ACCURACY', 'P.SUPERIOR_SIGIL_OF_ACCURACY'];
     /* Major Sigil of Accuracy */
     $('#P\\.MAJOR_SIGIL_OF_ACCURACY').on('click', () => {
-      /* global checkRadio */
       checkRadio(SIGIL_RADIO, 'P.MAJOR_SIGIL_OF_ACCURACY');
       P.MAJOR_SIGIL_OF_ACCURACY = onClick(5, 'P.MAJOR_SIGIL_OF_ACCURACY',
         'P.MINOR_SIGIL_OF_ACCURACY', 'P.SUPERIOR_SIGIL_OF_ACCURACY');

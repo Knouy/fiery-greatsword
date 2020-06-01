@@ -4,7 +4,6 @@ export function checkRadio (array, property) {
     ] !== property) {
       document.getElementById(array[PROPERTY]).style.borderColor = 'transparent'
       ;
-      /* global P */
       P[array[PROPERTY].substring(2)] = 0;
     }
   }

@@ -1,5 +1,4 @@
 export function calculate () {
-  /* global P */
   const AGONY_RESISTANCE_PRECISION = P.AGONY_RESISTANCE * (P.AGONY_CHANNELER + P
     .RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES) / 100 * P
     .INFINITE_MIST_OMNIPOTION;
@@ -19,7 +18,6 @@ export function calculate () {
     TRAIT_RANGER_PRECISION + TRAIT_THIEF_PRECISION +
     TRAIT_ELEMENTALIST_PRECISION + TRAIT_NECROMANCER_PRECISION +
     TRAIT_GUARDIAN_PRECISION + UTILITY_SKILL;
-  /* global demoStart */
   demoStart(parseInt(document.getElementById('P.PRECISION').innerText.replace(
     ',', '')), 0, '', '', 'P.PRECISION', PRECISION);
   const BUFF = P.FURY * 20;

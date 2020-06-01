@@ -6,7 +6,6 @@ export function demoStart (startVal, decimalPlaces, prefix, suffix, id, endVal
     prefix: prefix,
     suffix: suffix
   };
-  /* global CountUp */
   const DEMO = new CountUp(id, endVal, OPTIONS);
   if (!DEMO.error) {
     DEMO.start();
