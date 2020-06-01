@@ -18,6 +18,7 @@ module.exports = {
   rules: {
     'max-len': ['error', { 'code': 80 }],
     'no-eval': 'off',
+    'no-undef': 'off',
     'no-unused-vars': 'off',
     semi: ['error', 'always']
   }

@@ -1,0 +1,36 @@
+/* terser controller/*.js -o dist/controller.min.js -c -m */
+/* terser model/*.js -o dist/model.min.js -c -m */
+
+import { countdown, menu } from '../dist/model.min.js';
+
+/* index.html */
+
+/* global VANTA */
+VANTA.FOG({
+  el: '#fog',
+  mouseControls: true,
+  touchControls: true,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  highlightColor: 0xb341e3,
+  midtoneColor: 0xa400ff,
+  lowlightColor: 0x6325bb,
+  baseColor: 0xfcfcfc,
+  zoom: 1.80
+});
+
+const PAGE = $('#page');
+
+/* global $ */
+$(() => {
+  $('.menu').on('click', function () {
+    PAGE.fadeOut(400, () => PAGE.load('view/' + $(this).data('menu') + '.html',
+      () => menu($(this).data('menu'))).hide().fadeIn());
+  });
+});
+
+setInterval(() => countdown(), 1000);
+
+/* home.html */
+
+PAGE.load('view/home.html').hide().fadeIn();
