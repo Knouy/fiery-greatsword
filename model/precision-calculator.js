@@ -230,7 +230,7 @@ export function precisionCalculator () {
         profession(this.id);
         setOnClick();
         setTooltipBox();
-      });
+      }).hide().delay(1000).fadeIn();
     });
     /* Sigil */
     const SIGIL_RADIO = ['P.MAJOR_SIGIL_OF_ACCURACY',

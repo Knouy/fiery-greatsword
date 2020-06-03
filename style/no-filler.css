@@ -1,0 +1,7 @@
+.noFiller a:link, .noFiller a:visited {
+    background-color: transparent;
+}
+
+.noFiller a:hover {
+    background-color: rgba(0, 0, 0, .5);
+}

@@ -24,7 +24,7 @@ const PAGE = $('#page');
 $(() => {
   $('.menu').on('click', function () {
     PAGE.fadeOut(400, () => PAGE.load('view/' + $(this).data('menu') + '.html',
-      () => menu($(this).data('menu'))).hide().fadeIn());
+      () => menu($(this).data('menu'))).hide().delay(1000).fadeIn());
   });
 });
 
@@ -32,4 +32,4 @@ setInterval(() => countdown(), 1000);
 
 /* home.html */
 
-PAGE.load('view/home.html').hide().fadeIn();
+PAGE.load('view/home.html').hide().delay(1000).fadeIn();
