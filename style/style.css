@@ -15,15 +15,6 @@
     border: transparent solid 2px;
 }
 
-.page {
-    align-items: center;
-    color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    font-family: "JetBrains Mono", serif;
-    z-index: 1;
-}
-
 .slot {
     position: relative;
 }

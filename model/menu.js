@@ -9,6 +9,9 @@ export function menu (string) {
     case 'uceCounter':
       uceCounter();
       break;
+    case 'temp':
+      temp();
+      break;
     default:
       break;
   }
