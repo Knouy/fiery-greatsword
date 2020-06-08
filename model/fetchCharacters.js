@@ -1,4 +1,4 @@
-export function temp1 () {
+export function fetchCharacters () {
   const D = document;
   const CHARACTER_LIST = D.getElementById('characterList');
   CHARACTER_LIST.innerHTML = '';

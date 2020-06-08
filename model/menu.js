@@ -1,5 +1,8 @@
 export function menu (string) {
   switch (string) {
+    case 'characterOptimizer':
+      characterOptimizer();
+      break;
     case 'home':
       home();
       break;
@@ -8,9 +11,6 @@ export function menu (string) {
       break;
     case 'uceCounter':
       uceCounter();
-      break;
-    case 'temp':
-      temp();
       break;
     default:
       break;
