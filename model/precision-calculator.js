@@ -65,7 +65,7 @@ export function precisionCalculator () {
       P.AGONY_RESISTANCE += (P.ANGUISHED_TEAR_OF_ALBA * (10 + (P
         .AGONY_CHANNELER + P.RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES > 0
         ? 5 : 0)));
-      document.getElementById('agonyResistance').value = P.AGONY_RESISTANCE;
+      document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
       calculate();
     });
     /* Effect */
@@ -74,7 +74,7 @@ export function precisionCalculator () {
       P.AGONY_RESISTANCE -= P.RIGOROUS_CERTAINTY;
       P.RIGOROUS_CERTAINTY = onClick(5, 'P.RIGOROUS_CERTAINTY');
       P.AGONY_RESISTANCE += P.RIGOROUS_CERTAINTY;
-      document.getElementById('agonyResistance').value = P.AGONY_RESISTANCE;
+      document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
       calculate();
     });
     /* Equipment */
