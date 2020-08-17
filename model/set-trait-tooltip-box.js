@@ -1,6 +1,6 @@
-export function setTooltipBox () {
+export function setTraitTooltipBox () {
   /* global $ */
-  $('.box').on('mouseenter', function () {
+  $('.traitBox').on('mouseenter', function () {
     $('#tooltipBox').load('view/precisionCalculator/tooltipBox/' + $(this)
       .data('box') + '.html');
   });

@@ -4,7 +4,8 @@ export function precisionCalculator () {
     '#FFFFFF';
   loadPrecisionCalculator();
   calculate();
-  resetTooltipBox();
+  $('#tooltipBox').load(
+    'view/precisionCalculator/tooltipBox/precisionCalculator.html');
   /* global $ */
   $(() => {
     setOnClick();
@@ -228,8 +229,8 @@ export function precisionCalculator () {
       $('#trait').load('view/precisionCalculator/trait/' + this.id.substring(2)
         .toLowerCase() + '.html', () => {
         profession(this.id);
-        setOnClick();
-        setTooltipBox();
+        setTraitOnClick();
+        setTraitTooltipBox();
       }).hide().delay(1000).fadeIn();
     });
     /* Sigil */
