@@ -39,6 +39,7 @@ export function loadPrecisionCalculator () {
     /* global $ */
     $('#trait').load('view/precisionCalculator/trait/' + temp.substring(2)
       .toLowerCase() + '.html', () => {
+      document.getElementById(temp).style.borderColor = '#00FF00';
       PRECISION_CALCULATOR.forEach(element => {
         if (eval(element[0]) === 0) {
           document.getElementById(element[0]).style.borderColor = 'transparent';
@@ -48,7 +49,8 @@ export function loadPrecisionCalculator () {
           document.getElementById(element[0]).style.borderColor = '#ED7F10';
         }
       });
-      eval(temp.substring(2).toLowerCase() + 'Menu()');
+      setTraitOnClick();
+      setTraitTooltipBox();
     });
   } else {
     PRECISION_CALCULATOR.forEach(element => {
