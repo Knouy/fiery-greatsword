@@ -6,8 +6,8 @@ export function menu (string) {
     case 'home':
       home();
       break;
-    case 'precisionCalculator':
-      precisionCalculator();
+    case 'critOptimizer':
+      critOptimizer();
       break;
     case 'uceCounter':
       uceCounter();

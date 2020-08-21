@@ -37,7 +37,7 @@ export function loadPrecisionCalculator () {
   });
   if (temp != null) {
     /* global $ */
-    $('#trait').load('view/precisionCalculator/trait/' + temp.substring(2)
+    $('#trait').load('view/critOptimizer/trait/' + temp.substring(2)
       .toLowerCase() + '.html', () => {
       document.getElementById(temp).style.borderColor = '#00FF00';
       PRECISION_CALCULATOR.forEach(element => {

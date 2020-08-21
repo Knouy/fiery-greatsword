@@ -1,11 +1,11 @@
-export function precisionCalculator () {
+export function critOptimizer () {
   resetMenu();
-  document.getElementById('menuPrecisionCalculator').style.borderBottomColor =
+  document.getElementById('menuCritOptimizer').style.borderBottomColor =
     '#FFFFFF';
   loadPrecisionCalculator();
   calculate();
   $('#tooltipBox').load(
-    'view/precisionCalculator/tooltipBox/precisionCalculator.html');
+    'view/critOptimizer/tooltipBox/critOptimizer.html');
   /* global $ */
   $(() => {
     setOnClick();
@@ -226,7 +226,7 @@ export function precisionCalculator () {
     });
     /* Profession */
     $('.profession').on('click', function () {
-      $('#trait').load('view/precisionCalculator/trait/' + this.id.substring(2)
+      $('#trait').load('view/critOptimizer/trait/' + this.id.substring(2)
         .toLowerCase() + '.html', () => {
         profession(this.id);
         setTraitOnClick();
