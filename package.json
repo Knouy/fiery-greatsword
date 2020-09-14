@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Knouy/Fiery-Greatsword.git"
+    "url": "git+https://github.com/Knouy/fiery-greatsword.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Knouy/Fiery-Greatsword/issues"
+    "url": "https://github.com/Knouy/fiery-greatsword/issues"
   },
-  "homepage": "https://github.com/Knouy/Fiery-Greatsword#readme",
+  "homepage": "https://github.com/Knouy/fiery-greatsword#readme",
   "devDependencies": {
     "eslint": "^7.9.0",
     "eslint-config-standard": "^14.1.1",
