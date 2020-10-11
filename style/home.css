@@ -5,6 +5,11 @@
     z-index: 1;
 }
 
+#home > ul {
+    list-style-type: none;
+}
+
 #home > ul > li > ul {
     columns: 2;
+    list-style-type: none;
 }
