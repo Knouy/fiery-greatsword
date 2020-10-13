@@ -1,7 +1,8 @@
 /* terser controller/*.js -o dist/controller.min.js -c -m */
 /* terser model/*.js -o dist/model.min.js -c -m */
 
-import { countdown, menu, randomVisibility } from '../dist/model.min.js';
+import FadedText from '../node_modules/faded-text';
+import { countdown, menu } from '../dist/model.min.js';
 
 /* index.html */
 
@@ -32,4 +33,8 @@ setInterval(() => countdown(), 1000);
 
 /* home.html */
 
-PAGE.load('view/home.html', () => randomVisibility(78, 'home', 2000, 1000));
+PAGE.load('view/home.html', () => {
+  for (let i = 0; i < 18; i++) {
+    new FadedText('home' + i).charFadeIn();
+  }
+});
