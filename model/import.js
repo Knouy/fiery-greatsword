@@ -1,2 +1,2 @@
-import FadedText from '../node_modules/faded-text/index.js';
+import FadedText from '../dist/faded-text-min.js';
 import { CountUp } from '../dist/countUp.min.js';

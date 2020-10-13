@@ -29,7 +29,6 @@
     "gulp-rename": "^2.0.0"
   },
   "dependencies": {
-    "faded-text": "0.0.4",
     "terser": "^5.3.5",
     "yargs-parser": "^20.2.1"
   }

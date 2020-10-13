@@ -1,3 +1,2 @@
 .idea/
-node_modules/*
-!node_modules/faded-text/
+node_modules/
