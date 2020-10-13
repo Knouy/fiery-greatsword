@@ -35,6 +35,6 @@ setInterval(() => countdown(), 1000);
 
 PAGE.load('view/home.html', () => {
   for (let i = 0; i < 18; i++) {
-    new FadedText('home' + i).charFadeIn();
+    new FadedText('home' + i).charFadeIn(5390);
   }
 });
