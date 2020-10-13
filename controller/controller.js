@@ -1,7 +1,7 @@
 /* terser controller/*.js -o dist/controller.min.js -c -m */
 /* terser model/*.js -o dist/model.min.js -c -m */
 
-import FadedText from '../node_modules/faded-text';
+import FadedText from '../node_modules/faded-text/index.js';
 import { countdown, menu } from '../dist/model.min.js';
 
 /* index.html */
