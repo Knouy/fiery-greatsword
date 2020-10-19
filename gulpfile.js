@@ -1,17 +1,10 @@
-/* npm i gulp --save-dev */
-/* npm i gulp-concat --save-dev */
-/* npm i gulp-clean-css --save-dev */
-/* npm i gulp-rename --save-dev */
+/* npm i --save-dev gulp */
+/* npm i --save-dev gulp-concat */
+/* npm i --save-dev gulp-clean-css */
 
 const GULP = require('gulp');
 const CONCAT = require('gulp-concat');
 const CLEAN_CSS = require('gulp-clean-css');
-const RENAME = require('gulp-rename');
 
-GULP.task('build', () => {
-  return GULP.src('style/*.css')
-    .pipe(CONCAT('style.css'))
-    .pipe(CLEAN_CSS({ compatibility: 'ie8' }))
-    .pipe(RENAME('style.min.css'))
-    .pipe(GULP.dest('dist'));
-});
+GULP.task('build', _ => GULP.src('style/*').pipe(CONCAT('style.min.css'))
+  .pipe(CLEAN_CSS()).pipe(GULP.dest('dist')));

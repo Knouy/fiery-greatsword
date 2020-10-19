@@ -1,4 +1,5 @@
-export function home () {
+export const home = _ => {
+  // noinspection JSUnresolvedFunction
   resetMenu();
-  document.getElementById('menuHome').style.borderBottomColor = '#FFFFFF';
-}
+  document.getElementById('menuHome').style.borderBottomColor = '#ffffff';
+};

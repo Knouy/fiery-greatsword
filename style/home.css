@@ -1,15 +1,7 @@
 #home {
     font-family: "NewKrytan", serif;
-    max-width: 960px;
+    font-size: 200%;
+    text-align: center;
     width: calc(100% - 30px);
     z-index: 1;
-}
-
-#home > ul {
-    list-style-type: none;
-}
-
-#home > ul > li > ul {
-    columns: 2;
-    list-style-type: none;
 }

@@ -1,8 +1,13 @@
-export function loadPrecisionCalculator () {
-  document.getElementById('P.AGONY_IMPEDANCE').value = P.AGONY_IMPEDANCE / 5;
+export const loadCritOpti = _ => {
+  /* Attribute */
+  /* Agony Resistance */
+  // noinspection JSUnresolvedVariable
   document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
+  /* Vitality */
+  // noinspection JSUnresolvedVariable
   document.getElementById('P.VITALITY').value = P.VITALITY;
-  const PRECISION_CALCULATOR = [['P.FURY', 1], ['P.RETALIATION', 1],
+  /* CritOpti */
+  const CRIT_OPTI = [['P.FURY', 1], ['P.RETALIATION', 1],
     ['P.BLEEDING', 1], ['P.BURNING', 1], ['P.SLOW', 1], ['P.VULNERABILITY', 25],
     ['P.WEAKNESS', 1], ['P.ANGUISHED_TEAR_OF_ALBA', 1], ['P.RIGOROUS_CERTAINTY',
       5], ['P.AGONY_CHANNELER', 10], ['P.RECURSIVE_RESOURCING', 25],
@@ -30,39 +35,40 @@ export function loadPrecisionCalculator () {
   PROFESSION.forEach(element => {
     if (eval(element[0]) === 1) {
       for (let i = 1; i < element.length; i++) {
-        PRECISION_CALCULATOR.push(element[i]);
+        CRIT_OPTI.push(element[i]);
       }
       temp = element[0];
     }
   });
   if (temp != null) {
     /* global $ */
-    $('#trait').load('view/critOptimizer/trait/' + temp.substring(2)
+    $('#trait').load('view/critOpti/trait/' + temp.substring(2)
       .toLowerCase() + '.html', () => {
-      document.getElementById(temp).style.borderColor = '#00FF00';
-      PRECISION_CALCULATOR.forEach(element => {
+      document.getElementById(temp).style.borderColor = '#00ff00';
+      CRIT_OPTI.forEach(element => {
         if (eval(element[0]) === 0) {
           document.getElementById(element[0]).style.borderColor = 'transparent';
-        } else if (eval(element[0]) === element[1]) {
-          document.getElementById(element[0]).style.borderColor = '#00FF00';
         } else {
-          document.getElementById(element[0]).style.borderColor = '#ED7F10';
+          document.getElementById(element[0]).style.borderColor =
+            eval(element[0]) === element[1] ? '#00ff00' : '#ed7f10';
         }
       });
+      // noinspection JSUnresolvedFunction
       setTraitOnClick();
+      // noinspection JSUnresolvedFunction
       setTraitTooltipBox();
     });
   } else {
-    PRECISION_CALCULATOR.forEach(element => {
+    CRIT_OPTI.forEach(element => {
       if (eval(element[0]) === 0) {
         document.getElementById(element[0]).style.borderColor = 'transparent';
-      } else if (eval(element[0]) === element[1]) {
-        document.getElementById(element[0]).style.borderColor = '#00FF00';
       } else {
-        document.getElementById(element[0]).style.borderColor = '#ED7F10';
+        document.getElementById(element[0]).style.borderColor =
+          eval(element[0]) === element[1] ? '#00ff00' : '#ed7f10';
       }
     });
   }
+  /* Equipment */
   const EQUIPMENT = ['P.AMULET_SLOT', 'P.BACK_SLOT', 'P.BEAR_TRINKET_SLOT',
     'P.CHEST_SLOT', 'P.CUBE_TRINKET_SLOT', 'P.FEET_SLOT', 'P.HAND_SLOT',
     'P.HEAD_SLOT', 'P.LEFT_RING_SLOT', 'P.LEG_SLOT', 'P.RIGHT_RING_SLOT',
@@ -70,4 +76,8 @@ export function loadPrecisionCalculator () {
   EQUIPMENT.forEach(element => {
     document.getElementById(element + '_PRECISION').innerText = eval(element);
   });
-}
+  /* Service */
+  /* Agony Impedance */
+  // noinspection JSUnresolvedVariable
+  document.getElementById('P.AGONY_IMPEDANCE').value = P.AGONY_IMPEDANCE / 5;
+};

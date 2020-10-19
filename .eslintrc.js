@@ -16,10 +16,10 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'max-len': ['error', { 'code': 80 }],
+    'max-len': ['error', { code: 80 }],
     'no-eval': 'off',
     'no-undef': 'off',
     'no-unused-vars': 'off',
     semi: ['error', 'always']
   }
-}
+};

@@ -1,6 +1,4 @@
 export const P = {
-  /* Agony Impedance */
-  AGONY_IMPEDANCE: 20,
   /* Attribute */
   AGONY_RESISTANCE: 227,
   VITALITY: 1000,
@@ -17,7 +15,7 @@ export const P = {
   ANGUISHED_TEAR_OF_ALBA: 1,
   /* Effect */
   RIGOROUS_CERTAINTY: 5,
-  /* EQUIPMENT */
+  /* Equipment */
   AMULET_SLOT: 108,
   BACK_SLOT: 40,
   BEAR_TRINKET_SLOT: 74,
@@ -38,11 +36,6 @@ export const P = {
   MISTLOCK_SINGULARITIES: 30,
   /* Gizmo */
   INFINITE_MIST_OMNIPOTION: 5,
-  /* Mist Attunement */
-  MIST_ATTUNEMENT_1: 0,
-  MIST_ATTUNEMENT_2: 0,
-  MIST_ATTUNEMENT_3: 0,
-  MIST_ATTUNEMENT_4: 25,
   /* Profession */
   ELEMENTALIST: 0,
   ENGINEER: 0,
@@ -53,6 +46,14 @@ export const P = {
   REVENANT: 0,
   THIEF: 0,
   WARRIOR: 0,
+  /* Service */
+  /* Agony Impedance */
+  AGONY_IMPEDANCE: 20,
+  /* Mist Attunement */
+  MIST_ATTUNEMENT_1: 0,
+  MIST_ATTUNEMENT_2: 0,
+  MIST_ATTUNEMENT_3: 0,
+  MIST_ATTUNEMENT_4: 25,
   /* Sigil */
   MAJOR_SIGIL_OF_ACCURACY: 0,
   MINOR_SIGIL_OF_ACCURACY: 0,

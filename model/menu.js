@@ -1,18 +1,14 @@
-export function menu (string) {
+export const menu = string => {
   switch (string) {
-    case 'characterOptimizer':
-      characterOptimizer();
-      break;
     case 'home':
+      // noinspection JSUnresolvedFunction
       home();
       break;
-    case 'critOptimizer':
-      critOptimizer();
-      break;
-    case 'uceCounter':
-      uceCounter();
+    case 'critOpti':
+      // noinspection JSUnresolvedFunction
+      critOpti();
       break;
     default:
       break;
   }
-}
+};

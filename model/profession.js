@@ -1,4 +1,5 @@
-export function profession (property) {
+export const profession = property => {
+  // noinspection JSUnresolvedVariable
   P.BE_QUICK_OR_BE_KILLED = P.BRUTAL_MOMENTUM = P.BURST_PRECISION = P
     .DANGER_TIME = P.DEATH_PERCEPTION = P.DECIMATE_DEFENSES = P
       .DOUBLED_STANDARDS = P.ELEMENTS_OF_RAGE = P.FURIOUS_DEMISE = P
@@ -7,6 +8,7 @@ export function profession (property) {
       .RIGHTEOUS_INSTINCTS = P.RIGHT_HAND_STRENGTH = P.SILENT_SCOPE = P
         .SUPERIOR_ELEMENTS = P.TARGET_THE_WEAK = P.TWIN_FANGS = P
           .UNSUSPECTING_FOE = P.VICIOUS_QUARRY = 0;
+  // noinspection JSUnresolvedFunction
   calculate();
   const PROFESSION = ['P.ELEMENTALIST', 'P.ENGINEER', 'P.GUARDIAN', 'P.MESMER',
     'P.NECROMANCER', 'P.RANGER', 'P.REVENANT', 'P.THIEF', 'P.WARRIOR'];
@@ -15,10 +17,12 @@ export function profession (property) {
       PROFESSION[A_PROFESSION] !== property) {
       document.getElementById(PROFESSION[A_PROFESSION]).style.borderColor =
         'transparent';
+      // noinspection JSUnresolvedVariable
       P[PROFESSION[A_PROFESSION].substring(2)] = 0;
     } else {
-      document.getElementById(property).style.borderColor = '#00FF00';
+      document.getElementById(property).style.borderColor = '#00ff00';
+      // noinspection JSUnresolvedVariable
       P[PROFESSION[A_PROFESSION].substring(2)] = 1;
     }
   }
-}
+};

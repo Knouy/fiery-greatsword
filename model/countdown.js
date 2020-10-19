@@ -1,4 +1,4 @@
-export function countdown () {
+export const countdown = _ => {
   const RESET = new Date();
   RESET.setUTCDate(new Date().getUTCDate() + 1);
   RESET.setUTCHours(0);
@@ -14,4 +14,4 @@ export function countdown () {
   1 ? '0' + HOURS : HOURS) + ':' + (MINUTES.toString().length === 1 ? '0' +
     MINUTES : MINUTES) + ':' + (SECONDS.toString().length === 1 ? '0' + SECONDS
     : SECONDS);
-}
+};

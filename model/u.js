@@ -1,4 +1,0 @@
-export const U = {
-  API_KEY: '?access_token=BB5D4CB9-7550-2745-A466-4FFB10C3B2F98547BFA3-4550-4' +
-    'B19-A9B4-CA920DB2BC13'
-};
