@@ -4,7 +4,19 @@
 import FadedText from '../dist/faded-text.min.js';
 import { countdown, menu } from '../dist/model.min.js';
 
+/* global $ */
+const PAGE = $('#page');
+
+$(_ => $('.menu').on('click', function () {
+  PAGE.fadeOut(400, () => PAGE.load('view/' + $(this).data('menu') + '.html',
+    _ => menu($(this).data('menu'))).hide().delay(1000).fadeIn());
+}));
+setInterval(_ => countdown(), 1000);
+
 /* index.html */
+
+document.getElementById('textureCrystalS').setAttribute('src',
+  'img/output/index/' + window.screen.width + '-texture_crystal_s.webp');
 
 // noinspection JSUnresolvedFunction
 VANTA.FOG({
@@ -20,14 +32,8 @@ VANTA.FOG({
   zoom: 1.80
 });
 
-/* global $ */
-const PAGE = $('#page');
-
-$(_ => $('.menu').on('click', function () {
-  PAGE.fadeOut(400, () => PAGE.load('view/' + $(this).data('menu') + '.html',
-    _ => menu($(this).data('menu'))).hide().delay(1000).fadeIn());
-}));
-setInterval(_ => countdown(), 1000);
+document.getElementById('bottomGraphics').setAttribute('src',
+  'img/output/index/' + window.screen.width + '-Bottom_Graphics.webp');
 
 /* home.html */
 

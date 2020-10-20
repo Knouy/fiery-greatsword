@@ -1,17 +1,11 @@
 @font-face {
     font-display: swap;
     font-family: "JetBrains Mono";
-    src: url("../font/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2");
+    src: url("../font/JetBrainsMono-Regular.woff2");
 }
 
 @font-face {
     font-display: swap;
     font-family: "NewKrytan";
-    src: url("../font/NewKrytan/NewKrytan.woff2");
-}
-
-@font-face {
-    font-display: swap;
-    font-family: "PT Serif";
-    src: url("../font/PT_Serif/PTSerif-Regular.ttf");
+    src: url("../font/NewKrytan.woff2");
 }
