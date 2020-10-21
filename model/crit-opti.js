@@ -6,7 +6,8 @@ export const critOpti = _ => {
   loadCritOpti();
   // noinspection JSUnresolvedFunction
   calculate();
-  $('#tooltipBox').load('view/critOpti/tooltipBox/critOpti.html');
+  $.get('view/critOpti/tooltipBox/critOpti.html', element => $('#tooltipBox')
+    .html(element));
   /* global $ */
   $(_ => {
     // noinspection JSUnresolvedFunction
@@ -235,15 +236,16 @@ export const critOpti = _ => {
     });
     /* Profession */
     $('.profession').on('click', function () {
-      $('#trait').load('view/critOpti/trait/' + this.id.substring(2)
-        .toLowerCase() + '.html', _ => {
+      $.get('view/critOpti/trait/' + this.id.substring(2).toLowerCase() +
+        '.html', element => {
+        $('#trait').html(element).hide().delay(1000).fadeIn();
         // noinspection JSUnresolvedFunction
         profession(this.id);
         // noinspection JSUnresolvedFunction
         setTraitOnClick();
         // noinspection JSUnresolvedFunction
         setTraitTooltipBox();
-      }).hide().delay(1000).fadeIn();
+      });
     });
     /* Service */
     /* Agony Impedance */

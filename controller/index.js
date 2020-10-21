@@ -4,20 +4,15 @@
 import FadedText from '../dist/faded-text.min.js';
 import { countdown, menu } from '../dist/model.min.js';
 
-/* global $ */
-const PAGE = $('#page');
-
-$(_ => $('.menu').on('click', function () {
-  PAGE.fadeOut(400, () => PAGE.load('view/' + $(this).data('menu') + '.html',
-    _ => menu($(this).data('menu'))).hide().delay(1000).fadeIn());
-}));
-setInterval(_ => countdown(), 1000);
-
 /* index.html */
 
-document.getElementById('textureCrystalS').setAttribute('src',
-  'img/output/index/' + window.screen.width + '-texture_crystal_s.webp');
-
+if ([640, 800, 1024, 1280, 1360, 1366, 1440, 1536, 1600, 1680, 1920, 2048, 2560,
+  3440, 3840].includes(window.screen.width)) {
+  document.getElementById('textureCrystalS').setAttribute('src',
+    'img/output/index/' + window.screen.width + '-texture_crystal_s.webp');
+  document.getElementById('bottomGraphics').setAttribute('src',
+    'img/output/index/' + window.screen.width + '-Bottom_Graphics.webp');
+}
 // noinspection JSUnresolvedFunction
 VANTA.FOG({
   el: '#fog',
@@ -31,10 +26,21 @@ VANTA.FOG({
   baseColor: 0xfcfcfc,
   zoom: 1.80
 });
+setInterval(_ => countdown(), 1000);
+/* global $ */
+const PAGE = $('#page');
 
-document.getElementById('bottomGraphics').setAttribute('src',
-  'img/output/index/' + window.screen.width + '-Bottom_Graphics.webp');
+$('.menu').on('click', function () {
+  PAGE.fadeOut(400, _ => $.get('view/' + $(this).data('menu') + '.html',
+    element => {
+      PAGE.html(element);
+      menu($(this).data('menu'));
+    })).hide().delay().fadeIn();
+});
 
 /* home.html */
 
-PAGE.load('view/home.html', _ => new FadedText('title').charFadeIn());
+$.get('view/home.html', element => {
+  PAGE.html(element);
+  new FadedText('title').charFadeIn();
+});
