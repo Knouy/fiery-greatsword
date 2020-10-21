@@ -43,4 +43,6 @@ $('.menu').on('click', function () {
 $.get('view/home.html', element => {
   PAGE.html(element);
   new FadedText('title').charFadeIn();
+  document.getElementById('title').style.marginTop = (window.screen.height -
+    84 - window.screen.width * 896 / 3840) * 0.33 + 'px';
 });
