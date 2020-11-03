@@ -1,3 +1,7 @@
+.aPadding9 a:link, a:visited {
+    padding: 9px;
+}
+
 .aPadding11 a:link, a:visited {
     padding: 11px;
 }

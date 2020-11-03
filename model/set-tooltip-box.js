@@ -1,7 +1,7 @@
 export const setTooltipBox = _ => {
   /* global $ */
   $('.box').on('mouseenter', function () {
-    $('#tooltipBox').load('view/critOpti/tooltipBox/' + $(this).data('box') +
-      '.html');
+    $.get('view/critOpti/tooltipBox/' + $(this).data('box') + '.html',
+      element => $('#tooltipBox').html(element));
   });
 };
