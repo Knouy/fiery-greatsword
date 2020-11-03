@@ -1,17 +1,18 @@
+/* eslint-disable no-undef */
 export const calculate = _ => {
-  /* Attribute */
-  /* Agony Resistance */
+  /* ///////////////////////////////////////////////////////// *//* Attribute */
+  /* *********************************** *//* Agony Resistance *//* Attribute */
   // noinspection JSUnresolvedVariable
   const AGONY_RESISTANCE_PRECISION = P.AGONY_RESISTANCE * (P.AGONY_CHANNELER + P
     .RECURSIVE_RESOURCING + P.MISTLOCK_SINGULARITIES) / 100 * P
     .INFINITE_MIST_OMNIPOTION;
-  /* Equipment */
+  /* ///////////////////////////////////////////////////////// *//* Equipment */
   // noinspection JSUnresolvedVariable
   const EQUIPMENT = P.AMULET_SLOT + P.BACK_SLOT + P.BEAR_TRINKET_SLOT + P
     .CHEST_SLOT + P.CUBE_TRINKET_SLOT + P.FEET_SLOT + P.HAND_SLOT + P
     .HEAD_SLOT + P.LEFT_RING_SLOT + P.LEG_SLOT + P.RIGHT_RING_SLOT + P
     .SHIELD_SLOT + P.SHOULDER_SLOT + P.SWORD_SLOT;
-  /* Trait */
+  /* ///////////////////////////////////////////////////////////// *//* Trait */
   // noinspection JSUnresolvedVariable
   const TRAIT_RANGER_PRECISION = P.SPOTTER;
   // noinspection JSUnresolvedVariable
@@ -26,7 +27,7 @@ export const calculate = _ => {
   const UTILITY_SKILL = (P.DOUBLED_STANDARDS + 1) * P.BANNER_OF_DISCIPLINE + P
     .CONJURE_LIGHTNING_HAMMER + P.SIGNET_OF_AGILITY + P.SIGNET_OF_FIRE + P
     .SIGNET_OF_FURY;
-  /* Precision */
+  /* ///////////////////////////////////////////////////////// *//* Precision */
   const PRECISION = 1000 + AGONY_RESISTANCE_PRECISION + EQUIPMENT +
     TRAIT_RANGER_PRECISION + TRAIT_THIEF_PRECISION +
     TRAIT_ELEMENTALIST_PRECISION + TRAIT_NECROMANCER_PRECISION +
@@ -34,16 +35,16 @@ export const calculate = _ => {
   // noinspection JSUnresolvedFunction
   demoStart(parseInt(document.getElementById('P.PRECISION').innerText.replace(
     ',', '')), 0, '', '', 'P.PRECISION', PRECISION);
-  /* Boon */
-  /* Fury */
+  /* ////////////////////////////////////////////////////////////// *//* Boon */
+  /* **************************************************** *//* Fury *//* Boon */
   // noinspection JSUnresolvedVariable
   const BOON = P.FURY * 20;
-  /* Sigil */
-  /* Sigil of Accuracy */
+  /* ///////////////////////////////////////////////////////////// *//* Sigil */
+  /* ************************************** *//* Sigil of Accuracy *//* Sigil */
   // noinspection JSUnresolvedVariable
   const SIGIL_OF_ACCURACY = P.MAJOR_SIGIL_OF_ACCURACY + P
     .MINOR_SIGIL_OF_ACCURACY + P.SUPERIOR_SIGIL_OF_ACCURACY;
-  /* Trait */
+  /* ///////////////////////////////////////////////////////////// *//* Trait */
   // noinspection JSUnresolvedVariable
   const TRAIT_ENGINEER_CRITICAL_CHANCE = P.HEMATIC_FOCUS * P.BLEEDING + P
     .HIGH_CALIBER;
@@ -62,7 +63,7 @@ export const calculate = _ => {
   // noinspection JSUnresolvedVariable
   const TRAIT_GUARDIAN_CRITICAL_CHANCE = P.RADIANT_POWER * P.BURNING + P
     .RIGHTEOUS_INSTINCTS * P.RETALIATION;
-  /* Critical Chance */
+  /* /////////////////////////////////////////////////// *//* Critical Chance */
   // noinspection JSUnresolvedVariable
   let CRITICAL_CHANCE = 5 + (PRECISION - 1000) / 21 + BOON + SIGIL_OF_ACCURACY +
     TRAIT_ENGINEER_CRITICAL_CHANCE + TRAIT_RANGER_CRITICAL_CHANCE +

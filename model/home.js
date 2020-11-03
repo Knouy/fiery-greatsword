@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export const home = _ => {
   // noinspection JSUnresolvedFunction
   resetMenu();

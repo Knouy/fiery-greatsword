@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 export const profession = property => {
-  // noinspection JSUnresolvedVariable
+  // noinspection DuplicatedCode,JSUnresolvedVariable
   P.BE_QUICK_OR_BE_KILLED = P.BRUTAL_MOMENTUM = P.BURST_PRECISION = P
     .DANGER_TIME = P.DEATH_PERCEPTION = P.DECIMATE_DEFENSES = P
       .DOUBLED_STANDARDS = P.ELEMENTS_OF_RAGE = P.FURIOUS_DEMISE = P

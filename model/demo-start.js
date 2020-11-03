@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export const demoStart = (startVal, decimalPlaces, prefix, suffix, id,
   endVal) => {
   const OPTIONS = {

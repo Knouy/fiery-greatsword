@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export const resetMistAttunement = _ => {
   // noinspection JSUnresolvedVariable
   P.AGONY_RESISTANCE -= P.MIST_ATTUNEMENT_1 + P.MIST_ATTUNEMENT_2 + P

@@ -1,12 +1,13 @@
+/* eslint-disable no-undef */
 export const loadCritOpti = _ => {
-  /* Attribute */
-  /* Agony Resistance */
+  /* ///////////////////////////////////////////////////////// *//* Attribute */
+  /* *********************************** *//* Agony Resistance *//* Attribute */
   // noinspection JSUnresolvedVariable
   document.getElementById('P.AGONY_RESISTANCE').value = P.AGONY_RESISTANCE;
-  /* Vitality */
+  /* ******************************************* *//* Vitality *//* Attribute */
   // noinspection JSUnresolvedVariable
   document.getElementById('P.VITALITY').value = P.VITALITY;
-  /* CritOpti */
+  /* ////////////////////////////////////////////////////////// *//* CritOpti */
   const CRIT_OPTI = [['P.FURY', 1], ['P.RETALIATION', 1],
     ['P.BLEEDING', 1], ['P.BURNING', 1], ['P.SLOW', 1], ['P.VULNERABILITY', 25],
     ['P.WEAKNESS', 1], ['P.ANGUISHED_TEAR_OF_ALBA', 1], ['P.RIGOROUS_CERTAINTY',
@@ -42,9 +43,10 @@ export const loadCritOpti = _ => {
   });
   if (temp != null) {
     /* global $ */
-    $('#trait').load('view/critOpti/trait/' + temp.substring(2)
-      .toLowerCase() + '.html', () => {
+    $('#trait').load('view/critOpti/trait/' + temp.substring(2).toLowerCase() +
+      '.html', () => {
       document.getElementById(temp).style.borderColor = '#00ff00';
+      // noinspection DuplicatedCode
       CRIT_OPTI.forEach(element => {
         if (eval(element[0]) === 0) {
           document.getElementById(element[0]).style.borderColor = 'transparent';
@@ -59,6 +61,7 @@ export const loadCritOpti = _ => {
       setTraitTooltipBox();
     });
   } else {
+    // noinspection DuplicatedCode
     CRIT_OPTI.forEach(element => {
       if (eval(element[0]) === 0) {
         document.getElementById(element[0]).style.borderColor = 'transparent';
@@ -68,7 +71,7 @@ export const loadCritOpti = _ => {
       }
     });
   }
-  /* Equipment */
+  /* ///////////////////////////////////////////////////////// *//* Equipment */
   const EQUIPMENT = ['P.AMULET_SLOT', 'P.BACK_SLOT', 'P.BEAR_TRINKET_SLOT',
     'P.CHEST_SLOT', 'P.CUBE_TRINKET_SLOT', 'P.FEET_SLOT', 'P.HAND_SLOT',
     'P.HEAD_SLOT', 'P.LEFT_RING_SLOT', 'P.LEG_SLOT', 'P.RIGHT_RING_SLOT',
@@ -76,8 +79,8 @@ export const loadCritOpti = _ => {
   EQUIPMENT.forEach(element => {
     document.getElementById(element + '_PRECISION').innerText = eval(element);
   });
-  /* Service */
-  /* Agony Impedance */
+  /* /////////////////////////////////////////////////////////// *//* Service */
+  /* ************************************** *//* Agony Impedance *//* Service */
   // noinspection JSUnresolvedVariable
   document.getElementById('P.AGONY_IMPEDANCE').value = P.AGONY_IMPEDANCE / 5;
 };

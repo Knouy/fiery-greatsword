@@ -5,7 +5,7 @@
 import FadedText from '../dist/faded-text.min.js';
 import { countdown, menu } from '../dist/model.min.js';
 
-/* index.html */
+/* ////////////////////////////////////////////////////////// *//* index.html */
 
 // noinspection JSUnresolvedFunction
 VANTA.FOG({
@@ -30,6 +30,6 @@ $(_ => $('.menu').on('click', function () {
 }));
 setInterval(_ => countdown(), 1000);
 
-/* home.html */
+/* /////////////////////////////////////////////////////////// *//* home.html */
 
 PAGE.load('view/home.html', _ => new FadedText('title').charFadeIn());

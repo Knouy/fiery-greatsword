@@ -1,3 +1,4 @@
+// noinspection JSUnusedGlobalSymbols
 export const countdown = _ => {
   const RESET = new Date();
   RESET.setUTCDate(new Date().getUTCDate() + 1);
@@ -10,8 +11,12 @@ export const countdown = _ => {
   ));
   const MINUTES = Math.floor((COUNTDOWN % (1000 * 60 * 60)) / (1000 * 60));
   const SECONDS = Math.floor((COUNTDOWN % (1000 * 60)) / 1000);
-  document.getElementById('countdown').innerHTML = (HOURS.toString().length ===
-  1 ? '0' + HOURS : HOURS) + ':' + (MINUTES.toString().length === 1 ? '0' +
-    MINUTES : MINUTES) + ':' + (SECONDS.toString().length === 1 ? '0' + SECONDS
-    : SECONDS);
+  document.getElementById('countdown').innerHTML =
+    (HOURS.toString().length === 1
+      ? '0' + HOURS
+      : HOURS) + ':' + (MINUTES.toString().length === 1
+      ? '0' + MINUTES
+      : MINUTES) + ':' + (SECONDS.toString().length === 1
+      ? '0' + SECONDS
+      : SECONDS);
 };

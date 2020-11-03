@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // noinspection ES6UnusedImports
 import FadedText from '../dist/faded-text.min.js';
 // noinspection ES6UnusedImports

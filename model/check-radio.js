@@ -1,11 +1,11 @@
+/* eslint-disable no-undef */
 export const checkRadio = (array, property) => {
-  for (const PROPERTY in array) {
-    if (Object.prototype.hasOwnProperty.call(array, PROPERTY) && array[PROPERTY
-    ] !== property) {
-      document.getElementById(array[PROPERTY]).style.borderColor = 'transparent'
-      ;
+  for (const PROP in array) {
+    if (Object.prototype.hasOwnProperty.call(array, PROP) && array[PROP] !==
+      property) {
+      document.getElementById(array[PROP]).style.borderColor = 'transparent';
       // noinspection JSUnresolvedVariable
-      P[array[PROPERTY].substring(2)] = 0;
+      P[array[PROP].substring(2)] = 0;
     }
   }
 };

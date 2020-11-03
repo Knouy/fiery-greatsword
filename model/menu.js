@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export const menu = string => {
   switch (string) {
     case 'home':
