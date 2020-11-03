@@ -17,18 +17,18 @@
   },
   "homepage": "https://github.com/Knouy/fiery-greatsword#readme",
   "devDependencies": {
-    "eslint": "^7.11.0",
-    "eslint-config-standard": "^14.1.1",
+    "eslint": "^7.12.1",
+    "eslint-config-standard": "^16.0.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.2",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1"
+    "gulp-concat": "^2.6.1",
+    "terser": "^5.3.8"
   },
   "dependencies": {
-    "terser": "^5.3.5",
     "yargs-parser": "^20.2.3"
   }
 }

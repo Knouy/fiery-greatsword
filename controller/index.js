@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* terser controller/*.js -o dist/controller.min.js -c -m */
 /* terser model/*.js -o dist/model.min.js -c -m */
 
@@ -25,7 +26,7 @@ const PAGE = $('#page');
 
 $(_ => $('.menu').on('click', function () {
   PAGE.fadeOut(400, () => PAGE.load('view/' + $(this).data('menu') + '.html',
-    _ => menu($(this).data('menu'))).hide().delay(1000).fadeIn());
+    () => menu($(this).data('menu'))).hide().delay(1000).fadeIn());
 }));
 setInterval(_ => countdown(), 1000);
 
