@@ -26,7 +26,8 @@
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
-    "terser": "^5.3.8"
+    "terser": "^5.3.8",
+    "vite": "^6.1.0"
   },
   "dependencies": {
     "yargs-parser": "^20.2.3"
